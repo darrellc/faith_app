@@ -1,0 +1,10 @@
+/*Monoglyceride*/
+@font-face {
+  font-family: 'Monoglyceride';
+    src:  url('fonts/Monoglyceride.ttf.woff') format('woff'),
+    url('fonts/Monoglyceride.ttf.svg#Monoglyceride') format('svg'),
+    url('fonts/Monoglyceride.ttf.eot'),
+    url('fonts/Monoglyceride.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+} 
