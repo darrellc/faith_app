@@ -1,109 +1,94 @@
 @import "atomic";
 
-//Colors
 
+
+
+//Colors
 
 $f_green: #74d513;
 $f_blue: #1a4a7a;
+$ev_theme: #2088cd;
+$or_theme: #4bb4df;
+$de_theme: #828282;
+$so_theme: #3b5895;
 
+$lightGray: #808080;
+$offWhite: #f1f1f1;
+$darkGray: #333;
+$offBlack: #1d1d1d;
+
+//Initialize 
 body{margin: 0;}
 a{display: block;}
+a:hover{text-decoration: underline;}
 a, p, h1, h2, h3, h4, h5, h6, div{font-family: 'Segoe UI',Arial,Helvetica,Sans-Serif;}
-.container{max-width: 1000px;
-  .logo{height: 75px;}
-}
-.bg-fblue{background: $f_blue;color: #f1f1f1;}
-.divider{@extend .m-30;@extend .w-50p;@extend .ml-a;@extend .mr-a;}
+//Custom Colors and Background Classes
+.c-ow {color: $offWhite;}
+.c-ow.ev:hover {color: white;}
+.c-lg{color: $lightGray;}
+a.c-lg:hover{color: $offWhite;}
+.c-dg{color: $darkGray;}
+/*Backgrounds*/
+.bg-dgr {background: $darkGray;}
+.bg-dgr.ev:hover{background: lighten($darkGray, 10%);}
+.bg-dbl {background: $f_blue;}
+.bg-dbl.ev:hover{background: lighten($f_blue, 10%);}
+.bg-w {background: #fff;}
 .bg-fgr{background: #121218;}
-.bg-dia{background: url(backgrounds/diagonal.png) repeat #121218;}
-a.bg-fgr:hover{background: lighten(#121218, 10%);}
-.bg-dg{background: #1d1d1d;}
-.bg-ow{background: #f1f1f1;}
-a.bg-fblue:hover{background: darken($f_blue, 5%);color: #fff;}
-.c-lg{color: #808080;}
-a.c-lg:hover{color: #ccc;}
-.c-dg{color: #333;}
-.c-w{color: #fff;}
+.bg-fgr.ev:hover{background: lighten(#121218, 10%);}
+.bg-dia{background: url("backgrounds/diagonal.png") repeat #121218;}
+.bg-dg{background: $offBlack;}
+.bg-ow{background: $offWhite;}
+//Borders 
+.bdb-bl {border-bottom: 3px solid $f_blue;}
+//Fonts
 .ff-mono{font-family: 'Monoglyceride';}
-
-#login-form{
-  top: 44px;
-  z-index: 900;
-  .button{width: 100%;margin:0;}
-  .button:hover{background: darken($f_blue, 5%);}
+/*Global Classes*/
+a.active{background: $f_blue;color: #fff;}
+.login-box {top: 69px;}
+.off {margin-right: -100%;}
+.fxd{position:fixed;width: 100%;top:0;z-index:500;}
+.top-bar{height: auto;background: white;@extend .bdb-bl;
+   .logo{height: 65px;}
+   .navigation li a {padding: 23px;color: #333;&:hover{background: $offWhite;text-decoration: none;}}
 }
-
-#slider{
-  height: 350px;
-  margin-top: 30px;
-  li{
-    height: 300px;
-    -webkit-box-shadow:inset -20px 0 20px -10px rgba(0,0,0,.5);
-    box-shadow:inset -20px 0 20px -10px rgba(0,0,0,.5);
-    img{
-      left: -1%;
-      height: 250px; 
-      max-width: inherit;
+// #login-form{
+  // top: 44px;
+  // z-index: 900;
+  // .button{width: 100%;margin:0;}
+  // .button:hover{background: darken($f_blue, 5%);}
+// }
+//Kwiks Slider
+#slider{height: 400px;-webkit-box-shadow: 0 10px 20px 1px rgba(0,0,0,.5);box-shadow: 0 10px 20px 1px rgba(0,0,0,.5);
+  li{height: 400px;box-shadow:-6px 0 10px -4px rgba(0,0,0,0.5);-webkit-box-shadow:-6px 0 10px -4px rgba(0,0,0,0.5);
+    img{left: -1%;height: 250px;max-width: inherit;bottom: 50px;}
+    img.logo{width:100%;height: auto;}
+    .info{margin-top: 5%;max-width:400px;width: 100%;position:absolute;right: 40px;@extend .p-10;background: #000;@extend .op-70;@extend .bdrz-10;}    
+  }  
+  li.eSlide{background: url("slides/sBg.png");   
+    p{@extend .c-ow;
+      a.link{color: $ev_theme;}
     }
-    div{
-      h1{@extend .ff-mono;@extend .fs-lgr;}
-      p{@extend .fs-20;
-        a.link{@extend .fs-24;@extend .td-u;}
-      }
+  }
+  li.dSlide{background: #1B3041;
+    p{color: white;
+      a.link{color: $de_theme;}
     }    
   }
-  li.eSlide{
-    background: #635d5e; /* Old browsers */
-    background: -moz-linear-gradient(45deg,  #635d5e 1%, #231d1e 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(1%,#635d5e), color-stop(100%,#231d1e)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg,  #635d5e 1%,#231d1e 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg,  #635d5e 1%,#231d1e 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg,  #635d5e 1%,#231d1e 100%); /* IE10+ */
-    background: linear-gradient(45deg,  #635d5e 1%,#231d1e 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#635d5e', endColorstr='#231d1e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-   h1{color: #83c0ff;}
-   div{
-    p{color: #f1f1f1;
-      a.link{color: white;}
-    }
-   }
-  }
-  li.dSlide{
-    background: #e3e3e3; /* Old browsers */
-    background: -moz-linear-gradient(left,  #e3e3e3 1%, #f1f1f1 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right top, color-stop(1%,#e3e3e3), color-stop(100%,#f1f1f1)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(left,  #e3e3e3 1%,#f1f1f1 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(left,  #e3e3e3 1%,#f1f1f1 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(left,  #e3e3e3 1%,#f1f1f1 100%); /* IE10+ */
-    background: linear-gradient(to right,  #e3e3e3 1%,#f1f1f1 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e3e3e3', endColorstr='#f1f1f1',GradientType=1 ); /* IE6-9 */
-    div{
-      p{@extend .c-dg;
-        a.link{color: #222;}
-      }
+  li.sSlide{background: #b5dbff;
+    p{@extend .c-dg;
+      a.link{color: $so_theme;}
     }
   }
-  li.sSlide{background: url(slides/sBg.png) repeat;
-    div{
-      h1{color: white;}
-      p{color: #f1f1f1;}
-      p a.link{color: white;}
+  li.oSlide{background: url("slides/oBg.png") repeat;
+    p{color: #333;
+      a.link{color: $or_theme;}
     }
-  }
-  li.oSlide{background: url(slides/oBg.png) repeat;
-    h1{color: #3e4453;}
-    div p{color: #333;
-      a.link{color: #222;}
-    }
-    img{left: 7%;}
   }
 }
 #middleContainer{
   min-height: 265px;
-  background: url(backgrounds/geo.png) repeat $f_blue;
-  .row{
-    padding-top: 40px;
-  }
+  background: url("backgrounds/geo.png") repeat $f_blue;
   .arrow-down {
     width: 0; 
     height: 0; 
@@ -111,9 +96,6 @@ a.c-lg:hover{color: #ccc;}
     border-right: 50px solid transparent;    
     border-top: 30px solid #fff;
     left: 45%;
-  }
-  .row{
-    p{text-align: center;}
   }
 }
 

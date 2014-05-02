@@ -19,11 +19,27 @@
 $(function(){ 
 	$(document).foundation(); 
 	$('#kwiks-slideshow').kwicks({
-		maxSize: '60%',
-		behavior: 'menu',
-		autoResize: true,
-		spacing: 0
+		 maxSize: '60%',
+		 behavior: 'menu',
+		 autoResize: true,
+		 spacing: 0
 	});
+	
+	$(window).scroll(function() {
+		var st = $(this).scrollTop();
+		var $h = $("header");
+		var height = $h.outerHeight();
+		if(st === 0)
+			$h.removeClass("fxd");
+		else{
+			if(!$h.hasClass("fxd")){
+				$h.hide();
+				$h.addClass("fxd");
+				$h.toggle("slide", {direction: "up"}, 300);
+			}
+		}
+	});
+	
 	$("#slideshow").on('expand-complete.kwicks', function(e, data){
 		$(data.expanded).children("div").fadeIn(200);		
 		var c = $("#middleContainer");		
@@ -37,20 +53,20 @@ $(function(){
 		$(data.oldExpanded).children("div").hide();		
 		$(data.collapsed).children("div").hide();	
 	});
-	
-	$("#connect-button").click(function(e){
-		if($(this).attr("data-open") === "false"){
-			$("#login-form").slideDown(300);
-			$(this).animate({"border-bottom-left-radius":0, "border-bottom-right-radius":0, "-webkit-border-bottom-left-radius": 0, "-webkit-border-bottom-right-radius": 0}, 300);
-			//$(this).css({"border-bottom-left-radius":"0px","-webkit-border-bottom-right-radius":"0px"});
-			$(this).attr("data-open", "true");
-		}else{
-			$("#login-form").slideUp(300);
-			$(this).animate({"border-bottom-left-radius":10, "border-bottom-right-radius":10, "-webkit-border-bottom-left-radius": 10, "-webkit-border-bottom-right-radius": 10}, 300);
-			//$(this).css({"border-bottom-left-radius":"10px","-webkit-border-bottom-right-radius":"10px"});
-			$(this).attr("data-open", "false");			
-		}
-		e.preventDefault();
-	});
+// 	
+	// $("#connect-button").click(function(e){
+		// if($(this).attr("data-open") === "false"){
+			// $("#login-form").slideDown(300);
+			// $(this).animate({"border-bottom-left-radius":0, "border-bottom-right-radius":0, "-webkit-border-bottom-left-radius": 0, "-webkit-border-bottom-right-radius": 0}, 300);
+			// //$(this).css({"border-bottom-left-radius":"0px","-webkit-border-bottom-right-radius":"0px"});
+			// $(this).attr("data-open", "true");
+		// }else{
+			// $("#login-form").slideUp(300);
+			// $(this).animate({"border-bottom-left-radius":10, "border-bottom-right-radius":10, "-webkit-border-bottom-left-radius": 10, "-webkit-border-bottom-right-radius": 10}, 300);
+			// //$(this).css({"border-bottom-left-radius":"10px","-webkit-border-bottom-right-radius":"10px"});
+			// $(this).attr("data-open", "false");			
+		// }
+		// e.preventDefault();
+	// });
 	
 });
