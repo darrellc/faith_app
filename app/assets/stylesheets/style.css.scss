@@ -5,7 +5,7 @@
 
 //Colors
 
-$f_green: #74d513;
+$f_green: #81db27;
 $f_blue: #1a4a7a;
 $ev_theme: #2088cd;
 $or_theme: #4bb4df;
@@ -20,6 +20,8 @@ $offBlack: #1d1d1d;
 //Initialize 
 body{margin: 0;}
 a{display: block;}
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea{@extend .p-5;height: auto;}
+input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus{-webkit-box-shadow: 0 0 3px 0px #81db27;box-shadow: 0 0 3px 0px #81db27;border-color: #81db27;}
 a:hover{text-decoration: underline;}
 a, p, h1, h2, h3, h4, h5, h6, div{font-family: 'Segoe UI',Arial,Helvetica,Sans-Serif;}
 //Custom Colors and Background Classes
@@ -39,18 +41,37 @@ a.c-lg:hover{color: $offWhite;}
 .bg-dia{background: url("backgrounds/diagonal.png") repeat #121218;}
 .bg-dg{background: $offBlack;}
 .bg-ow{background: $offWhite;}
+.bg-faith-green{background: $f_green;}
+.bg-faith-green.ev:hover{background: darken($f_green, 10%);}
 //Borders 
 .bdb-bl {border-bottom: 3px solid $f_blue;}
 //Fonts
 .ff-mono{font-family: 'Monoglyceride';}
+//max width
+.mw-400{max-width: 400px;@extend .m-a;width: 100%;}
 /*Global Classes*/
-a.active{background: $f_blue;color: #fff;}
+input.error{-webkit-box-shadow: 0 0 3px 0px #f04124;box-shadow: 0 0 3px 0px #f04124;border-color: #f04124;}
+label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bottom:5px;}
 .login-box {top: 69px;}
 .off {margin-right: -100%;}
-.fxd{position:fixed;width: 100%;top:0;z-index:500;}
+.fxd{position:fixed;width: 100%;top:0;z-index:500;
+  .top-bar{
+    .title-area.left a{padding: 5px;
+      .logo{height: 35px;padding:0;}
+    }
+    .navigation li a{padding: 10px;}
+    #loginForm{top: 48px;}
+  }
+}
 .top-bar{height: auto;background: white;@extend .bdb-bl;
    .logo{height: 65px;}
    .navigation li a {padding: 23px;color: #333;&:hover{background: $offWhite;text-decoration: none;}}
+}
+#registerLink.active{background: $f_blue;color: #fff;}
+#loginLink.active{background: $f_blue;color: #fff;}
+#loginForm{top: 73px;z-index: 500;right:0;-webkit-box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);
+  label{color: white;}
+  .button{@extend .bg-w;color: $darkGray;@extend .bdrz-5;&:hover{background: darken(#fff, 10%);}}
 }
 // #login-form{
   // top: 44px;
@@ -63,29 +84,30 @@ a.active{background: $f_blue;color: #fff;}
   li{height: 400px;box-shadow:-6px 0 10px -4px rgba(0,0,0,0.5);-webkit-box-shadow:-6px 0 10px -4px rgba(0,0,0,0.5);
     img{left: -1%;height: 250px;max-width: inherit;bottom: 50px;}
     img.logo{width:100%;height: auto;}
-    .info{margin-top: 5%;max-width:400px;width: 100%;position:absolute;right: 40px;@extend .p-10;background: #000;@extend .op-70;@extend .bdrz-10;}    
+    .info{margin-top: 5%;max-width:400px;width: 100%;position:absolute;right: 40px;@extend .p-10;background: white;@extend .op-70;@extend .bdrz-10;}    
   }  
   li.eSlide{background: url("slides/sBg.png");   
-    p{@extend .c-ow;
-      a.link{color: $ev_theme;}
+    p{@extend .c-dg;
+      a.link{color: $ev_theme;&:hover{text-decoration: underline;}}
     }
   }
   li.dSlide{background: #1B3041;
-    p{color: white;
-      a.link{color: $de_theme;}
+    p{@extend .c-dg;
+      a.link{color: $de_theme;&:hover{text-decoration: underline;}}
     }    
   }
   li.sSlide{background: #b5dbff;
     p{@extend .c-dg;
-      a.link{color: $so_theme;}
+      a.link{color: $so_theme;&:hover{text-decoration: underline;}}
     }
   }
   li.oSlide{background: url("slides/oBg.png") repeat;
-    p{color: #333;
-      a.link{color: $or_theme;}
+    p{@extend .c-dg;
+      a.link{color: $or_theme;&:hover{text-decoration: underline;}}
     }
   }
 }
+
 #middleContainer{
   min-height: 265px;
   background: url("backgrounds/geo.png") repeat $f_blue;
@@ -99,8 +121,15 @@ a.active{background: $f_blue;color: #fff;}
   }
 }
 
+.pricing{
+  a:hover{@extend .td-n;}  
+}
+
 #footer{
   div.columns:first-child{@extend .bdl-n;}
   div.columns{@extend .bd;@extend .bdt-n;@extend .bdr-n;@extend .bdb-n;border-color: #808080;}
 }
+#footer.fxd-bottom{position:fixed;width:100%;bottom:0;}
+
+@import "screen_size"
 

@@ -13,8 +13,11 @@
   </head>
   <body>
   	
-  	<%= render 'layouts/header' %>    
-    <%= yield %>
+  	<%= render 'layouts/header' %>
+  	<div id="body">    
+    	<%= yield %>
+	</div>
+	<%= render 'account/register' %>	
     <%= render 'layouts/footer' %>
   </body>
 </html>
