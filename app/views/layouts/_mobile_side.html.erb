@@ -1,0 +1,20 @@
+<div id="side-bar-overlay" class="pos-f w-100p h-100p op-60 bg-dg d-n"></div>
+
+<div class="pos-f bg-ow l-0 d-n z-1000 h-100p side" id="side-bar-mobile">
+  <ul class="bg-ow c-dg lis-n m-0">
+<% if user_signed_in? %>  
+    <li><a href="#dashboard" class="d-b c-dg dashboard-button bdb-g bdc-ccc active">Dashboard</a></li>
+    <li><a href="#users" class="d-b c-dg user-button bdb-g bdc-ccc">Users</a></li>
+    <li><a href="#events" class="d-b c-dg event-button bdb-g bdc-ccc">Events</a></a></li>
+    <li><a href="#outreach" class="d-b c-dg outreach-button bdb-g bdc-ccc">Outreach</a></a></li>
+    <li><a href="#designs" class="d-b c-dg design-button bdb-g bdc-ccc">Designs</a></a></li>
+    <li><a href="#social" class="d-b c-dg social-button bdb-g bdc-ccc">Social</a></a></li>    
+    <li><a href="#work" class="d-b c-dg work-button bdb-g bdc-ccc">Work</a></a></li>    
+    <li><a href="#expense" class="d-b c-dg expense-button bdb-bl bdc-ccc bdw-2">Expenses</a></a></li> 
+    <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "d-b c-dg regular-button bdb-g bdc-ccc") %></li>
+<% else %>
+    <li><a href="/users/sign_up" id="registerLink" class="d-b c-dg regular-button bdb-g bdc-ccc">Register</a></li>
+    <li><a href="/users/sign_in" class="d-b c-dg regular-button bdb-g bdc-ccc">Login</a></li>
+<% end %>
+  </ul>
+</div>

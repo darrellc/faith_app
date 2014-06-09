@@ -1,18 +1,20 @@
-<h2>Sign up</h2>
+<div id="registerContainer" class="mw-400 bdrz-10 bxsh-h mv-a-30 p-20 w-95p">
+    <h2 class="ff-mono fs-lgr ta-c">Register</h2>
+    <hr class="mv-25"/>
+  <%= form_for(:user, url: "/users", html: { id: "registerForm" } ) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <div><%= f.text_field :first_name, autofocus: true, :placeholder => "First Name" %></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+    <div><%= f.text_field :last_name, :placeholder => "Last Name" %></div>
+    
+    <div><input type="text" name="group_name" placeholder="Church Name" id="group_name"/></div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+    <div><%= f.email_field :email, :placeholder => "Email Address" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    <div><%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %></div>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+    <div><%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => "Confirm Password" %></div>   
 
-<%= render "devise/shared/links" %>
+    <div><%= f.submit "Sign up", :class => "w-100p button bdrz-5 bg-faith-green ev m-0" %></div>
+  <% end %>
+  </div>

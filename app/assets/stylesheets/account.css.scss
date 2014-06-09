@@ -1,0 +1,78 @@
+@import "variables";
+
+#side-bar{
+    overflow-y: auto;
+    overflow-x: hidden;  
+    padding: 0;
+    @extend .bdr-g;
+    border-right-width: 6px;
+}
+//Different classes for the side bar to indicate what page the user is on
+#side-bar[data-class="da"]{border-color: $darkBlue;}
+#side-bar[data-class="us"]{border-color: $us_color;}
+#side-bar[data-class="ev"]{border-color: $ev_color;}
+#side-bar[data-class="or"]{border-color: $or_color;}
+#side-bar[data-class="de"]{border-color: $de_color;}
+#side-bar[data-class="so"]{border-color: $so_color;}
+#side-bar[data-class="wo"]{border-color: $wo_color;}
+#side-bar[data-class="ex"]{border-color: $ex_color;}
+
+#side-bar-mobile{
+    width: 200px;
+    a{padding: 10px 20px;}
+}
+#side-bar-button{padding: 10px 25px;}
+#side-bar-button.open{border-radius: 5px 5px 0 0;border-bottom: none;background: #f1f1f1;}
+.side{    
+    a:hover{text-decoration: none;}
+    a span{@extend .d-n;} 
+    .regular-button:hover,.dashboard-button.active{background-color: $darkBlue;color: white;}
+    .dashboard-button:hover,.dashboard-button.active{background-color: $darkBlue;color: white;}
+    .user-button:hover,.user-button.active{background-color: $us_color;color: white;}
+    .event-button:hover,.event-button.active{background-color: $ev_color;color: white;}
+    .outreach-button:hover,.outreach-button.active{background-color: $or_color;color: white;}
+    .design-button:hover,.design-button.active{background-color: $de_color;color: white;}
+    .social-button:hover,.social-button.active{background-color: $so_color;color: white;}
+    .work-button:hover,.work-button.active{background-color: $wo_color;color: white;}
+    .expense-button:hover,.expense-button.active{background-color: $ex_color; color: white;}
+}
+.tab-content div{    
+}
+//Dashboard Container
+#dashboard-container{
+    h2{color: $darkBlue;}
+}
+
+//Users container
+#users-container{
+    h2{color: $us_color;}
+}
+
+//Events container
+#events-container{
+    h2{color: $ev_color;}
+}
+
+//Outreach container
+#outreach-container{
+    h2{color: $or_color;}    
+}
+
+//Design container
+#design-container{
+    h2{color: $de_color;}
+}
+
+//Social container
+#social-container{
+    h2{color: $so_color;}
+}
+
+//Work container
+#work-container{
+    h2{color: $wo-color;}
+}
+//Expenses container
+#expense-container{
+    h2{color: $ex-color;}
+}

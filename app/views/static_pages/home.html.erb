@@ -1,12 +1,23 @@
+<!-- Display the home page if the user is not signed in -->
+<% if !user_signed_in? %>
+<div class="not_signed_in">
+  <%= render "static_pages/web_pages/slideshow" %>
 
-<%= render "static_pages/web_pages/slideshow" %>
+  <%= render "static_pages/web_pages/slidecontent" %>
 
-<%= render "static_pages/web_pages/slidecontent" %>
+  <%= render "static_pages/web_pages/access_anywhere" %>
 
-<%= render "static_pages/web_pages/access_anywhere" %>
+  <%= render "static_pages/web_pages/pricing" %>
+</div>
 
-<%= render "static_pages/web_pages/pricing" %>
+<!-- If the user is signed in then we want to display the dashboard -->
+<% else %>
+
+<div class="signed_in clearfix">
+  <%= render "account/account_home"  %>  
+</div>
 
 
+<% end %>
 
 

@@ -1,19 +1,29 @@
 <header>
-  <nav class="top-bar clearfix">
+  <nav class="top-bar clearfix">        
+        <a href="#" class="c-dg bg-w ev bdc-ccc p-15 fl-l d-n" id="side-bar-button"><i class="fi-list fs-lgr"></i></a>          
   	<ul class="title-area left">
     	<li><%= link_to image_tag("faith-logo.png",:class => "p-10 w-a logo"), "/", :alt => "Faith Connection" %></li>
   	</ul>
 	<ul class="fl-r navigation">
-      <li class="fl-l"><a id="registerLink" class="cur-p">Register</a></li>
-	  <li class="fl-l"><a id="loginLink" class="cur-p">Login</a></li>	      	      
+		<% if !user_signed_in? %>
+                        <li class="fl-l"><a href="#" id="registerLink" class="cur-p">Register</a></li>
+	  		<li class="fl-l"><a href="#" id="loginLink" class="cur-p">Login</a></li>
+  		<% else %>  			
+  			<li class="fl-l"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+  		<% end %>	      	      
     </ul>
     <% if !user_signed_in? %>
     	<%= form_for(:user, url: "/users/sign_in", html: {:id => "loginForm", :class => "bg-dbl p-10 pos-a pos-trc d-n"}) do |f| %>
 			<div class="pb-5"><%= f.email_field :email, autofocus: true, :placeholder => "Username or Email"%></div>			
 		    <div><%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %></div>			
 		    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-		    <div><%= f.submit "Sign in", :class => "button w-100p p-10" %></div>
+		    <div><%= f.submit "Sign in", :class => "button w-100p p-15" %></div>
     	<% end %>
     <% end %>
   </nav>
+  <script type="text/javascript">
+    $(function(){
+        
+    });
+    </script>
 </header>
