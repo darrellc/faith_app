@@ -14,7 +14,9 @@
 
     <div><%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %></div>
 
-    <div><%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => "Confirm Password" %></div>   
+    <div><%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => "Confirm Password" %></div>
+    
+    <%= hidden_field_tag :form_type, "new_registration" %>   
 
     <div><%= f.submit "Sign up", :class => "w-100p button bdrz-5 bg-faith-green ev m-0" %></div>
   <% end %>

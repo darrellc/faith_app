@@ -47,3 +47,5 @@ end
 gem 'foundation-rails'
 
 gem 'devise'
+
+gem 'pg'

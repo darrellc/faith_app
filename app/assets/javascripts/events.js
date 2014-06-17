@@ -70,7 +70,7 @@ $(function(){
         if(!$(c).is(":visible")){
             $("#body .side a").removeClass("active");
             $(".tab-content").children("div").hide();
-            $(c).show("slide", "right",200);
+            $(c).show();
             $(this).addClass("active");
             $("#side-bar").attr("data-class",$(this).attr("data-class"));
         }

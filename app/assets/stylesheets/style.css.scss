@@ -6,7 +6,14 @@ a{display: block;}
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea{@extend .p-5;}
 input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus{border-color: $lightGreen;}
 a:hover{text-decoration: underline;}
-a, p, h1, h2, h3, h4, h5, h6, div{font-family: 'Segoe UI',Arial,Helvetica,Sans-Serif;}
+
+/*Set fonts*/
+p, a, td, label{font-family: "robotoregular";}
+h1,h2,h3,h4,h5,h6{font-family: "VarelaRound-Regular";}
+
+
+
+
 
 
 //Custom Colors and Background Classes
@@ -26,6 +33,7 @@ a.c-lg:hover{color: $offWhite;}
 .bg-fgr{background: #121218;}
 .bg-fgr.ev:hover{background: lighten(#121218, 10%);}
 .bg-dia{background: url("backgrounds/diagonal.png") repeat #121218;}
+.bg-geo-blue{background: url("backgrounds/geo.png") repeat $darkBlue;}
 .bg-dg{background: $offBlack;}
 .bg-ow{background: $offWhite;}
 .bg-ow.ev:hover{background: darken($offWhite, 10%);}
@@ -38,25 +46,26 @@ a.c-lg:hover{color: $offWhite;}
 .bg-de{background: $de_theme;}
 .bg-so{background: $so_theme;}
 .bg-ev{background: $ev_theme;}
+//Action Colors
+.c-dr{color: $del_color;}
+.c-dr.ev:hover{color: darken($del_color, 10%);}
 
 
 //Borders 
 .bdb-bl {border-bottom: 3px solid $darkBlue;}
 //Fonts
-.ff-mono{font-family: 'Monoglyceride';}
+.ff-mono{font-family: 'Roboto';}
 //max width
 .mw-400{max-width: 400px;@extend .m-a;}
 //height
 .h-100p{height: 100%;}
 
-
-
+.row{max-width: 100%;}
 
 
 /*Global Classes*/
 input.error{-webkit-box-shadow: 0 0 3px 0px #f04124;box-shadow: 0 0 3px 0px #f04124;border-color: #f04124;}
 label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bottom:5px;}
-.login-box {top: 69px;}
 .off {margin-right: -100%;}
 .fxd{position:fixed;width: 100%;top:0;z-index:500;
   .top-bar{
@@ -68,14 +77,14 @@ label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bot
   }
 }
 .tooltip{@extend .bdrz-10;margin-left: -2px;@extend .p-10;}
-.top-bar{height: auto;background: white;@extend .bdb-bl;
-   .logo{height: 65px;}
-   .navigation li a {padding: 23px;color: #333;&:hover{background: $offWhite;text-decoration: none;}}
+.top-bar{height: auto;background: white;@extend .bdb-bl; 
+  .logo{height: 75px;}  
+  .navigation li a {padding: 25px;color: #333;&:hover{background: $offWhite;text-decoration: none;}}
 }
 #body{overflow-y: auto;}
 #registerLink.active{background: $darkBlue;color: #fff;}
 #loginLink.active{background: $darkBlue;color: #fff;}
-#loginForm{top: 73px;z-index: 500;right:0;-webkit-box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);
+#loginForm{top: 75px;z-index: 500;right:0;-webkit-box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);
   input:focus{-webkit-box-shadow: 0 0 3px 0px #ccc;box-shadow: 0 0 3px 0px #ccc;border-color: #ccc;}
   label{color: white;}
   .button{@extend .bg-w;color: $darkGray;@extend .bdrz-5;&:hover{background: darken(#fff, 10%);}}
@@ -112,7 +121,7 @@ label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bot
 
 #middleContainer{
   min-height: 290px;
-  background: url("backgrounds/geo.png") repeat $darkBlue;
+  
   .arrow-down {
     width: 0; 
     height: 0; 

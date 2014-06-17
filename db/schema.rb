@@ -11,9 +11,92 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605131346) do
+ActiveRecord::Schema.define(version: 20140612181313) do
 
-  create_table "groups", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "event_items", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "song_id"
+    t.integer  "member_group_id"
+    t.string   "name"
+    t.text     "description"
+    t.string   "duration"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "organization_id"
+    t.integer  "member_group_id"
+    t.string   "name"
+    t.text     "description"
+    t.string   "location"
+    t.boolean  "template"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "families", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "families_members", id: false, force: true do |t|
+    t.integer "member_id"
+    t.integer "family_id"
+  end
+
+  create_table "files", force: true do |t|
+    t.integer  "song_id"
+    t.string   "name"
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "member_group_members", id: false, force: true do |t|
+    t.integer "member_group_id"
+    t.integer "member_id"
+  end
+
+  create_table "member_groups", force: true do |t|
+    t.integer  "organization_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "members", force: true do |t|
+    t.integer  "organization_id"
+    t.string   "first_name",              null: false
+    t.string   "last_name",               null: false
+    t.string   "suffix"
+    t.string   "relationship_status"
+    t.string   "email"
+    t.string   "gender"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "phone"
+    t.string   "mobile"
+    t.string   "business_phone"
+    t.date     "birthday"
+    t.date     "join_date"
+    t.date     "saved_date"
+    t.date     "baptized_date"
+    t.string   "occupation"
+    t.string   "employer"
+    t.string   "additional_address_info"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "organizations", force: true do |t|
     t.string   "name"
     t.string   "address"
     t.string   "phone"
@@ -24,8 +107,94 @@ ActiveRecord::Schema.define(version: 20140605131346) do
     t.datetime "updated_at"
   end
 
+  create_table "song_contributors", force: true do |t|
+    t.string   "name"
+    t.string   "birthdate"
+    t.string   "deathdate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "song_contributors_songs", id: false, force: true do |t|
+    t.integer "song_contributor_id"
+    t.integer "song_id"
+  end
+
+  create_table "song_key_type", force: true do |t|
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "song_keys", force: true do |t|
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "song_speeds", force: true do |t|
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "song_styles", force: true do |t|
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "song_tags", force: true do |t|
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "song_tags_songs", id: false, force: true do |t|
+    t.integer "song_tag_id"
+    t.integer "song_id"
+  end
+
+  create_table "song_themes", force: true do |t|
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "song_themes_songs", id: false, force: true do |t|
+    t.integer "song_theme_id"
+    t.integer "song_id"
+  end
+
+  create_table "song_timings", force: true do |t|
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "song_types", force: true do |t|
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "songs", force: true do |t|
+    t.integer  "song_type_id"
+    t.integer  "song_timing_id"
+    t.integer  "song_style_id"
+    t.integer  "song_speed_id"
+    t.integer  "song_key_id"
+    t.integer  "song_key_type_id"
+    t.string   "name"
+    t.string   "length"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
-    t.integer  "group_id"
+    t.integer  "organization_id"
+    t.integer  "member_id"
+    t.integer  "creator_id"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -36,14 +205,11 @@ ActiveRecord::Schema.define(version: 20140605131346) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "username"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "role"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

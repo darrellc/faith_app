@@ -11,6 +11,7 @@
 #side-bar[data-class="da"]{border-color: $darkBlue;}
 #side-bar[data-class="us"]{border-color: $us_color;}
 #side-bar[data-class="ev"]{border-color: $ev_color;}
+#side-bar[data-class="mu"]{border-color: $mu_color;}
 #side-bar[data-class="or"]{border-color: $or_color;}
 #side-bar[data-class="de"]{border-color: $de_color;}
 #side-bar[data-class="so"]{border-color: $so_color;}
@@ -30,37 +31,86 @@
     .dashboard-button:hover,.dashboard-button.active{background-color: $darkBlue;color: white;}
     .user-button:hover,.user-button.active{background-color: $us_color;color: white;}
     .event-button:hover,.event-button.active{background-color: $ev_color;color: white;}
+    .music-button:hover,.music-button.active{background-color: $mu_color;color: white;}
     .outreach-button:hover,.outreach-button.active{background-color: $or_color;color: white;}
     .design-button:hover,.design-button.active{background-color: $de_color;color: white;}
     .social-button:hover,.social-button.active{background-color: $so_color;color: white;}
     .work-button:hover,.work-button.active{background-color: $wo_color;color: white;}
     .expense-button:hover,.expense-button.active{background-color: $ex_color; color: white;}
 }
-.tab-content div{    
+.tab-content > div{
+    .row{max-width: 100%;}
+    h2 button{top: 20px;}
+    h3{color: rgb(196, 196, 196);@extend .fw-b;@extend .pos-r;}
+    button{@extend .pos-a;@extend .t-0;@extend .r-0;@extend .bd;@extend .bdc-ccc;@extend .c-dg;padding: 7px 30px;@extend .bdrz-5;@extend .bg-w;@extend .ev;}
+    table{width: 100%;border-spacing: 0;border-collapse: separate;@extend .bdrz-5;@extend .ov-h;@extend .bd-n;        
+          thead td{border-right: 1px solid #ccc;}
+          thead td:last-child{border-right: none;}
+          tbody{
+                tr{@extend .cur-p;}                
+                tr:last-child td:first-child{@extend .bdrzbl-}
+                tr:hover{background: darken(#fff, 9%);}
+                td{border-bottom: 1px solid #bbb;border-right: 1px solid #bbb;padding: 15px 7px;}
+                tr td:first-child{border-left: 1px solid #bbb;}
+                tr:last-child{
+                    td:first-child{@extend .bdblrz-5;}
+                    td:last-child{@extend .bdbrrz-5;}
+                } 
+                
+          }
+          
+    }
 }
 //Dashboard Container
 #dashboard-container{
+    .f-dropdown{
+        li a:hover{background: $darkBlue;color: white;text-decoration: none;}
+    }
     h2{color: $darkBlue;}
+    thead{background: $darkBlue;
+          td{color: white;border-right-color: lighten($darkBlue, 10%);}        
+    }    
 }
 
 //Users container
 #users-container{
     h2{color: $us_color;}
+    thead{background: $us_color;
+          td{color: white;border-right-color: lighten($us_color, 10%);}
+    }
 }
 
 //Events container
 #events-container{
     h2{color: $ev_color;}
+    thead{background: $ev_color;
+          td{color: white;border-right-color: lighten($ev_color, 10%);}
+    }
+       
+}
+
+//Music container
+#music-container{
+    h2{color: $mu_color;}
+    thead{background: $mu_color;
+          td{color: white;border-right-color: lighten($mu_color, 10%);}
+    }
 }
 
 //Outreach container
 #outreach-container{
-    h2{color: $or_color;}    
+    h2{color: $or_color;} 
+    thead{background: $or_color;
+          td{color: white;border-right-color: lighten($or_color, 10%);}
+    }
 }
 
 //Design container
-#design-container{
+#designs-container{
     h2{color: $de_color;}
+    thead{background: $de_color;
+          td{color: white;border-right-color: lighten($de_color, 10%);}
+    }
 }
 
 //Social container

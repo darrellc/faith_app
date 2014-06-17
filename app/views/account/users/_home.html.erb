@@ -1,3 +1,56 @@
-<div class="p-20">
-  <h2>Users</h2>
+<div>
+  <div class="row">
+    <div class="columns small-12"><h2 class="pv-15 bdb-g bdbw-1 bdc-ccc">UserConnection</h2></div>       
+  </div>
+  
+  
+  
+  <div class="row">
+    
+    <div class="columns small-12">
+      <h3 class="pos-r">My Users<button class="add-button" data-reveal-id="userModal"><i class="fi-plus fs-16"></i></button></h3>
+      
+
+      <table>
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Last Login</td>
+            <td>Role</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+        	<% @organization.users.each do |u| %>
+          		<tr>
+          			<td><%= u.fullName %></td>
+          			<td><%= u.timeFormat u.last_sign_in_at %></td>
+          			<td><%= u.roleName %>
+          				
+          			</td>
+          			<td>
+          				<a href="/user/<%= u.id %>" class="c-dg ev fs-lg ph-15 fl-l" title="Edit" ><i class="fi-pencil"></i></a>
+          				<a href="/user/<%= u.id %>" data-method="delete" class="c-dr fs-lg ph-15 ev fl-l" title="Delete"><i class="fi-trash"></i></a>
+      				</td>
+          		</tr>
+          	<% end %>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>  
 </div>
+<!-- Modal used for adding a new user and editing a user -->
+<div id="userModal" class="reveal-modal large" data-reveal>
+  <div id="addUserForm">
+  	<h3 class="c-lg">Add User</h3>
+  	<hr />
+  </div>
+
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+
+
+
+
