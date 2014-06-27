@@ -2,29 +2,7 @@ $(function(){
     //When window is resized
     $(window).resize(function(){
         $("#side-bar-mobile,#body,#side-bar").css("height", $(window).height()-$("header").outerHeight()-$("#footer").outerHeight());
-    });    
-    
-    //When a slide has been expanded completely
-    $("#slideshow").on('expand-complete.kwicks', function(e, data){
-        $(data.expanded).children("div").fadeIn(200);		
-        var c = $("#middleContainer");		
-        if(data.index !== -1){
-            $(".slide").fadeOut(100).delay(200);			
-            $("#slide"+data.index.toString()).fadeIn(300);
-        }
-    });    
-    //When a slide is being expanded
-    $("#slider").on('expand.kwicks', function(e, data) {	
-        $(data.oldExpanded).children("div").hide();		
-        $(data.collapsed).children("div").hide();
-        if(data.index === -1){
-            if(!$(".kwicks-selected").children("div").is(":visible"))
-                    $(".kwicks-selected").children("div").fadeIn(1000);
-            else
-                    $(".kwicks-selected").children("div").show();
-        }
-    });
-    
+    });   
     
     //Top bar 
     //Register button - large screen

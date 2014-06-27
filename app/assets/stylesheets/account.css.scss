@@ -7,6 +7,7 @@
     @extend .bdr-g;
     border-right-width: 6px;
 }
+
 //Different classes for the side bar to indicate what page the user is on
 #side-bar[data-class="da"]{border-color: $darkBlue;}
 #side-bar[data-class="us"]{border-color: $us_color;}
@@ -22,11 +23,12 @@
     width: 200px;
     a{padding: 10px 20px;}
 }
-#side-bar-button{padding: 10px 25px;}
+#side-bar-button{padding: 16px 25px;}
 #side-bar-button.open{border-radius: 5px 5px 0 0;border-bottom: none;background: #f1f1f1;}
-.side{    
+.side, .connections{    
     a:hover{text-decoration: none;}
-    a span{@extend .d-n;} 
+    a{-webkit-font-smoothing: antialiased;}
+    a span{@extend .d-n;}
     .regular-button:hover,.dashboard-button.active{background-color: $darkBlue;color: white;}
     .dashboard-button:hover,.dashboard-button.active{background-color: $darkBlue;color: white;}
     .user-button:hover,.user-button.active{background-color: $us_color;color: white;}
@@ -36,21 +38,25 @@
     .design-button:hover,.design-button.active{background-color: $de_color;color: white;}
     .social-button:hover,.social-button.active{background-color: $so_color;color: white;}
     .work-button:hover,.work-button.active{background-color: $wo_color;color: white;}
-    .expense-button:hover,.expense-button.active{background-color: $ex_color; color: white;}
+    .expense-button:hover,.expense-button.active{background-color: $ex_color; color: white;}     
 }
 .tab-content > div{
     .row{max-width: 100%;}
+    h2{font-family: "daysregular";}
     h2 button{top: 20px;}
-    h3{color: rgb(196, 196, 196);@extend .fw-b;@extend .pos-r;}
+    h3{color: rgb(196, 196, 196);@extend .fw-b;@extend .pos-r;font-family: "robotoregular";}
     button{@extend .pos-a;@extend .t-0;@extend .r-0;@extend .bd;@extend .bdc-ccc;@extend .c-dg;padding: 7px 30px;@extend .bdrz-5;@extend .bg-w;@extend .ev;}
     table{width: 100%;border-spacing: 0;border-collapse: separate;@extend .bdrz-5;@extend .ov-h;@extend .bd-n;        
           thead td{border-right: 1px solid #ccc;}
-          thead td:last-child{border-right: none;}
+          thead td:last-child{border-right: none;@extend .bdtrrz-5;}
+          thead td:first-child{@extend .bdtlrz-5;}
           tbody{
                 tr{@extend .cur-p;}                
                 tr:last-child td:first-child{@extend .bdrzbl-}
                 tr:hover{background: darken(#fff, 9%);}
-                td{border-bottom: 1px solid #bbb;border-right: 1px solid #bbb;padding: 15px 7px;}
+                td{border-bottom: 1px solid #bbb;border-right: 1px solid #bbb;@extend .p-n;}
+                a:hover{text-decoration: none;}
+                td:last-child{@extend .p-0;}
                 tr td:first-child{border-left: 1px solid #bbb;}
                 tr:last-child{
                     td:first-child{@extend .bdblrz-5;}

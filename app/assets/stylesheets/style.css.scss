@@ -1,22 +1,21 @@
 @import "atomic";
 @import "variables";
+
+/*****************************/
 //Initialize 
+/****************************/
 body{margin: 0;}
-a{display: block;}
-input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea{@extend .p-5;}
-input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus{border-color: $lightGreen;}
+a{display: block;text-decoration: none;}
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea{@extend .p-5;font-family: "robotoregular";}
+input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus{border-color: $darkGreen;}
 a:hover{text-decoration: underline;}
-
 /*Set fonts*/
-p, a, td, label{font-family: "robotoregular";}
-h1,h2,h3,h4,h5,h6{font-family: "VarelaRound-Regular";}
+p, a, td, label, input{font-family: "robotoregular";}
+h1,h2,h3,h4,h5,h6{font-family: "daysregular";}
 
-
-
-
-
-
-//Custom Colors and Background Classes
+/*************************************/
+//Colors
+/************************************/
 .c-ow {color: $offWhite;}
 .c-ow.ev:hover {color: white;}
 .c-lg{color: $lightGray;}
@@ -37,110 +36,106 @@ a.c-lg:hover{color: $offWhite;}
 .bg-dg{background: $offBlack;}
 .bg-ow{background: $offWhite;}
 .bg-ow.ev:hover{background: darken($offWhite, 10%);}
-.bg-faith-green{background: darken($lightGreen, 10%);}
-.bg-faith-green.ev:hover{background: darken($lightGreen, 20%);}
-.bg-faith-green.ev:focus{background: darken($lightGreen, 25%);}
+.bg-faith-green{background: lighten($darkGreen, 10%);}
+.bg-faith-green.ev:hover{background: $darkGreen;}
+.bg-faith-green.ev:focus{background: darken($darkGreen, 10%);}
 //Different portal backgrounds
-.bg-ev{background: $ev_theme;}
-.bg-or{background: $or_theme;}
-.bg-de{background: $de_theme;}
-.bg-so{background: $so_theme;}
-.bg-ev{background: $ev_theme;}
+//Users
+.bg-us{background: $us_color;}
+.bg-us.ev:hover{background: darken($us_color, 10%);}
+.bg-us.ev:focus{background: darken($us_color, 15%);}
+//Events
+.bg-ev{background: $ev_color;}
+.bg-ev.ev:hover{background: darken($ev_color, 10%);}
+.bg-ev.ev:focus{background: darken($us_color, 15%);}
+//People
+.bg-or{background: $or_color;}
+.bg-or.ev:hover{background: darken($or_color, 10%);}
+.bg-or.ev:focus{background: darken($us_color, 15%);}
+//Designs
+.bg-de{background: $de_color;}
+.bg-de.ev:hover{background: darken($de_color, 10%);}
+.bg-de.ev:focus{background: darken($us_color, 15%);}
+//Social
+.bg-so{background: $so_color;}
+.bg-so.ev:hover{background: darken($so_color, 10%);}
+.bg-so.ev:focus{background: darken($us_color, 15%);}
+//Expenses
+.bg-ex{background: $ex_color;}
+.bg-ex.ev:hover{background: darken($ex_color, 10%);}
+.bg-ex.ev:focus{background: darken($us_color, 15%);}
+//Work
+.bg-wo{background: $wo_color;}
+.bg-wo.ev:hover{background: darken($wo_color, 10%);}
+.bg-wo.ev:focus{background: darken($us_color, 15%);}
+//Music
+.bg-mu{background: $mu_color;}
+.bg-mu.ev:hover{background: darken($mu_color, 10%);}
+.bg-mu.ev:focus{background: darken($us_color, 15%);}
 //Action Colors
 .c-dr{color: $del_color;}
 .c-dr.ev:hover{color: darken($del_color, 10%);}
+//Connection colors
 
-
-//Borders 
+//Border colors
 .bdb-bl {border-bottom: 3px solid $darkBlue;}
+/*****************************/
+//Atomic
+/*****************************/
+.td-n:hover{text-decoration: none;}
+.bdrz-50p{border-radius: 50%;-webkit-border-radius: 50%;}
+.mw-400{max-width: 400px;@extend .m-a;}
+.h-100p{height: 100%;}
+.off {margin-right: -100%;}
 //Fonts
 .ff-mono{font-family: 'Roboto';}
-//max width
-.mw-400{max-width: 400px;@extend .m-a;}
-//height
-.h-100p{height: 100%;}
+.ff-days{font-family: 'daysregular';}
 
+/***********************************/
+//Foundation Overrides
+/***********************************/
 .row{max-width: 100%;}
-
-
-/*Global Classes*/
-input.error{-webkit-box-shadow: 0 0 3px 0px #f04124;box-shadow: 0 0 3px 0px #f04124;border-color: #f04124;}
-label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bottom:5px;}
-.off {margin-right: -100%;}
-.fxd{position:fixed;width: 100%;top:0;z-index:500;
-  .top-bar{
-    .title-area.left a{padding: 5px;
-      .logo{height: 35px;padding:0;}
-    }
-    .navigation li a{padding: 10px;}
-    #loginForm{top: 48px;}
-  }
-}
 .tooltip{@extend .bdrz-10;margin-left: -2px;@extend .p-10;}
-.top-bar{height: auto;background: white;@extend .bdb-bl; 
-  .logo{height: 75px;}  
-  .navigation li a {padding: 25px;color: #333;&:hover{background: $offWhite;text-decoration: none;}}
-}
+.close-reveal-modal:hover{text-decoration: none;color: #ccc;}
+/***********************************/
+//Global Class
+/**********************************/
+//Errors
+input.error,select.error{-webkit-box-shadow: 0 0 3px 0px #f04124;box-shadow: 0 0 3px 0px #f04124;border-color: #f04124;}
+label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bottom:5px;}
+/**********************************/
+//IDs
+/*********************************/
 #body{overflow-y: auto;}
-#registerLink.active{background: $darkBlue;color: #fff;}
-#loginLink.active{background: $darkBlue;color: #fff;}
 #loginForm{top: 75px;z-index: 500;right:0;-webkit-box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);
   input:focus{-webkit-box-shadow: 0 0 3px 0px #ccc;box-shadow: 0 0 3px 0px #ccc;border-color: #ccc;}
   label{color: white;}
   .button{@extend .bg-w;color: $darkGray;@extend .bdrz-5;&:hover{background: darken(#fff, 10%);}}
 }
-
-
-//Kwiks Slider
-#slider{height: 400px;-webkit-box-shadow: 0 10px 20px 1px rgba(0,0,0,.5);box-shadow: 0 10px 20px 1px rgba(0,0,0,.5);
-  li{height: 400px;box-shadow:-6px 0 10px -4px rgba(0,0,0,0.5);-webkit-box-shadow:-6px 0 10px -4px rgba(0,0,0,0.5);
-    img{left: -1%;height: 250px;max-width: inherit;bottom: 50px;}
-    h1{@extend .fs-hu;background: white;@extend .pos-a;top: 15px;left: -10px;@extend .bdtrrz-5;@extend .bdbrrz-5;-webkit-box-shadow: 4px 4px 4px 1px rgba(0,0,0,.5);box-shadow: 4px 4px 4px 1px rgba(0,0,0,.5);}
-    .info{@extend .d-n;
-          p{@extend .c-dg;@extend .p-10;@extend .fs-lg;@extend .pos-a; right: 10px;bottom: 20px;width:100%;max-width: 400px;}
-    }    
-  }  
-  li.eSlide{background: #7bbce6; /* Old browsers */background: -moz-linear-gradient(left,  #7bbce6 1%, #77eab2 99%); /* FF3.6+ */background: -webkit-gradient(linear, left top, right top, color-stop(1%,#7bbce6), color-stop(99%,#77eab2)); /* Chrome,Safari4+ */background: -webkit-linear-gradient(left,  #7bbce6 1%,#77eab2 99%); /* Chrome10+,Safari5.1+ */background: -o-linear-gradient(left,  #7bbce6 1%,#77eab2 99%); /* Opera 11.10+ */background: -ms-linear-gradient(left,  #7bbce6 1%,#77eab2 99%); /* IE10+ */background: linear-gradient(to right,  #7bbce6 1%,#77eab2 99%); /* W3C */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7bbce6', endColorstr='#77eab2',GradientType=1 ); /* IE6-9 */
-            img{left: -3%;}
-            h1{color: $ev_color;}
-            p a.link{color: $ev_theme;&:hover{text-decoration: underline;}}
-  }
-  li.dSlide{background: #636363; /* Old browsers */background: -moz-linear-gradient(-45deg,  #636363 0%, #e5e5e5 45%, #e5e5e5 45%, #c6c6c6 100%); /* FF3.6+ */background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#636363), color-stop(45%,#e5e5e5), color-stop(45%,#e5e5e5), color-stop(100%,#c6c6c6)); /* Chrome,Safari4+ */background: -webkit-linear-gradient(-45deg,  #636363 0%,#e5e5e5 45%,#e5e5e5 45%,#c6c6c6 100%); /* Chrome10+,Safari5.1+ */background: -o-linear-gradient(-45deg,  #636363 0%,#e5e5e5 45%,#e5e5e5 45%,#c6c6c6 100%); /* Opera 11.10+ */background: -ms-linear-gradient(-45deg,  #636363 0%,#e5e5e5 45%,#e5e5e5 45%,#c6c6c6 100%); /* IE10+ */background: linear-gradient(135deg,  #636363 0%,#e5e5e5 45%,#e5e5e5 45%,#c6c6c6 100%); /* W3C */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#636363', endColorstr='#c6c6c6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-            h1{color: $de_color;}
-            p a.link{color: $de_color;&:hover{text-decoration: underline;}}
-  }
-  li.sSlide{background: #fcfcfc; /* Old browsers */background: -moz-radial-gradient(center, ellipse cover,  #fcfcfc 0%, #b5dbff 100%); /* FF3.6+ */background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#fcfcfc), color-stop(100%,#b5dbff)); /* Chrome,Safari4+ */background: -webkit-radial-gradient(center, ellipse cover,  #fcfcfc 0%,#b5dbff 100%); /* Chrome10+,Safari5.1+ */background: -o-radial-gradient(center, ellipse cover,  #fcfcfc 0%,#b5dbff 100%); /* Opera 12+ */background: -ms-radial-gradient(center, ellipse cover,  #fcfcfc 0%,#b5dbff 100%); /* IE10+ */background: radial-gradient(ellipse at center,  #fcfcfc 0%,#b5dbff 100%); /* W3C */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#b5dbff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */           
-            h1{color: $so_color;}
-            p a.link{color: $so_theme;&:hover{text-decoration: underline;}}
-  }
-  li.oSlide{background: #ed905e; /* Old browsers */background: -moz-linear-gradient(top,  #ed905e 0%, #ffab4e 32%, #ffab4e 32%, #ffab4e 43%, #ffd19e 100%); /* FF3.6+ */background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ed905e), color-stop(32%,#ffab4e), color-stop(32%,#ffab4e), color-stop(43%,#ffab4e), color-stop(100%,#ffd19e)); /* Chrome,Safari4+ */background: -webkit-linear-gradient(top,  #ed905e 0%,#ffab4e 32%,#ffab4e 32%,#ffab4e 43%,#ffd19e 100%); /* Chrome10+,Safari5.1+ */background: -o-linear-gradient(top,  #ed905e 0%,#ffab4e 32%,#ffab4e 32%,#ffab4e 43%,#ffd19e 100%); /* Opera 11.10+ */background: -ms-linear-gradient(top,  #ed905e 0%,#ffab4e 32%,#ffab4e 32%,#ffab4e 43%,#ffd19e 100%); /* IE10+ */background: linear-gradient(to bottom,  #ed905e 0%,#ffab4e 32%,#ffab4e 32%,#ffab4e 43%,#ffd19e 100%); /* W3C */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed905e', endColorstr='#ffd19e',GradientType=0 ); /* IE6-9 */
-            h1{color: $or_color;}
-            p a.link{color: $or_theme;&:hover{text-decoration: underline;}}
-  }
-}
-
-#middleContainer{
-  min-height: 290px;
-  
-  .arrow-down {
-    width: 0; 
-    height: 0; 
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;    
-    border-top: 30px solid #fff;
-    left: 45%;
-  }
-}
-
-.pricing{
-  a:hover{@extend .td-n;}  
-}
-
 #footer{
   div.columns:first-child{@extend .bdl-n;}
   div.columns{@extend .bd;@extend .bdt-n;@extend .bdr-n;@extend .bdb-n;border-color: #808080;}
 }
 #footer.fxd-bottom{position:fixed;width:100%;bottom:0;}
+/**********************************/
+//_header.html.erb
+/**********************************/
+.top-bar{height: auto;background: white;@extend .bdb-bl; 
+  .logo{height: 75px;}  
+  .navigation li a {padding: 25px;color: #333;&:hover{background: $offWhite;text-decoration: none;}}
+  .navigation li a.active{background: $darkBlue;color: #fff;}
+}
+/**********************/
+//_connections.html.erb
+/*********************/
+.connections a{@extend .bdrz-10;@extend .bd;@extend .bdc-ccc;@extend .w-100p;@extend .c-dg;}
+/******************/
+//_pricing.html.erb
+/******************/
+.pricing{
+  a:hover{@extend .td-n;}  
+}
+
 
 @import "account";
 

@@ -9,4 +9,14 @@ $(function(){
             "group_name":"required"
         }
     });
+    
+    $("#addUserForm").validate({
+        rules: {
+            "user[first_name]":"required",
+            "user[last_name]":"required",
+            "user[email]":{required: true,email: true},
+            "user[role]":"required"            
+        }
+    });
+    
 });
