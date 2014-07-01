@@ -1,0 +1,36 @@
+<% if success %>
+	console.log("Showing alert");
+	createAlert({
+		type: "success",
+		msg: "<%= msg %>"		
+	});
+	
+	//Reset the form and close the modal
+	console.log("Resetting stuff");	
+	$("#addUserForm")[0].reset();
+	$("#userModal").foundation("reveal", "close");	
+	
+	var newRow = "<tr data-id='<%= u.id %>'>";
+			newRow += "<td><%= u.fullName %>";				
+			newRow += "</td>";
+			newRow += "<td>";
+				newRow += "<a href='#' data-reveal-id='confirmDialog' class='c-dr fs-lg ph-15 ev fl-r delete delete-btn' data-url='/user/<%= u.id %>' data-type='User' data-name='<%= u.fullName %>'>";
+					newRow += "<i class='fa fa-times'></i>";
+				newRow += "</a>";
+			newRow += "</td>";
+		newRow += "</tr>";
+		
+	console.log(newRow);
+	$("#userTableData").append(newRow);	
+<% else %>
+
+	var msg = "<p><%= msg %>";
+		msg += "<ul><li><%= reasons %></li></ul>";
+		msg += "</p>";
+	
+	
+	createAlert({
+		type: "alert",
+		msg: msg
+	});	
+<% end %>

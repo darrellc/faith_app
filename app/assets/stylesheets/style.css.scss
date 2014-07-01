@@ -10,7 +10,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus{border-color: $darkGreen;}
 a:hover{text-decoration: underline;}
 /*Set fonts*/
-p, a, td, label, input{font-family: "robotoregular";}
+p, a, td, label, input, div{font-family: "robotoregular";}
 h1,h2,h3,h4,h5,h6{font-family: "daysregular";}
 
 /*************************************/
@@ -97,12 +97,23 @@ a.c-lg:hover{color: $offWhite;}
 .row{max-width: 100%;}
 .tooltip{@extend .bdrz-10;margin-left: -2px;@extend .p-10;}
 .close-reveal-modal:hover{text-decoration: none;color: #ccc;}
+#confirmDialog .close-reveal-modal{@extend .pos-r;@extend .fs-n;@extend .fw-n;@extend .c-dg;@extend .bd;@extend .bdc-ccc;top: 0;right: 0;@extend .ev;}
+
 /***********************************/
 //Global Class
 /**********************************/
 //Errors
 input.error,select.error{-webkit-box-shadow: 0 0 3px 0px #f04124;box-shadow: 0 0 3px 0px #f04124;border-color: #f04124;}
 label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bottom:5px;}
+
+//Alerts
+.alert-box.top{left: 0;right: 0;margin-right: auto; margin-left: auto;width: 100%;max-width: 500px;font-size: 14px;
+  ul li{font-size: 12px;}
+}
+
+//Disabled Class
+.disabled{@extend .op-50;pointer-events: none;}
+
 /**********************************/
 //IDs
 /*********************************/

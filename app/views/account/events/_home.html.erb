@@ -5,7 +5,7 @@
   
   <div class="row">
     <div class="columns small-12">
-      <h3 class="pos-r">My Events<button><i class="fi-plus fs-16"></i></button></h3>        
+      <h3 class="pos-r">My Events<button class="add-button" data-reveal-id="eventModal"><i class="fa fa-plus fs-16"></i></button></h3>        
       
       <table>
         <thead>
@@ -31,4 +31,26 @@
   
   
   
+</div>
+<!-- Modal used for adding a new user and editing a user -->
+<div id="eventModal" class="reveal-modal small" data-reveal>
+  <div id="userContainer">
+  	<h3 class="c-lg">Add User</h3>
+  	<hr />
+  	<div>
+  		<%= form_for(:event, url: "", html: { id: "addEventForm" }, remote: true ) do |f| %>
+  			
+		    <div><%= f.text_field :first_name, autofocus: true, :placeholder => "First Name" %></div>	
+		    <div><%= f.text_field :last_name, :placeholder => "Last Name" %></div>		
+		    <div><%= f.email_field :email, :placeholder => "Email Address" %></div>	    
+		    <div><%= select :user, :role, [["Select Role", ""],["Admin",1],["Editor",2],["Viewer",3]] %></div>		    
+		    <div><p class="ta-c ev bg-ow cur-p bdrz-5 p-10">Click if Already a Member</p></div>		        
+		    <%= hidden_field_tag :form_type, "" %>
+    		<div><%= f.submit "Add User", :class => "w-100p button bdrz-5 ev m-0 bg-us" %></div>
+    		
+    		
+  		<% end %>
+    </div>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
 </div>

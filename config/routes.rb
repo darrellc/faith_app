@@ -1,5 +1,10 @@
 FaithApp::Application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations"}  
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  
+  
+  resources :user, :controller => "user"
+  
+    
   root "static_pages#home"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

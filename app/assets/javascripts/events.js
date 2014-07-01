@@ -49,7 +49,9 @@ $(function(){
             $("#body .side a").removeClass("active");
             $(".tab-content").children("div").hide();
             $(c).show();
-            $(this).addClass("active");
+            var lis = $("a[data-class='" + $(this).attr("data-class") + "']");
+            console.log(lis);            
+            $(lis).addClass("active");
             $("#side-bar").attr("data-class",$(this).attr("data-class"));
         }
         //Small screens
@@ -60,6 +62,42 @@ $(function(){
         }
         e.preventDefault();
     });
+    
+    $("#body").on("click", ".delete-btn", function(e){
+    	if(!$(this).hasClass("disabled")){
+	    	var $dialog = $("#confirmDialog");
+	    	var $button = $("#confirmDialog").find(".confirm-button");
+	    	
+	    	//Set the url to the href of the confirm button - this will trigger the REST delete call when the button is clicked.
+	    	$button.attr({"href":$(this).attr("data-url")});
+	    	//Fill in the information
+	    	$dialog.find(".confirm-type").html($(this).attr("data-type"));
+	    	$dialog.find(".confirm-name").html($(this).attr("data-name"));
+	    	//Open the confirm dialog
+	    	$dialog.foundation("reveal","open");
+    	}
+    	e.preventDefault();
+    });
+    
+    $("#body").on("click", ".action-button",function(){
+    	if($(this).attr("data-id") == undefined || $(this).attr("data-id") == "") alert("each action button must have a data-id");
+    	if($(this).attr("data-action") == undefined || $(this).attr("data-action") == "") alert("each action button must have a data-action");
+    	
+    	$dialog = $($(this).attr("data-id"));
+    	$dialog.children("div").hide();
+    	var action = $(this).attr("data-action");
+    	$dialog.children("."+action).show();
+    });
+    
+    $("#body").on("click", "tr", function(){
+		if($(this).attr("data-type") == undefined || $(this).attr("data-type") === "") alert("That row needs a data-type");
+		$.ajax({
+			type: "GET",
+			url: "/"+$(this).attr("data-type")+"/"+$(this).attr("data-id")
+		});
+    });
+    
+    
 });
 
 	

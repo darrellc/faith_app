@@ -1,0 +1,17 @@
+var dialog = $("#userModal");
+//Hide all the action divs
+$(dialog).children("div").hide()
+//Show the the 'show' action div
+$(dialog).children("div.show").show();
+
+//Fill the information in the 'show' div
+$(dialog).find("h3").html("<%= u.fullName %>");
+$(dialog).find(".email").html("<%= u.email %>");
+//Check if the user is also a member
+<% if !u.member.nil? %>
+	$(dialog).find(".is-member").show();
+<% end %>
+
+
+//Display the dialog
+$(dialog).foundation("reveal", "open");
