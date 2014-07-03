@@ -129,3 +129,26 @@
 #expense-container{
     h2{color: $ex-color;}
 }
+
+//Information Modals
+.reveal-modal.tiny{
+  h3{@extend .c-lg;}
+  label, p{
+    @extend .m-0;
+    @extend .lh-14;
+  }
+  label{
+    @extend .fw-b;
+    @extend .pb-5;
+    @extend .w-100p;     
+  }
+  p{
+    @extend .pl-5;
+    @extend .pb-10;
+    @extend .fs-sm;
+  }
+}
+
+
+
+

@@ -79,7 +79,7 @@ $(function(){
     	e.preventDefault();
     });
     
-    $("#body").on("click", ".action-button",function(){
+    $("body").on("click", ".action-button",function(){
     	if($(this).attr("data-id") == undefined || $(this).attr("data-id") == "") alert("each action button must have a data-id");
     	if($(this).attr("data-action") == undefined || $(this).attr("data-action") == "") alert("each action button must have a data-action");
     	

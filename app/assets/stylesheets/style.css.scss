@@ -96,7 +96,8 @@ a.c-lg:hover{color: $offWhite;}
 /***********************************/
 .row{max-width: 100%;}
 .tooltip{@extend .bdrz-10;margin-left: -2px;@extend .p-10;}
-.close-reveal-modal:hover{text-decoration: none;color: #ccc;}
+.close-reveal-modal{color: #ccc;}
+.close-reveal-modal:hover{text-decoration: none;color: darken(#ccc, 10%);}
 #confirmDialog .close-reveal-modal{@extend .pos-r;@extend .fs-n;@extend .fw-n;@extend .c-dg;@extend .bd;@extend .bdc-ccc;top: 0;right: 0;@extend .ev;}
 
 /***********************************/
