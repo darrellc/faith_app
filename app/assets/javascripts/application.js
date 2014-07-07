@@ -16,3 +16,8 @@
 //= require initializers
 //= require events
 //= require_tree .
+
+
+$(document).ready(function(){   
+   $("#dtBox").DateTimePicker();   
+});

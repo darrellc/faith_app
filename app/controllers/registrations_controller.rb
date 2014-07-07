@@ -31,7 +31,7 @@ class RegistrationsController < Devise::RegistrationsController
       #Sign in the newly registrated user
       if params[:form_type] == "new_registration"
         org.save
-        sign_up(resource_name, resource)
+        sign_up(:user, u)
       end
       #Redirect to the home page if the user is being created for the first time             
       respond_to do |format|

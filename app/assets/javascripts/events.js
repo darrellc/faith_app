@@ -9,9 +9,8 @@ $(function(){
     $("#registerLink").on("click", function(e){
         if($(this).hasClass("active")){
             $(this).removeClass("active");
-            $("#registerContainer").fadeOut(300,function(){
-                $("#body").show("slide", {direction: "left"}, 400);                    
-            });            
+            $("#registerContainer").fadeOut(300);
+            $("#body").show("slide", {direction: "left"}, 400);             
         }else{
             $(this).addClass("active");
             $("#body").hide("slide", {direction: "left"}, 400, function(){
@@ -96,6 +95,18 @@ $(function(){
 			url: "/"+$(this).attr("data-type")+"/"+$(this).attr("data-id")
 		});
     });
+    
+    $("body").on("click", "a.reveal-action", function(){
+    	var c = $(this).attr("data-id");
+    	if($(this).hasClass("active")){
+    		$(c).slideUp();
+    		$(this).removeClass("active");
+    	}else{
+    		$(c).slideDown();
+    		$(this).addClass("active");    		
+    	}
+    });
+    
     
     
 });

@@ -10,7 +10,7 @@
 	$("#addUserForm")[0].reset();
 	$("#userModal").foundation("reveal", "close");	
 	
-	var newRow = "<tr data-id='<%= u.id %>'>";
+	var newRow = "<tr data-id='<%= u.id %>' data-type='user'>";
 			newRow += "<td><%= u.fullName %>";				
 			newRow += "</td>";
 			newRow += "<td>";

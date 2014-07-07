@@ -16,6 +16,16 @@
             <td>Location</td>
           </tr>
         </thead>
+        <tbody id="eventTableData">
+        	<% @organization.events.each do |e| %>
+        		<tr data-type="events" data-id=<%= u.id %>>
+        			<td><%= e.name %></td>
+        			<td><%= e.start_time %></td>
+        			<td></td>
+        			<td></td>
+        		</tr>
+        	<% end %>
+        </tbody>
       </table>
     </div>
   </div>
@@ -34,21 +44,16 @@
 </div>
 <!-- Modal used for adding a new user and editing a user -->
 <div id="eventModal" class="reveal-modal small" data-reveal>
-  <div id="userContainer">
-  	<h3 class="c-lg">Add User</h3>
+  <div id="eventContainer">
+  	<h3 class="c-lg">Add Event</h3>
   	<hr />
   	<div>
-  		<%= form_for(:event, url: "", html: { id: "addEventForm" }, remote: true ) do |f| %>
-  			
-		    <div><%= f.text_field :first_name, autofocus: true, :placeholder => "First Name" %></div>	
-		    <div><%= f.text_field :last_name, :placeholder => "Last Name" %></div>		
-		    <div><%= f.email_field :email, :placeholder => "Email Address" %></div>	    
-		    <div><%= select :user, :role, [["Select Role", ""],["Admin",1],["Editor",2],["Viewer",3]] %></div>		    
-		    <div><p class="ta-c ev bg-ow cur-p bdrz-5 p-10">Click if Already a Member</p></div>		        
-		    <%= hidden_field_tag :form_type, "" %>
-    		<div><%= f.submit "Add User", :class => "w-100p button bdrz-5 ev m-0 bg-us" %></div>
-    		
-    		
+  		<%= form_for(:event, url: "", html: { id: "addEventForm" }, remote: true ) do |f| %>  			
+		    <div><%= f.text_field :name, autofocus: true, :placeholder => "Name" %></div>	
+		    <div><%= f.text_field :description, :placeholder => "Description" %></div>
+		    <div><%= f.text_field :start_time, :placeholder => "Start Time", :html => { "data-field" => "datetime", "readonly" => "" } %></div>	    
+		    <div><%= f.text_field :end_time, :placeholder => "End Time", :html => { "data-field" => "datetime", "readonly" => "" } %></div>	    
+    		<div><%= f.submit "Add Event", :class => "w-100p button bdrz-5 ev m-0 bg-us" %></div>   		
   		<% end %>
     </div>
   </div>

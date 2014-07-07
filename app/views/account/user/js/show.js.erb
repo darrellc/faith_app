@@ -1,20 +1,45 @@
+<% puts mode %>
 var dialog = $("#userModal");
-//Hide all the action divs
-$(dialog).children("div").hide()
-//Show the the 'show' action div
-$(dialog).children("div.show").show();
+<% if mode == "show_edit" %>
+	var inputs = $(dialog).find(".edit input, .edit select").not(":hidden");
+	var info = ["<%= u.first_name %>","<%= u.last_name %>", <%= u.role %>];
+	for(var i=0;i<info.length;i++){
+		$(inputs[i]).val(info[i]);
+	}
+	//Show the member edit information
+	<% if !u.member.nil? %>
+		$(dialog).find("a[data-id='.findMember']").addClass("active");	
+	<% end %>
+	
+	$("#editUserForm").attr("action", "/user/<%= u.id %>");
 
-//Fill the information in the 'show' div
-$(dialog).find(".show h3").html("<%= u.fullName %>");
-$(dialog).find(".show .action-button").attr("href", "/user/<%= u.id %>");
-var info = ["<%= u.email %>","<%= u.roleName %>","<%= u.timeFormat u.last_sign_in_at %>","<%= u.timeFormat u.updated_at %>","<%= u.creator %>"];
-var infoBoxes = $(dialog).find(".show p");
-for(var i=0;i<info.length;i++){
-	$(infoBoxes[i]).html(info[i]);
-}
-//Check if the user is also a member
-<% if !u.member.nil? %>
-	$(dialog).find(".is-member").show();
+<% else %>
+	
+	//Hide all the action divs
+	$(dialog).children("div").hide()
+	//Show the the 'show' action div
+	$(dialog).children("div.show").show();
+	
+	//Fill the information in the 'show' div
+	$(dialog).find(".show h3").html("<%= u.fullName %>");
+	$(dialog).find(".show .action-button").attr("href", "/user/<%= u.id %>?mode=show_edit");
+	<% 
+	if u.creator.nil? 
+		name = ""
+	else
+		name = u.creator.fullName
+	end
+	%>
+	
+	var info = ["<%= u.email %>","<%= u.roleName %>","<%= u.timeFormat u.last_sign_in_at %>","<%= u.timeFormat u.updated_at %>","<%= name %>"];
+	var infoBoxes = $(dialog).find(".show p");
+	for(var i=0;i<info.length;i++){
+		$(infoBoxes[i]).html(info[i]);
+	}
+	//Check if the user is also a member
+	<% if !u.member.nil? %>
+		$(dialog).find(".is-member").show();
+	<% end %>
+	//Display the dialog
+	$(dialog).foundation("reveal", "open");
 <% end %>
-//Display the dialog
-$(dialog).foundation("reveal", "open");

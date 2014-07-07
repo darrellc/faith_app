@@ -1,0 +1,17 @@
+<% if success %>
+	//Close the edit dialog
+	$("#userModal").foundation("reveal", "close");
+	createAlert({
+		type: "success",
+		msg: "<%= msg %>"		
+	});
+	$("#userTableData").find("tr[data-id=<%= u.id %>]").find("td[data-name=name]").html("<%= u.fullName %>");
+	
+<% else %>
+	//Show the error message.
+	createAlert({
+		type: "alert",
+		msg: "<%= msg %>",
+		timeout: 3000		
+	});
+<% end %>

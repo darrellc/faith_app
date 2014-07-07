@@ -44,9 +44,9 @@
     .row{max-width: 100%;}
     h2{font-family: "daysregular";}
     h2 button{top: 20px;}
-    h3{color: rgb(196, 196, 196);@extend .fw-b;@extend .pos-r;font-family: "robotoregular";}
+    h3{color: rgb(196, 196, 196);@extend .fw-b;@extend .pos-r;font-family: "robotoregular";@extend .m-0;}
     button{@extend .pos-a;@extend .t-0;@extend .r-0;@extend .bd;@extend .bdc-ccc;@extend .c-dg;padding: 7px 30px;@extend .bdrz-5;@extend .bg-w;@extend .ev;}
-    table{width: 100%;border-spacing: 0;border-collapse: separate;@extend .ov-h;@extend .bd-n;        
+    table{width: 100%;border-spacing: 0;border-collapse: separate;@extend .ov-h;@extend .bd-n;@extend .mt-5;        
           thead td{border-right: 1px solid #ccc;@extend .p-n;}
           thead td:last-child{border-right: none;}
           tbody{
@@ -81,6 +81,8 @@
     }
     span.label{background: $us_color;@extend .mh-10;@extend .pl-5;@extend .pr-5;@extend .pt-10;@extend .pb-10;}
 }
+#userModal .reveal-action{@extend .c-dg;@extend .td-n;@extend .ev;}
+#userModal .reveal-action.active{background: $us_color;color: white;}
 
 //Events container
 #events-container{
@@ -132,7 +134,8 @@
 
 //Information Modals
 .reveal-modal.tiny{
-  h3{@extend .c-lg;}
+  h3{@extend .c-lg;@extend .fs-lg;@extend .m-0;@extend .fl-l;}
+  .action-button{@extend .p-5;}
   label, p{
     @extend .m-0;
     @extend .lh-14;

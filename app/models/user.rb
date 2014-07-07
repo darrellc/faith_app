@@ -32,7 +32,11 @@ class User < ActiveRecord::Base
   end
   
   def timeFormat time
-    return time.strftime "%m/%d/%y %l:%M %P"
+    if !time.nil?
+      return time.strftime "%m/%d/%y %l:%M %P"
+    else
+      return "N/A"
+    end
   end
   
 end
