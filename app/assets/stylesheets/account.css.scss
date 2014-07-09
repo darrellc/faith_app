@@ -5,7 +5,7 @@
     overflow-x: hidden;  
     padding: 0;
     @extend .bdr-g;
-    border-right-width: 6px;
+    border-right-width: 6px;    
 }
 
 //Different classes for the side bar to indicate what page the user is on
@@ -21,9 +21,11 @@
 
 #side-bar-mobile{
     width: 200px;
+    top: 78px;
+    left: -200px;
     a{padding: 10px 20px;}
 }
-#side-bar-button{padding: 16px 25px;}
+#side-bar-button{padding: 16px 25px;border-right: 1px solid #ccc;}
 #side-bar-button.open{border-radius: 5px 5px 0 0;border-bottom: none;background: #f1f1f1;}
 .side, .connections{    
     a:hover{text-decoration: none;}

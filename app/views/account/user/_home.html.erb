@@ -8,7 +8,7 @@
   <div class="row">
     
     <div class="columns small-12">
-      <h3 class="pos-r">My Users<button class="action-button" data-reveal-id="userModal" data-action="add" data-id="#userModal"><i class="fa fa-plus fs-16"></i></button></h3>      
+      <h3 class="pos-r">My Users<button class="action-button modal-button" data-action="add" data-id="#userModal"><i class="fa fa-plus fs-16"></i></button></h3>      
 	 
       <table>
         <thead>
@@ -37,82 +37,7 @@
     
   </div>  
 </div>
-<!-- Modal used for adding a new user and editing a user -->
-<div id="userModal" class="reveal-modal tiny" data-reveal>    	
-	<div class="add">
-		<h3>Add User</h3>
-		<hr />	
-		<%= form_for(:user, url: user_registration_path, html: { id: "addUserForm" }, remote: true ) do |f| %>
-			
-		    <div><%= f.text_field :first_name, autofocus: true, :placeholder => "First Name" %></div>	
-		    <div><%= f.text_field :last_name, :placeholder => "Last Name" %></div>		
-		    <div><%= f.email_field :email, :placeholder => "Email Address" %></div>	    
-		    <div><%= select :user, :role, [["Select Role", ""],["Admin",1],["Editor",2],["Viewer",3]] %></div>
-		    <div class="row">
-		    	<div class="columns small-6 p-0 pr-10">
-		    		<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action c-dg td-n" data-id=".findMember">Already a Member?</a>		
-		    	</div>
-		    	<div class="columns small-6 p-0 pl-10">
-		    		<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action c-dg td-n" data-id=".newMember">Add New Member</a>
-		    	</div>
-		    </div>
-		    <div class="findMember d-n">
-		    	<%= f.text_field :member, :placeholder => "Search for a member" %>
-		    </div>		    
-		    		        
-		    <%= hidden_field_tag :form_type, "" %>
-			<div><%= f.submit "Add User", :class => "w-100p button bdrz-5 ev m-0 bg-us" %></div>
-			
-			
-		<% end %>
-	</div>
-	<div class="show">
-		<h3></h3>
-		<% if can? :update, current_user %>
-		<a href="#" class="action-button c-dg fl-l m-5 ev" data-id="#userModal" data-action="edit" data-remote="true">Edit</a>
-		<% end %>
-		<hr />
-		<div class="row">
-			<div class="columns medium-6">
-				<label>Email Address</label>
-				<p></p>
-				<label>Role</label>
-				<p></p>					
-			</div>
-			<div class="columns medium-6">
-				<label>Signed in last</label>
-				<p></p>
-				<label>Updated last</label>
-				<p></p>
-				<label>Creator</label>
-				<p></p>
-			</div>
-		</div>
-		<div class="is-member d-n mt-10">
-			<p class="fw-b fs-m">Member Info</p>	
-		</div>
-	</div>
-	<div class="edit">
-		<h3>Edit User</h3>
-		<hr />
-		<%= form_for(:user, url: "#", :method => :put,html: { id: "editUserForm", remote: true } ) do |f| %>
-			
-		    <div><%= f.text_field :first_name, autofocus: true, :placeholder => "First Name" %></div>	
-		    <div><%= f.text_field :last_name, :placeholder => "Last Name" %></div>		
-		    <div><%= select :user, :role, [["Select Role", ""],["Admin",1],["Editor",2],["Viewer",3]] %></div>
-		    <div class="row">
-		    	<div class="columns small-6 p-0 pr-10">
-	    			<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id=".findMember">Already a Member?</a>		
-		    	</div>
-		    	<div class="columns small-6 p-0 pl-10">
-		    		<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id=".newMember">Add New Member</a>
-		    	</div>
-		    </div>	    
-			<div><%= f.submit "Edit User", :class => "w-100p button bdrz-5 ev m-0 bg-us" %></div>			
-		<% end %>
-	</div>
-  	<a class="close-reveal-modal">&#215;</a>
-</div>
+
 
 
 

@@ -14,3 +14,35 @@ function createAlert(alertP){
 	$("body").prepend(alert);
 	$(alert).delay(time).fadeOut(300);
 }
+
+function toggleModal(id){
+	//The modal is visible
+	if($(id).is(":visible")){
+		$(id).velocity("transition.expandOut", 500);
+		$("#modal-overlay").hide();
+	//The modal is not visible
+	}else{
+		$(id).css({marginLeft: -$(id).outerWidth()/2});
+		$(id).velocity("transition.expandIn", 500);
+		$("#modal-overlay").show();	
+	}
+}
+
+function toggleSideBar(){//Mobile
+	//side bar mobile
+	var s = $("#side-bar-mobile");
+	//overlay
+	var o = $("#side-bar-overlay");
+	//Side bar is open
+	if($(s).is(":visible")){
+		$("#side-bar-mobile").velocity({left: -200},{display: "none"});
+		$("#side-bar-overlay").hide();
+		$("#side-bar-button").removeClass("active");
+	//Side bar is closed
+	}else{
+		$("#side-bar-mobile").velocity({left: 0},{display: "block"});
+		$("#side-bar-overlay").show();
+		$("#side-bar-button").addClass("active");
+	}
+	
+}

@@ -13,11 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require jquery.velocity.min
+//= require jquery.velocity.ui
 //= require initializers
 //= require events
 //= require_tree .
 
-
-$(document).ready(function(){   
-   $("#dtBox").DateTimePicker();   
-});

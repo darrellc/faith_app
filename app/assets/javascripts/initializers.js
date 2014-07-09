@@ -1,16 +1,9 @@
 $(function(){
     //Initialize foundation
-    $(document).foundation(); 
-    //Initialize Kwiks Slider
-    $('#kwiks-slideshow').kwicks({
-        maxSize: '60%',
-        behavior: 'menu',
-        autoResize: true,
-        spacing: 0
-    });    
-    
-    $("#side-bar, #body").css("height", $(window).height()-$("header").outerHeight()-$("#footer").outerHeight());
-    
-    
+    $(document).foundation();
+    //Initialize date time picker
+    $("#dtBox").DateTimePicker();
+    //Set the sidebars height to the window height minus the height of the header
+    $("#side-bar-mobile,#side-bar").css("height", $(window).height()-$("header").outerHeight()-$("#footer").outerHeight());    
 });
 

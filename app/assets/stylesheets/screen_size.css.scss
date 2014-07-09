@@ -7,6 +7,8 @@
     #side-bar{display: none;}
     #side-bar-button{display: block;}
     .tab-content{width: 100%;}
+    .top-bar ul .logo{height: 50px;}
+    #side-bar-button{font-size: 1.2em;padding: 4px 15px;}
 }
 
 @media all and (max-width: 600px) {
@@ -15,7 +17,8 @@
     p{font-size: 1em;margin:0;}
     a{font-size: 1.2em;}
   }
-  .top-bar ul .logo{height: 50px;} 
+  
+  #side-bar-mobile{top: 54px;} 
   #side-bar-button{padding: 3px 15px;}
 }
 @media all and (max-width: 400px) {
