@@ -23,8 +23,10 @@
           			<td data-name="name"><%= u.fullName %></td>
           			<td width="50">
           				<% 	
-          					if u.id == current_user.id
-          						disabled = "disabled" 
+          					if !can? :delete, u          						
+      							disabled = "disabled"
+							elsif u.id == current_user.id
+								disabled = "disabled"
           				  	end
           				%>        				
           				<a href="#" class="<%= disabled %> c-dr fs-lg ph-15 ev fl-r delete delete-btn" data-url="/user/<%= u.id%>" data-type="User" data-name="<%= u.fullName %>"><i class="fa fa-times"></i></a>

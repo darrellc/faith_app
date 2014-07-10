@@ -83,11 +83,13 @@
     }
     span.label{background: $us_color;@extend .mh-10;@extend .pl-5;@extend .pr-5;@extend .pt-10;@extend .pb-10;}
 }
-#userModal .reveal-action{@extend .c-dg;@extend .td-n;@extend .ev;}
-#userModal .reveal-action.active{background: $us_color;color: white;}
-#userModal .action-button{
-  color: $us_color;
-  &:hover{color: darken($us_color, 10%);}
+#userModal{
+  .reveal-action{@extend .c-dg;@extend .td-n;@extend .ev;}
+  .reveal-action.active{background: $us_color;color: white;}
+  .action-button{
+    color: $us_color;
+    &:hover{color: darken($us_color, 10%);}  
+  }
 }
 
 //Events container
@@ -95,9 +97,21 @@
     h2{color: $ev_color;}
     thead{background: $ev_color;
           td{color: white;border-right-color: lighten($ev_color, 10%);}
-    }
-    
-       
+    }           
+}
+#eventModal{
+  input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus{border-color: $ev_color;}
+  .reveal-action{@extend .c-dg;@extend .td-n;@extend .ev;}
+  .reveal-action.active{background: $ev_color;color: white;}
+  .action-button{color: $ev_color;&:hover{color: darken($ev_color, 10%);}
+  }
+}
+//Override date time picker
+.dtpicker-buttonCont .dtpicker-button{
+  background: $ev_color;
+  @extend .bdrz-5;
+  @extend .c-ow;
+  &:hover, &:focus{background: darken($ev_color, 10%);@extend .c-ow;}  
 }
 
 //Music container

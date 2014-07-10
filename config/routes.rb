@@ -4,6 +4,8 @@ FaithApp::Application.routes.draw do
   
   resources :user, :controller => "user"
   
+  resources :events, :controller => "events"
+  
     
   root "static_pages#home"
   # The priority is based upon order of creation: first created -> highest priority.

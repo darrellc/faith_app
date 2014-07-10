@@ -114,7 +114,7 @@ $(function(){
     });
     
     $("body").on("click", ".close-velocity-modal", function(){  
-    	toggleModal($(this).parent());   	
+    	toggleModal($(this).closest(".velocity-modal"));   	
     });
     
  	$(document).mouseup(function (e){
@@ -126,9 +126,6 @@ $(function(){
  			if(!$(c).is(e.target) && $(c).has(e.target).length === 0){
  				if($(c).is(":visible")){
  					switch(c){
-						case ".velocity-modal":
-							toggleModal(".velocityModal");
-							break;
 						case "#side-bar-mobile":
 							toggleSideBar();
 							break;

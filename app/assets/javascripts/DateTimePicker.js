@@ -809,7 +809,7 @@
 				sHeader += "<div class='dtpicker-header'>";
 				sHeader += "<div class='dtpicker-title'>" + sTitleContent + "</div>";
 				if(bDisplayHeaderCloseButton)
-					sHeader += "<a class='dtpicker-close'>X</a>";
+					sHeader += "<a class='dtpicker-close'>&times;</a>";
 				sHeader += "<div class='dtpicker-value'></div>";
 				sHeader += "</div>";
 			

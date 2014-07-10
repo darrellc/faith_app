@@ -74,7 +74,6 @@
 .dtpicker-content
 {
 	margin: 0px auto;
-	padding: 1em 0em;
 
 	max-width: 500px;
 
@@ -98,37 +97,48 @@
 
 .dtpicker-header .dtpicker-title
 {
-	color: #2980B9;
+	color: #808080;
 	text-align: center;
-	font-size: 1.3em;
+	font-size: 2em;
+	font-family: "daysregular";
+	padding: .5em 0;
 }
 
 .dtpicker-header .dtpicker-close
 {
 	position: absolute;
-	top: -0.7em;
-	right: 0.3em;
+	top: 0em;
+	right: 0em;
 	
-	padding: 0.5em 0.5em 1em 1em;
+	padding: 0 10px;
 	
 	color: #FF3B30;
-	font-size: 1.5em;
+	font-size: 3.5em;
 	
 	cursor: pointer;
+	
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-bottom-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	background: #f1f1f1;
+	color: #ccc;
 }
 
 .dtpicker-header .dtpicker-close:hover
 {
-	color: #FF3B30;
+	color: #808080;
+	background: #d7d7d7;
+	text-decoration: none;
 }
 
 .dtpicker-header .dtpicker-value
 {
-	padding:  0.8em 0.2em 0.2em 0.2em;
-	color: #FF3B30;
+	padding: 0; 
+	color: #333;
 	text-align: center;
-
-	font-size: 1.4em;
+	font-weight: bold;
+	font-size: 1.2em;
 }
 
 .dtpicker-components
@@ -182,7 +192,8 @@
 	display: block;
 	height: 30px;
 
-	color: #2980B9;
+	color: #333;
+	background: #f1f1f1;
 
 	text-align: center;
 	line-height: 30px;
@@ -190,7 +201,8 @@
 
 .dtpicker-components .dtpicker-comp > *:hover
 {
-	color: #2980B9;
+	color: #333;
+	text-decoration: none;
 }
 
 .dtpicker-components .dtpicker-compButtonEnable
@@ -205,11 +217,12 @@
 
 .dtpicker-components .dtpicker-compButton
 {
-	background: #FFFFFF;
+	background: #f1f1f1;
 	font-size: 140%;
-
+	border: 1px solid #ccc;
 	cursor: pointer;
 }
+.dtpicker-components .dtpicker-compButton:hover{background: #e3e3e3;}
 
 .dtpicker-components .dtpicker-compValue
 {
@@ -240,17 +253,20 @@
 	display: block;
 	padding: 0.6em 0em;
 	width: 47%;
-	background: #FF3B30;
-	color: #FFFFFF;
+	background: #f1f1f1;
+	color: #333;
 	text-align: center;
 	font-size: 1.5em;
-
+	margin-bottom: .5em;
 	cursor: pointer;
+	border: 1px solid #ccc;
 }
 
 .dtpicker-buttonCont .dtpicker-button:hover
 {
-	color: #FFFFFF;
+	color: black;
+	background: #e3e3e3;
+	text-decoration: none;
 }
 
 .dtpicker-singleButton .dtpicker-button

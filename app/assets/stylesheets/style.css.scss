@@ -49,31 +49,31 @@ a.c-lg:hover{color: $offWhite;}
 //Events
 .bg-ev{background: $ev_color;}
 .bg-ev.ev:hover{background: darken($ev_color, 10%);}
-.bg-ev.ev:focus{background: darken($us_color, 15%);}
+.bg-ev.ev:focus{background: darken($ev_color, 15%);}
 //People
 .bg-or{background: $or_color;}
 .bg-or.ev:hover{background: darken($or_color, 10%);}
-.bg-or.ev:focus{background: darken($us_color, 15%);}
+.bg-or.ev:focus{background: darken($or_color, 15%);}
 //Designs
 .bg-de{background: $de_color;}
 .bg-de.ev:hover{background: darken($de_color, 10%);}
-.bg-de.ev:focus{background: darken($us_color, 15%);}
+.bg-de.ev:focus{background: darken($de_color, 15%);}
 //Social
 .bg-so{background: $so_color;}
 .bg-so.ev:hover{background: darken($so_color, 10%);}
-.bg-so.ev:focus{background: darken($us_color, 15%);}
+.bg-so.ev:focus{background: darken($so_color, 15%);}
 //Expenses
 .bg-ex{background: $ex_color;}
 .bg-ex.ev:hover{background: darken($ex_color, 10%);}
-.bg-ex.ev:focus{background: darken($us_color, 15%);}
+.bg-ex.ev:focus{background: darken($ex_color, 15%);}
 //Work
 .bg-wo{background: $wo_color;}
 .bg-wo.ev:hover{background: darken($wo_color, 10%);}
-.bg-wo.ev:focus{background: darken($us_color, 15%);}
+.bg-wo.ev:focus{background: darken($wo_color, 15%);}
 //Music
 .bg-mu{background: $mu_color;}
 .bg-mu.ev:hover{background: darken($mu_color, 10%);}
-.bg-mu.ev:focus{background: darken($us_color, 15%);}
+.bg-mu.ev:focus{background: darken($mu_color, 15%);}
 //Action Colors
 .c-dr{color: $del_color;}
 .c-dr.ev:hover{color: darken($del_color, 10%);}
@@ -113,7 +113,7 @@ input.error,select.error{-webkit-box-shadow: 0 0 3px 0px #f04124;box-shadow: 0 0
 label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bottom:5px;}
 
 //Alerts
-.alert-box.top{left: 0;right: 0;margin-right: auto; margin-left: auto;width: 100%;max-width: 500px;font-size: 14px;
+.alert-box.top{left: 0;right: 0;margin-right: auto; margin-left: auto;width: 100%;max-width: 500px;font-size: 14px;z-index: 2000;
   ul li{font-size: 12px;}
 }
 

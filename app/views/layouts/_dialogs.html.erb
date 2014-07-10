@@ -92,3 +92,28 @@
 	</div>
   	
 </div>
+
+
+<!-- Modal used for adding a new event viewing an event and editing an event -->
+<div id="eventModal" class="velocity-modal tiny">
+	<a class="close-velocity-modal close">&#215;</a>    	
+	<div class="add">
+		<h3 class="c-lg">Add Event</h3>
+	  	<div>
+	  		<%= form_for(:event, url: "/events", html: { id: "addEventForm" }, remote: true ) do |f| %>  			
+			    <div><%= f.text_field :name, autofocus: true, :placeholder => "Name" %></div>	
+			    <div><%= f.text_area :description, :placeholder => "Description" %></div>
+			    <div><%= f.text_field :start_time, :placeholder => "Start Time", "data-field" => "datetime", "readonly" => ""  %></div>
+			    <div><%= select :event, :isTemplate, [["Template?", ""]] %>	    
+			    <div><%= f.submit "Add Event", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
+	  		<% end %>
+	    </div>
+	</div>
+	<div class="show">
+		
+	</div>
+	<div class="edit">
+		
+	</div>
+  	
+</div>

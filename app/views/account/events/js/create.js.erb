@@ -1,5 +1,5 @@
 <% if success %>
-	console.log("Showing alert");
+	console.log("Showing Event alert");
 	createAlert({
 		type: "success",
 		msg: "<%= msg %>"		
@@ -7,20 +7,20 @@
 	
 	//Reset the form and close the modal
 	console.log("Resetting stuff");	
-	$("#addUserForm")[0].reset();
-	toggleModal("#userModal");	
+	$("#addEventForm")[0].reset();
+	toggleModal("#eventModal");	
 	
-	var newRow = "<tr data-id='<%= u.id %>' data-type='user'>";
-			newRow += "<td><%= u.fullName %>";				
-			newRow += "</td>";
+	var newRow = "<tr data-id='<%= e.id %>' data-type='event'>";
+			newRow += "<td><%= e.name %></td>";
+			newRow += "<td><%= e.start_time %></td>";
 			newRow += "<td>";
-				newRow += "<a href='#' class='c-dr fs-lg ph-15 ev fl-r delete delete-btn' data-url='/user/<%= u.id %>' data-type='User' data-name='<%= u.fullName %>'>";
+				newRow += "<a href='#' class='c-dr fs-lg ph-15 ev fl-r delete delete-btn' data-url='/events/<%= e.id %>' data-type='Event' data-name='<%= e.name %>'>";
 					newRow += "<i class='fa fa-times'></i>";
 				newRow += "</a>";
 			newRow += "</td>";
 		newRow += "</tr>";
 		
-	$("#userTableData").append(newRow);	
+	$("#eventTableData").append(newRow);	
 <% else %>
 
 	var msg = "<p><%= msg %>";

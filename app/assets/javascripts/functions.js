@@ -7,22 +7,19 @@
  */
 function createAlert(alertP){
 	if(alertP.type === undefined) alert("createAlert - param: 'type' cannot be undefined.");
-	if(alertP.msg === undefined) alert("createAlert - param: 'msg' cannot be undefined.");
-	$(".alert-box.top").remove();
-	var time = (alertP.timeout === undefined) ? 2000 : alertP.timeout;
-	var alert = $("<div />", {"class":"alert-box top "+alertP.type+" radius bxsh-l pos-a z-500 mt-10", "html": alertP.msg}); 
+	if(alertP.msg === undefined) alert("createAlert - param: 'msg' cannot be undefined.");	
+	var time = (alertP.timeout === undefined) ? 5000 : alertP.timeout;
+	var alert = $("<div />", {"class":"alert-box top "+alertP.type+" radius bxsh-l pos-a z-2000 mt-10 d-n", "html": alertP.msg}); 
 	$("body").prepend(alert);
-	$(alert).delay(time).fadeOut(300);
+	$(alert).velocity("transition.slideDownIn", {displayduration: 300,complete: function(){
+		$(alert).velocity("transition.slideUpOut", {delay: time, duration: 300, complete: function(){
+			$(alert).remove();
+		} });	
+	} });
 }
 
 function toggleModal(id){
-	//The modal is visible
-	if(id === ".velocityModal"){
-		var modals = $(".velocity-modal");
-		$(".velocity-modal").velocity("transition.expandOut", 500);
-		$("#modal-overlay").hide();
-		return;
-	}
+	//The modal is visible	
 	if($(id).is(":visible")){
 		$(id).velocity("transition.expandOut", 500);
 		$("#modal-overlay").hide();

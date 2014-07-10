@@ -50,6 +50,6 @@ gem 'font-awesome-rails'
 
 gem 'devise'
 
-gem 'cancan'
+gem 'cancancan'
 
 gem 'pg'

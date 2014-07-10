@@ -19,5 +19,11 @@ $(function(){
         }
     });
     
+    $("#addEventForm").validate({
+    	rules: {
+    		"event[name]":"required",
+    		"event[start_time]":"required"
+    	}
+    });    
     
 });
