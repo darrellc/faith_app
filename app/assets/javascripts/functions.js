@@ -17,6 +17,12 @@ function createAlert(alertP){
 
 function toggleModal(id){
 	//The modal is visible
+	if(id === ".velocityModal"){
+		var modals = $(".velocity-modal");
+		$(".velocity-modal").velocity("transition.expandOut", 500);
+		$("#modal-overlay").hide();
+		return;
+	}
 	if($(id).is(":visible")){
 		$(id).velocity("transition.expandOut", 500);
 		$("#modal-overlay").hide();

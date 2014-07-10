@@ -1,22 +1,24 @@
-<div id="confirmDialog" class="reveal-modal tiny" data-reveal>
-  <p class="fs-30 pv-10 bdb-g bdc-ccc">Are you Sure?</p>
-  <p class="confirm-info fs-18">You want to <span class="c-dr">DELETE</span></p>
-  <div class="clearfix pb-15">
-  	<span class="confirm-type fw-b fs-16 ph-10 fl-l"></span>
-  	<span class="confirm-name fs-16 ph-10 fl-l"></span>
+<div id="confirmDialog" class="velocity-modal tiny" data-reveal>
+  <p class="title">Are you Sure?</p>
+  <div class="p-m">
+  	  <p class="sub-title">You want to <span class="c-dr">DELETE</span></h5>
+	  <div class="clearfix pb-15">
+	  	<span class="confirm-type fw-b fs-16 pr-10 fl-l"></span>
+	  	<span class="confirm-name fs-16 fl-l"></span>
+	  </div>
+	  <a href="#" class="button fl-l close-velocity-modal bg-ow radius m-0 td-n">No</a>
+	  <a href="#" class="button alert radius fl-r confirm-button m-0 td-n ev" data-remote="true" data-method="delete">Yes</a>	
   </div>
-  <a href="#" class="button fl-l close-reveal-modal bg-ow radius m-0">No</a>
-  <a href="#" class="button alert radius fl-r confirm-button m-0 td-n" data-remote="true" data-method="delete">Yes</a> 	
+   	
 </div>
 
 <div id="dtBox"></div>
 
 <!-- Modal used for adding a new user and editing a user -->
 <div id="userModal" class="velocity-modal tiny">
-	<a class="close-velocity-modal">&#215;</a>    	
+	<a class="close-velocity-modal close">&#215;</a>    	
 	<div class="add">
 		<h3>Add User</h3>
-		<hr />	
 		<%= form_for(:user, url: user_registration_path, html: { id: "addUserForm" }, remote: true ) do |f| %>
 			
 		    <div><%= f.text_field :first_name, autofocus: true, :placeholder => "First Name" %></div>	
@@ -42,11 +44,9 @@
 		<% end %>
 	</div>
 	<div class="show">
-		<h3></h3>
-		<% if can? :update, current_user %>
-		<a href="#" class="action-button c-dg fl-l m-5 ev" data-id="#userModal" data-action="edit" data-remote="true">Edit</a>
-		<% end %>
-		<hr />
+		<div class="clearfix">
+			<h3></h3>			
+		</div>
 		<div class="row">
 			<div class="columns medium-6">
 				<label>Email Address</label>
@@ -66,10 +66,14 @@
 		<div class="is-member d-n mt-10">
 			<p class="fw-b fs-m">Member Info</p>	
 		</div>
+		<% if can? :update, current_user %>
+		<div class="clearfix">
+			<a href="#" class="action-button d-b fl-l td-u" data-id="#userModal" data-action="edit" data-remote="true">Edit</a>
+		</div>
+		<% end %>
 	</div>
 	<div class="edit">
 		<h3>Edit User</h3>
-		<hr />
 		<%= form_for(:user, url: "#", :method => :put,html: { id: "editUserForm", remote: true } ) do |f| %>
 			
 		    <div><%= f.text_field :first_name, autofocus: true, :placeholder => "First Name" %></div>	

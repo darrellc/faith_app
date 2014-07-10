@@ -22,6 +22,8 @@ h1,h2,h3,h4,h5,h6{font-family: "daysregular";}
 a.c-lg:hover{color: $offWhite;}
 .c-dg{color: $darkGray;}
 .c-dg.ev:hover{color: black;}
+.c-dgr{color: $darkGreen;}
+.c-dgr.ev:hover{color: darken($darkGreen, 10%);}
 /*Backgrounds*/
 .bg-dgr {background: $darkGray;}
 .bg-dgr.ev:hover{background: lighten($darkGray, 10%);}
@@ -97,8 +99,10 @@ a.c-lg:hover{color: $offWhite;}
 /***********************************/
 .row{max-width: 100%;}
 .tooltip{@extend .bdrz-10;margin-left: -2px;@extend .p-10;}
-.close-velocity-modal{color: #ccc;@extend .pos-a;@extend .t-0;@extend .r-0;@extend .fs-hu;@extend .bg-ow;@extend .ev;@extend .ph-10;@extend .bd;@extend .bdc-ccc;@extend .bdblrz-5;}
-.close-velocity-modal:hover{text-decoration: none;color: darken(#ccc, 10%);}
+.close-velocity-modal{color: #333;@extend .bg-ow;@extend .bd;@extend .bdc-ccc;@extend .ev;}
+.close-velocity-modal:hover{color: #333;}
+.close-velocity-modal.close{color: #ccc;@extend .pos-a;@extend .t-0;@extend .r-0;@extend .fs-hu;@extend .bg-ow;@extend .ev;@extend .ph-10;@extend .bd;@extend .bdc-ccc;@extend .bdblrz-5;}
+.close-velocity-modal.close:hover{text-decoration: none;color: darken(#ccc, 10%);}
 #confirmDialog .close-reveal-modal{@extend .pos-r;@extend .fs-n;@extend .fw-n;@extend .c-dg;@extend .bd;@extend .bdc-ccc;top: 0;right: 0;@extend .ev;}
 .velocity-modal{@extend .d-n;position: absolute;@extend .z-100;@extend .bg-w;@extend .p-n;left: 50%;top: 100px;}
 /***********************************/

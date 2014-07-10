@@ -85,6 +85,10 @@
 }
 #userModal .reveal-action{@extend .c-dg;@extend .td-n;@extend .ev;}
 #userModal .reveal-action.active{background: $us_color;color: white;}
+#userModal .action-button{
+  color: $us_color;
+  &:hover{color: darken($us_color, 10%);}
+}
 
 //Events container
 #events-container{
@@ -135,9 +139,8 @@
 }
 
 //Information Modals
-.reveal-modal.tiny{
-  h3{@extend .c-lg;@extend .fs-lg;@extend .m-0;@extend .fl-l;}
-  .action-button{@extend .p-5;}
+.velocity-modal.tiny{
+  h3{@extend .c-lg;@extend .fs-lg;@extend .m-0;@extend .fl-l;@extend .pv-10;}  
   label, p{
     @extend .m-0;
     @extend .lh-14;
@@ -152,6 +155,11 @@
     @extend .pb-10;
     @extend .fs-sm;
   }
+}
+
+#confirmDialog{
+  .title{@extend .fs-lgr;@extend .d-b;@extend .bdb-g;@extend .bdc-ccc;@extend .pb-15;}
+  .sub-title{@extend .fs-n;@extend .pv-10;}
 }
 
 

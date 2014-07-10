@@ -64,24 +64,18 @@ $(function(){
     
     $("#body").on("click", ".delete-btn", function(e){
 		if(!$(this).hasClass("disabled")){
-			
+			var $dialog = $("#confirmDialog");
+	    	var $button = $("#confirmDialog").find(".confirm-button");	    	
+		   	//Set the url to the href of the confirm button - this will trigger the REST delete call when the button is clicked.
+	    	$button.attr({"href":$(this).attr("data-url")});
+	    	//Fill in the information
+	    	$dialog.find(".confirm-type").html($(this).attr("data-type"));
+	    	$dialog.find(".confirm-name").html($(this).attr("data-name"));
+	    	//Open the confirm dialog
+	    	toggleModal($dialog);
 		}
 		e.preventDefault();
 	});
-    //	if(!$(this).hasClass("disabled")){
-	//    	var $dialog = $("#confirmDialog");
-	//    	var $button = $("#confirmDialog").find(".confirm-button");
-	//    	
-	    	//Set the url to the href of the confirm button - this will trigger the REST delete call when the button is clicked.
-	//    	$button.attr({"href":$(this).attr("data-url")});
-	//    	//Fill in the information
-	//    	$dialog.find(".confirm-type").html($(this).attr("data-type"));
-	//    	$dialog.find(".confirm-name").html($(this).attr("data-name"));
-	    	//Open the confirm dialog
-	//    	$dialog.foundation("reveal","open");
-    //	}
-    //	e.preventDefault();
-    //});
     
     $("body").on("click", ".action-button",function(){
     	if($(this).attr("data-id") == undefined || $(this).attr("data-id") == "") alert("each action button must have a data-id");
@@ -93,13 +87,16 @@ $(function(){
     	$dialog.children("."+action).show();
     });
     
-    //$("#body").on("click", "tr", function(){
-	//	if($(this).attr("data-type") == undefined || $(this).attr("data-type") === "") alert("That row needs a data-type");
-	//	$.ajax({
-	//		type: "GET",
-	//		url: "/"+$(this).attr("data-type")+"/"+$(this).attr("data-id")
-	//	});
-    //});
+    $("#body").on("click", "tr", function(e){
+		if($(this).attr("data-type") == undefined || $(this).attr("data-type") === "") alert("That row needs a data-type");
+		if(!$(e.target).hasClass("fa-times")){
+			$.ajax({
+				type: "GET",
+				url: "/"+$(this).attr("data-type")+"/"+$(this).attr("data-id")
+			});
+		}
+		e.preventDefault();
+    });
     
     //$("body").on("click", "a.reveal-action", function(){
    	   //var c = $(this).attr("data-id");
@@ -130,8 +127,7 @@ $(function(){
  				if($(c).is(":visible")){
  					switch(c){
 						case ".velocity-modal":
-							$(".velocity-modal").velocity({top: -1000},{duration: 700, display: "none"});
-							$("#modal-overlay").velocity({opacity: 0},{display: "none", duration: 500});
+							toggleModal(".velocityModal");
 							break;
 						case "#side-bar-mobile":
 							toggleSideBar();
