@@ -84,8 +84,6 @@
     span.label{background: $us_color;@extend .mh-10;@extend .pl-5;@extend .pr-5;@extend .pt-10;@extend .pb-10;}
 }
 #userModal{
-  .reveal-action{@extend .c-dg;@extend .td-n;@extend .ev;}
-  .reveal-action.active{background: $us_color;color: white;}
   .action-button{
     color: $us_color;
     &:hover{color: darken($us_color, 10%);}  
@@ -101,8 +99,6 @@
 }
 #eventModal{
   input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus{border-color: $ev_color;}
-  .reveal-action{@extend .c-dg;@extend .td-n;@extend .ev;}
-  .reveal-action.active{background: $ev_color;color: white;}
   .action-button{color: $ev_color;&:hover{color: darken($ev_color, 10%);}
   }
 }
@@ -169,6 +165,12 @@
     @extend .pb-10;
     @extend .fs-sm;
   }
+  a.reveal-action{
+    @extend .c-dg;@extend .td-n;@extend .ev;@extend .bg-ow;
+    &:focus{background: #e3e3e3;}
+  }
+  a.reveal-action.active{background: #333;color: white;}
+ 
 }
 
 #confirmDialog{

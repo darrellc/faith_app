@@ -6,14 +6,14 @@
   	</ul>
 	<ul class="fl-r navigation">
 		<% if !user_signed_in? %>
-                        <li class="fl-l"><a href="#" id="registerLink" class="cur-p">Register</a></li>
-	  		<li class="fl-l"><a href="#" id="loginLink" class="cur-p">Login</a></li>
+            <li class="fl-l"><a href="#" id="registerLink" class="cur-p">Register</a></li>
+	  		<li class="fl-l"><a href="#" class="cur-p reveal-action" data-id="#loginForm">Login</a></li>
   		<% else %>  			
   			<li class="fl-l"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
   		<% end %>	      	      
     </ul>
     <% if !user_signed_in? %>
-    	<%= form_for(:user, url: "/users/sign_in", html: {:id => "loginForm", :class => "bg-dbl p-10 pos-a pos-trc d-n"}) do |f| %>
+    	<%= form_for(:user, url: "/users/sign_in", html: {:id => "loginForm", :class => "bg-dbl p-10 pos-a pos-trc d-n ov-h"}) do |f| %>
 			<div class="pb-5"><%= f.email_field :email, autofocus: true, :placeholder => "Username or Email"%></div>			
 		    <div><%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %></div>			
 		    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>

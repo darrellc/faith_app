@@ -3,7 +3,8 @@
     <h2 class="fs-lgr ta-c">Register</h2>
     <hr class="mv-25"/>
       <% flash.each do |name, msg| %>                    
-	      <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert-box alert" %>        
+	      <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert-box alert" %>
+	      <% flash.discard[:notice] %>        
       <% end %>
 	  <%= form_for(:user, url: "/users", html: { id: "registerForm" } ) do |f| %>
 	

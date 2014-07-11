@@ -28,17 +28,8 @@ $(function(){
     	}
     	$(this).toggleClass("active");
         e.preventDefault();		
-    });	
-    
-    //Login button - large screen
-    $("#loginLink").click(function(e){
-        if(!$(this).hasClass("active"))           
-            $("#loginForm").velocity("slideDown");
-        else            
-            $("#loginForm").velocity("slideUp");        
-        $(this).toggleClass("active");
-        e.preventDefault();
     });
+        
     ////////////////////////////////////    
     //Side menu 
     $("#side-bar-button").on("click", function(e){
@@ -98,16 +89,18 @@ $(function(){
 		e.preventDefault();
     });
     
-    //$("body").on("click", "a.reveal-action", function(){
-   	   //var c = $(this).attr("data-id");
-    	//if($(this).hasClass("active")){
-    //		$(c).slideUp();
-    //		$(this).removeClass("active");
-    //	}else{
-    //		$(c).slideDown();
-    //		$(this).addClass("active");    		
-    //	}
-    //});
+    $("body").on("click", "a.reveal-action", function(){
+   	   	var c = $(this).attr("data-id");
+    	if($(this).hasClass("active")){
+    		$(c).css("overflow","hidden").velocity("slideUp");
+    		$(this).removeClass("active");
+    		$(this).children("i").attr("class", "fa fa-chevron-down fl-r");
+    	}else{
+    		$(c).css("overflow","hidden").velocity("slideDown");
+    		$(this).addClass("active");    		
+    		$(this).children("i").attr("class", "fa fa-chevron-up fl-r");
+    	}
+    });
     
     $("body").on("click", ".modal-button", function(){
 		toggleModal($(this).attr("data-id"));			
