@@ -107,7 +107,8 @@
 			    <div><%= f.select :template_id, [["Template?", ""]] %></div>
 			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id="#itemBox">Items<i class="fa fa-chevron-down fl-r"></i></a>
 			    <div id="itemBox" class="d-n">
-			    	<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc add-action td-n" data-id="item">Add Item<i class="fa fa-chevron-down fl-r"></i></a>
+			    	<div class="bdt-g bdc-ccc items"></div>
+			    	<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc add-action td-n" data-id="item" data-box=".items">Add Item<i class="fa fa-chevron-down fl-r"></i></a>
 			    </div>	    
 			    <div><%= f.submit "Add Event", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
 	  		<% end %>

@@ -128,7 +128,21 @@ $(function(){
  			}
  		}
     	e.preventDefault();
-	});     
+	});
+	
+	$("body").on("click", ".add-action", function(){
+		var box = $(this).parent().find($(this).attr("data-box"));
+		var count = ($(box).children().length === 0) ? 0 : $(box).children().length;
+		switch($(this).attr("data-id")){
+			case "item":
+				var elem = "<div class='bdb-g bdl-g bdc-ccc bg-ow clearfix ev cur-p'>";
+						elem += "<div class='p-5 w-75p fl-l bdc-ccc bdr-g'>Item Name</div>"; 
+						elem += "<div class='p-5 w-25p fl-l bdc-ccc bdr-g'>Duration</div>";
+				   elem += "</div>";
+				$(box).append(elem);
+				break;
+		}
+	});    
 });
 
 	
