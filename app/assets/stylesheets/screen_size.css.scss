@@ -1,3 +1,6 @@
+@media all and (max-width: 1000px){
+  #breadcrumbs li a{font-size: 1em;}
+}
 @media all and (max-width: 850px) {  
   #side-bar a{font-size: .8em;}
 }
@@ -9,6 +12,7 @@
     .tab-content{width: 100%;}
     .top-bar ul .logo{height: 50px;}
     #side-bar-button{font-size: 1.2em;padding: 4px 15px;}
+    #breadcrumbs{display: none;}
 }
 
 @media all and (max-width: 600px) {

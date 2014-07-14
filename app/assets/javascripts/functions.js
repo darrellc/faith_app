@@ -19,15 +19,25 @@ function createAlert(alertP){
 }
 
 function toggleModal(id){
+	//Needs to work with multiple open modals
+	var open = $(".velocity-modal.open").not(id);		
+	var zind = 100;
 	//The modal is visible	
 	if($(id).is(":visible")){
-		$(id).velocity("transition.expandOut", 500);
-		$("#modal-overlay").hide();
+		zind = parseInt($(id).css("zIndex"));
+		$(id).velocity("transition.expandOut", 500).removeClass("open").css({"zIndex": 110});
+		if(open.length > 0)
+			$("#modal-overlay").css("zIndex", zind - 40);
+		else			
+			$("#modal-overlay").hide().css({"zIndex": 100});
 	//The modal is not visible
-	}else{
-		$(id).css({marginLeft: -$(id).outerWidth()/2});
-		$(id).velocity("transition.expandIn", 500);
-		$("#modal-overlay").show();	
+	}else{	
+		for(var i=0;i<open.length;i++){
+			if(zind < $(open[i]).css("z-index"))
+				zind = parseInt($(open[i]).css("z-index")) + 20;		
+		}
+		$(id).css({marginLeft: -$(id).outerWidth()/2, zIndex: zind + 10}).velocity("transition.expandIn", 500).addClass("open");
+		$("#modal-overlay").show().css("zIndex", zind);
 	}
 }
 

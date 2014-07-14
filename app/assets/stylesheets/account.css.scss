@@ -27,7 +27,9 @@
 }
 #side-bar-button{padding: 16px 25px;border-right: 1px solid #ccc;}
 #side-bar-button.open{border-radius: 5px 5px 0 0;border-bottom: none;background: #f1f1f1;}
-.side, .connections{    
+#breadcrumbs li{width: 16.666667%;}
+.side, .connections, #breadcrumbs{
+        
     a:hover{text-decoration: none;}
     a{-webkit-font-smoothing: antialiased;}
     a span{@extend .d-n;}
@@ -97,7 +99,7 @@
           td{color: white;border-right-color: lighten($ev_color, 10%);}
     }           
 }
-#eventModal{
+#eventModal, #itemModal{
   input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus{border-color: $ev_color;}
   .action-button{color: $ev_color;&:hover{color: darken($ev_color, 10%);}
   }

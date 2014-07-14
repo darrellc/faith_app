@@ -8,10 +8,21 @@ $(function(){
     $("body").on("click", "a.home-page-scroll-button", function(e){
     	var id = $(this).attr("href");
     	console.log(id);
-    	$(id).velocity("scroll", {duration: 1000, easing: "easeOutExpo", offset: -$("header").outerHeight(true)+5});
+    	$(id).velocity("scroll", {duration: 1000, easing: "easeOutExpo", offset: -$("header").outerHeight(true)+5-$("#breadcrumbs").outerHeight(true)});
     	if($("#side-bar-mobile").is(":visible"))
     		toggleSideBar();
     	e.preventDefault();
+    });
+    
+    $(window).scroll(function(){
+		var sT = $(this).scrollTop();
+		var con = $("#home-page .connections");
+		var px = $(con).offset().top+$(con).outerHeight(true);
+		if(sT > px && !$("#breadcrumbs").is(":visible") ){
+			$("#breadcrumbs").velocity("fadeIn");
+		}else{
+			$("#breadcrumbs").velocity("fadeOut");
+		}
     });
     
     //Top bar 
@@ -100,6 +111,15 @@ $(function(){
     		$(this).addClass("active");    		
     		$(this).children("i").attr("class", "fa fa-chevron-up fl-r");
     	}
+    });
+    
+    $("body").on("click", "a.add-action", function(){
+    	switch($(this).attr("data-id")){
+    		case "item":
+    			toggleModal("#itemModal");    			
+    			break;
+    	}
+    	
     });
     
     $("body").on("click", ".modal-button", function(){
