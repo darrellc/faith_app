@@ -107,10 +107,43 @@
 			    <div><%= f.select :template_id, [["Template?", ""]] %></div>
 			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id="#itemBox">Items<i class="fa fa-chevron-down fl-r"></i></a>
 			    <div id="itemBox" class="d-n">
-			    	<div class="bdt-g bdc-ccc items"></div>
-			    	<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc add-action td-n" data-id="item" data-box=".items">Add Item<i class="fa fa-chevron-down fl-r"></i></a>
+			    	<div class="item-list"></div>
+			    	<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc add-action td-n" data-id="item">Add Item</a>
 			    </div>	    
 			    <div><%= f.submit "Add Event", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
+	  		<% end %>
+	    </div>
+	</div>
+	<div class="show">
+		
+	</div>
+	<div class="edit">
+		
+	</div>
+  	
+</div>
+
+<!-- Modal used for adding a new event viewing an event and editing an event -->
+<div id="itemModal" class="velocity-modal tiny">
+	<a class="close-velocity-modal close">&#215;</a>    	
+	<div class="add">
+		<h3 class="c-lg">Add Item</h3>
+	  	<div>
+	  		<%= form_for(:event, url: "/items", html: { id: "addItemForm" }, remote: true ) do |f| %>  			
+			    <div><%= f.text_field :name, autofocus: true, :placeholder => "Name" %></div>	
+			    <div><%= f.text_area :description, :placeholder => "Description" %></div>
+			    <div class="clearfix">
+			    	<div class="columns small-5 p-0">
+			    		<input type="text" name="item[duration_min]" placeholder="Duration(min)">
+		    		</div>
+		    		<div class="columns small-2 p-0"></div>
+		    		<div class="columns small-5 p-0">
+			    		<input type="text" name="item[duration_sec]" placeholder="Duration(sec)">
+		    		</div>
+	    		</div>
+			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action">Connect Song</a>
+			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action">Connect Members</a>			    	    
+			    <div><%= f.submit "Add Item", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
 	  		<% end %>
 	    </div>
 	</div>
