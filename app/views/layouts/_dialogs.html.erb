@@ -30,7 +30,7 @@
 		    		<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action c-dg td-n" data-id=".findMember">Already a Member?</a>		
 		    	</div>
 		    	<div class="columns small-6 p-0 pl-10">
-		    		<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action c-dg td-n" data-id=".newMember">Add New Member</a>
+		    		<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action c-dg td-n" data-id=".newMember">New Member</a>
 		    	</div>
 		    </div>
 		    <div class="findMember d-n">
@@ -106,7 +106,7 @@
 			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id="#itemBox">Items<i class="fa fa-chevron-down fl-r"></i></a>
 			    <div id="itemBox" class="d-n">
 			    	<div class="item-list bdt-g bdc-ccc"></div>
-			    	<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc add-action td-n" data-id="item">Add Item</a>
+			    	<a href="#" class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc action-button td-n modal-button" data-id="#itemModal" data-action="add" data-type="item">Add Item</a>
 			    </div>	    
 			    <div><%= f.submit "Add Event", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
 	  		<% end %>
@@ -153,7 +153,7 @@
 			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id="#templateItemBox">Items<i class="fa fa-chevron-down fl-r"></i></a>
 			    <div id="templateItemBox" class="d-n">
 			    	<div class="item-list bdt-g bdc-ccc"></div>
-			    	<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc add-action td-n" data-id="item">Add Item</a>
+			    	<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc action-button td-n modal-button" data-id="#itemModal" data-action="add">Add Item</a>
 			    </div>
 			    <input type="hidden" name="type">	    
 			    <div><%= f.submit "Add Template", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
@@ -206,7 +206,8 @@
 	    		</div>
 			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action">Connect Song</a>
 			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action">Connect Members</a>	
-			    <input type="hidden" name="mode" value="add">		    	    
+			    <input type="hidden" name="mode" value="add" />
+			    <input type="hidden" name="container" />		    	    
 			    <div><%= f.submit "Add Item", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
 	  		<% end %>
 	    </div>

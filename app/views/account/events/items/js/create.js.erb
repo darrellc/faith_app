@@ -5,7 +5,7 @@
 		msg: "<%= msg %>"		
 	});
 	
-	var container = $("#eventModal").find(".<%= mode %> .item-list");
+	var container = $("<%= i[:container] %>");
 	var counter = $(container).children().length + 1;
 	
 	$("#addItemForm")[0].reset();

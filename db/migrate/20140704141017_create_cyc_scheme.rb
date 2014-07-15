@@ -71,6 +71,7 @@ class CreateCycScheme < ActiveRecord::Migration
       t.datetime :start_time
       t.datetime :end_time
       t.string :location
+      t.boolean :isTemplate
 
       t.timestamps
     end

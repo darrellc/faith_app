@@ -11,7 +11,7 @@ class EventItemsController < ApplicationController
       format.html { redirect_to root_path }
       format.js { render(:template => @view_path + "js/create.js.erb",
                          :locals => { 
-                                     :i => { :name => itemP[:name], :description => itemP[:description], :duration => params[:duration_min]+":"+params[:duration_sec] }, 
+                                     :i => { :name => itemP[:name], :description => itemP[:description], :duration => params[:duration_min]+":"+params[:duration_sec], :container => params[:container] }, 
                                      :mode => params[:mode], 
                                      :success => true, 
                                      :msg => "The item was successfully added." 

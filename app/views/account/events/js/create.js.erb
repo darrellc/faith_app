@@ -14,7 +14,7 @@
 	var newRow = "<tr data-id='<%= e.id %>' data-type='events'>";
 			newRow += "<td><%= e.name %></td>";
 			newRow += "<td><%= e.timeFormat e.start_time %></td>";
-			newRow += "<td>";
+			newRow += "<td class="delete">";
 				newRow += "<a href='#' class='c-dr fs-lg ph-15 ev fl-r delete delete-btn' data-url='/events/<%= e.id %>' data-type='Event' data-name='<%= e.name %>'>";
 					newRow += "<i class='fa fa-times'></i>";
 				newRow += "</a>";

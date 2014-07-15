@@ -99,9 +99,9 @@ $(function(){
     	$dialog.children("."+action).show();
     });
     
-    $("#body").on("click", "tr", function(e){
+    $("#body").on("click", "tbody tr", function(e){
 		if($(this).attr("data-type") == undefined || $(this).attr("data-type") === "") alert("That row needs a data-type");
-		if(!$(e.target).hasClass("fa-times")){
+		if(!$(e.target).hasClass("fa-times") || !$(e.target).children().hasClass("fa-times") ){
 			$.ajax({
 				type: "GET",
 				url: "/"+$(this).attr("data-type")+"/"+$(this).attr("data-id")
@@ -122,16 +122,7 @@ $(function(){
     		$(this).children("i").attr("class", "fa fa-chevron-up fl-r");
     	}
     	e.preventDefault();
-    });
-    
-    $("body").on("click", "a.add-action", function(){
-    	switch($(this).attr("data-id")){
-    		case "item":
-    			toggleModal("#itemModal");    			
-    			break;
-    	}
-    	
-    });
+    });    
     
     $("body").on("click", ".modal-button", function(){
 		toggleModal($(this).attr("data-id"));			
@@ -153,27 +144,41 @@ $(function(){
 						case "#side-bar-mobile":
 							toggleSideBar();
 							break;
+						case ".velocity-modal":
+							//Get all velocity modals
+							var mods = $(".velocity-modal.open");
+							var close;
+							for(var i=0;i<mods.length;i++){
+								if(close === undefined){
+									close = mods[i];
+								}
+								//get z-index
+								closez = $(close).css("z-index");
+								modz = $(mods[i]).css("z-index");
+								
+								//Compare z-index.  If the modz > closez then set close to mods[i]
+								if(modz > closez)
+									close = mods[i];
+							}
+							toggleModal(close);
+							break;
 					}	
  				}
  				
  			}
  		}
     	e.preventDefault();
+	});	 
+	
+	
+	//Specific Buttons
+	$("#itemBox a.action-button").on("click", function(){
+		$("#addItemForm input[name=container]").val("#itemBox .item-list");
+	});
+	$("#templateItemBox a.action-button").on("click", function(){
+		$("#addItemForm input[name=container]").val("#templateItemBox .item-list");
 	});
 	
-	$("body").on("click", ".add-action", function(){
-		var box = $(this).parent().find($(this).attr("data-box"));
-		var count = ($(box).children().length === 0) ? 0 : $(box).children().length;
-		switch($(this).attr("data-id")){
-			case "item":
-				var elem = "<div class='bdb-g bdl-g bdc-ccc bg-ow clearfix ev cur-p'>";
-						elem += "<div class='p-5 w-75p fl-l bdc-ccc bdr-g'>Item Name</div>"; 
-						elem += "<div class='p-5 w-25p fl-l bdc-ccc bdr-g'>Duration</div>";
-				   elem += "</div>";
-				$(box).append(elem);
-				break;
-		}
-	});    
 });
 
 	

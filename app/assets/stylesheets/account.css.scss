@@ -99,7 +99,7 @@
           td{color: white;border-right-color: lighten($ev_color, 10%);}
     }           
 }
-#eventModal, #itemModal{
+#eventModal, #itemModal, #eventTemplateModal{
   input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus{border-color: $ev_color;}
   .action-button{color: $ev_color;&:hover{color: darken($ev_color, 10%);}
   }
