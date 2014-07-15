@@ -1,14 +1,21 @@
 $(function(){
     //When window is resized
     $(window).resize(function(){
-        $("#side-bar-mobile,#side-bar").css("height", $(window).height()-$("header").outerHeight()-$("#footer").outerHeight());
+        $("#side-bar").css("height", $(window).height()-$("header").outerHeight()-$("#footer").outerHeight());
+        $("#side-bar-mobile").css("height", $(window).height()-$("header").outerHeight());
+        if($(window).width() < 768 ) $("#breadcrumbs").hide();
     });
     
     //The 
     $("body").on("click", "a.home-page-scroll-button", function(e){
     	var id = $(this).attr("href");
-    	console.log(id);
-    	$(id).velocity("scroll", {duration: 1000, easing: "easeOutExpo", offset: -$("header").outerHeight(true)+5-$("#breadcrumbs").outerHeight(true)});
+    	var offset = 0;
+    	if($("#breadcrumbs").is(":visible")){
+    		offset = -$("header").outerHeight(true)+5-$("#breadcrumbs").outerHeight(true);
+    	}else{
+    		offset = -$("header").outerHeight(true)+5;
+    	}
+    	$(id).velocity("scroll", {duration: 1000, easing: "easeOutExpo", offset: offset});
     	if($("#side-bar-mobile").is(":visible"))
     		toggleSideBar();
     	e.preventDefault();
@@ -18,13 +25,13 @@ $(function(){
 		var sT = $(this).scrollTop();
 		var con = $("#home-page .connections");
 		var px = $(con).offset().top+$(con).outerHeight(true)-$("header").outerHeight(true)-$("#breadcrumbs").outerHeight(true);
-		console.log(sT);
-		console.log(px);
-		if(sT > px ){
-			if(!$("#breadcrumbs").is(":visible"))
-				$("#breadcrumbs").show();
-		}else{
-			$("#breadcrumbs").hide();
+		if($(window).width() > 768){
+			if(sT > px ){
+				if(!$("#breadcrumbs").is(":visible"))
+					$("#breadcrumbs").show();
+			}else{
+				$("#breadcrumbs").hide();
+			}
 		}
     });
     
@@ -103,7 +110,7 @@ $(function(){
 		e.preventDefault();
     });
     
-    $("body").on("click", "a.reveal-action", function(){
+    $("body").on("click", "a.reveal-action", function(e){
    	   	var c = $(this).attr("data-id");
     	if($(this).hasClass("active")){
     		$(c).css("overflow","hidden").velocity("slideUp");
@@ -114,6 +121,7 @@ $(function(){
     		$(this).addClass("active");    		
     		$(this).children("i").attr("class", "fa fa-chevron-up fl-r");
     	}
+    	e.preventDefault();
     });
     
     $("body").on("click", "a.add-action", function(){

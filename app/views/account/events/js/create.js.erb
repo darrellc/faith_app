@@ -1,18 +1,19 @@
 <% if success %>
-	console.log("Showing Event alert");
 	createAlert({
 		type: "success",
 		msg: "<%= msg %>"		
 	});
 	
 	//Reset the form and close the modal
-	console.log("Resetting stuff");	
 	$("#addEventForm")[0].reset();
+	$("#addEventForm").find(".item-list").empty();
+	$("#addEventForm").find("#itemBox").hide();
+	$("#addEventForm").find(".reveal-action").removeClass("active");
 	toggleModal("#eventModal");	
 	
-	var newRow = "<tr data-id='<%= e.id %>' data-type='event'>";
+	var newRow = "<tr data-id='<%= e.id %>' data-type='events'>";
 			newRow += "<td><%= e.name %></td>";
-			newRow += "<td><%= e.start_time %></td>";
+			newRow += "<td><%= e.timeFormat e.start_time %></td>";
 			newRow += "<td>";
 				newRow += "<a href='#' class='c-dr fs-lg ph-15 ev fl-r delete delete-btn' data-url='/events/<%= e.id %>' data-type='Event' data-name='<%= e.name %>'>";
 					newRow += "<i class='fa fa-times'></i>";

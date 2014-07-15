@@ -6,6 +6,10 @@ FaithApp::Application.routes.draw do
   
   resources :events, :controller => "events"
   
+  scope "/events" do
+    resources :items, :controller => "event_items"
+    resources :templates, :controller => "event_templates"  
+  end 
     
   root "static_pages#home"
   # The priority is based upon order of creation: first created -> highest priority.

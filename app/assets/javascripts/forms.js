@@ -20,10 +20,11 @@ $(function(){
     });
     
     $("#addEventForm").validate({
-    	rules: {
-    		"event[name]":"required",
-    		"event[start_time]":"required"
-    	}
-    });    
+    	rules: { "item[name]":"required"}
+    });   
+    
+    $("#addItemForm").validate({rules: { "event_item[name]":"required"}});
+    
+    $("#addEventTemplateForm").validate({rules: {"event[name]":"required"} });
     
 });

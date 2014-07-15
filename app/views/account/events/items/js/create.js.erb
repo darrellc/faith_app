@@ -1,0 +1,24 @@
+<% if success %>
+
+	createAlert({
+		type: "success",
+		msg: "<%= msg %>"		
+	});
+	
+	var container = $("#eventModal").find(".<%= mode %> .item-list");
+	var counter = $(container).children().length + 1;
+	
+	$("#addItemForm")[0].reset();
+		
+	var html = "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p'>";
+		html += "<div class='w-75p bdr-g bdl-g bdc-ccc p-10 fl-l'><%= i[:name] %></div>";
+		html += "<div class='w-25p bdr-g bdc-ccc p-10 fl-l'><%= i[:duration] %></div>";
+		html += "<input type='hidden' name='items[item"+counter+"[name]]' value='<%= i[:name] %>' />";
+		html += "<input type='hidden' name='items[item"+counter+"[duration]]' value='<%= i[:duration] %>' />"; 		
+	html +=    "</div>";
+	
+	$(container).append(html);
+	//Close the item Modal
+	toggleModal("#itemModal");	
+	
+<% end %>

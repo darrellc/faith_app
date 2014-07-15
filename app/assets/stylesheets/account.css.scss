@@ -21,7 +21,7 @@
 
 #side-bar-mobile{
     width: 200px;
-    top: 78px;
+    top: 56px;
     left: -200px;
     a{padding: 10px 20px;}
 }
@@ -152,7 +152,7 @@
 
 //Information Modals
 .velocity-modal.tiny{
-  h3{@extend .c-lg;@extend .fs-lg;@extend .m-0;@extend .fl-l;@extend .pv-10;}  
+  h3{@extend .c-lg;@extend .fs-lg;@extend .m-0;@extend .pv-10;}  
   label, p{
     @extend .m-0;
     @extend .lh-14;

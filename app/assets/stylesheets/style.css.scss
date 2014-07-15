@@ -123,9 +123,9 @@ label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bot
 /**********************************/
 //IDs
 /*********************************/
-#body{overflow-y: auto;padding-top: 78px}
+#body{overflow-y: auto;padding-top: 64px}
 #registerContainer{padding-top: 100px;}
-#loginForm{top: 75px;z-index: 500;right:0;-webkit-box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);height: 177px;
+#loginForm{top: 64px;z-index: 500;right:0;-webkit-box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);height: 177px;
   input:focus{-webkit-box-shadow: 0 0 3px 0px #ccc;box-shadow: 0 0 3px 0px #ccc;border-color: #ccc;}
   label{color: white;}
   .button{@extend .bg-w;color: $darkGray;@extend .bdrz-5;&:hover{background: darken(#fff, 10%);}}
@@ -139,8 +139,8 @@ label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bot
 //_header.html.erb
 /**********************************/
 .top-bar{height: auto;background: white;@extend .bdb-bl; 
-  .logo{height: 75px;}  
-  .navigation li a {padding: 25px;color: #333;&:hover{background: $offWhite;text-decoration: none;}}
+  .logo{height: 60px;}  
+  .navigation li a {padding: 18px;color: #333;&:hover{background: $offWhite;text-decoration: none;}}
   .navigation li a.active{background: $darkBlue;color: #fff;}
 }
 /**********************/

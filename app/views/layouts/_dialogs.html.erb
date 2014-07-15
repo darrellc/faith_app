@@ -66,11 +66,9 @@
 		<div class="is-member d-n mt-10">
 			<p class="fw-b fs-m">Member Info</p>	
 		</div>
-		<% if can? :update, current_user %>
 		<div class="clearfix">
 			<a href="#" class="action-button d-b fl-l td-u" data-id="#userModal" data-action="edit" data-remote="true">Edit</a>
 		</div>
-		<% end %>
 	</div>
 	<div class="edit">
 		<h3>Edit User</h3>
@@ -107,7 +105,7 @@
 			    <div><%= f.select :template_id, [["Template?", ""]] %></div>
 			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id="#itemBox">Items<i class="fa fa-chevron-down fl-r"></i></a>
 			    <div id="itemBox" class="d-n">
-			    	<div class="item-list"></div>
+			    	<div class="item-list bdt-g bdc-ccc"></div>
 			    	<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc add-action td-n" data-id="item">Add Item</a>
 			    </div>	    
 			    <div><%= f.submit "Add Event", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
@@ -115,7 +113,27 @@
 	    </div>
 	</div>
 	<div class="show">
-		
+		<div class="clearfix">
+			<h3></h3>			
+			<p class="fs-16 fw-b"></p>
+		</div>
+		<div class="row">
+			<div class="columns medium-6">
+				<label>Start Time</label>
+				<p></p>													
+			</div>
+			<div class="columns medium-6">
+				<label>Added By</label>
+				<p></p>	
+			</div>
+		</div>
+		<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id="#itemShowBox">Items<i class="fa fa-chevron-down fl-r"></i></a>
+		<div id="itemShowBox" class="d-n">
+			<div class="item-list bdt-g bdc-ccc"></div>	    	
+		</div>
+		<div class="clearfix">
+			<a href="#" class="action-button d-b fl-l td-u mv-10" data-id="#eventModal" data-action="edit" data-remote="true">Edit</a>
+		</div>		
 	</div>
 	<div class="edit">
 		
@@ -123,26 +141,72 @@
   	
 </div>
 
-<!-- Modal used for adding a new event viewing an event and editing an event -->
+<!-- Modal used for adding a new event template and editing an event template -->
+<div id="eventTemplateModal" class="velocity-modal tiny">
+	<a class="close-velocity-modal close">&#215;</a>    	
+	<div class="add">
+		<h3 class="c-lg">Add Template</h3>
+	  	<div>
+	  		<%= form_for(:event, url: "/events/templates", html: { id: "addEventTemplateForm" }, remote: true ) do |f| %>  			
+			    <div><%= f.text_field :name, autofocus: true, :placeholder => "Name" %></div>	
+			    <div><%= f.text_area :description, :placeholder => "Description" %></div>
+			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id="#templateItemBox">Items<i class="fa fa-chevron-down fl-r"></i></a>
+			    <div id="templateItemBox" class="d-n">
+			    	<div class="item-list bdt-g bdc-ccc"></div>
+			    	<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc add-action td-n" data-id="item">Add Item</a>
+			    </div>
+			    <input type="hidden" name="type">	    
+			    <div><%= f.submit "Add Template", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
+	  		<% end %>
+	    </div>
+	</div>
+	<div class="show">
+		<div class="clearfix">
+			<h3></h3>			
+			<p class="fs-16 fw-b"></p>
+		</div>
+		<div class="row">
+			<div class="columns medium-6">
+				<label>Start Time</label>
+				<p></p>													
+			</div>
+			<div class="columns medium-6">
+				<label>Added By</label>
+				<p></p>	
+			</div>
+		</div>
+		<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id="#itemShowBox">Items<i class="fa fa-chevron-down fl-r"></i></a>
+		<div id="itemShowBox" class="d-n">
+			<div class="item-list bdt-g bdc-ccc"></div>	    	
+		</div>
+		<div class="clearfix">
+			<a href="#" class="action-button d-b fl-l td-u mv-10" data-id="#eventModal" data-action="edit" data-remote="true">Edit</a>
+		</div>		
+	</div>
+	<div class="edit">
+		
+	</div>
+  	
+</div>
+
+<!-- Modal used for adding a new item and editing an item -->
 <div id="itemModal" class="velocity-modal tiny">
 	<a class="close-velocity-modal close">&#215;</a>    	
 	<div class="add">
 		<h3 class="c-lg">Add Item</h3>
 	  	<div>
-	  		<%= form_for(:event, url: "/items", html: { id: "addItemForm" }, remote: true ) do |f| %>  			
+	  		<%= form_for(:event_item, url: "/events/items", html: { id: "addItemForm" }, remote: true ) do |f| %>  			
 			    <div><%= f.text_field :name, autofocus: true, :placeholder => "Name" %></div>	
 			    <div><%= f.text_area :description, :placeholder => "Description" %></div>
 			    <div class="clearfix">
-			    	<div class="columns small-5 p-0">
-			    		<input type="text" name="item[duration_min]" placeholder="Duration(min)">
-		    		</div>
-		    		<div class="columns small-2 p-0"></div>
-		    		<div class="columns small-5 p-0">
-			    		<input type="text" name="item[duration_sec]" placeholder="Duration(sec)">
-		    		</div>
+			    	<div class="columns small-3 pv-10">Min.</div>
+		    		<div class="columns small-3 p-0"><input type="text" name="duration_min" value="0"></div>
+		    		<div class="columns small-3 pt-10 pb-10 pl-10">Sec.</div>
+		    		<div class="columns small-3 p-0"><input type="text" name="duration_sec" value="00"></div>
 	    		</div>
 			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action">Connect Song</a>
-			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action">Connect Members</a>			    	    
+			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action">Connect Members</a>	
+			    <input type="hidden" name="mode" value="add">		    	    
 			    <div><%= f.submit "Add Item", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
 	  		<% end %>
 	    </div>
