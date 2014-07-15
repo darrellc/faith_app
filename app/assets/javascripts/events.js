@@ -17,11 +17,14 @@ $(function(){
     $(window).scroll(function(){
 		var sT = $(this).scrollTop();
 		var con = $("#home-page .connections");
-		var px = $(con).offset().top+$(con).outerHeight(true);
-		if(sT > px && !$("#breadcrumbs").is(":visible") ){
-			$("#breadcrumbs").velocity("fadeIn");
+		var px = $(con).offset().top+$(con).outerHeight(true)-$("header").outerHeight(true)-$("#breadcrumbs").outerHeight(true);
+		console.log(sT);
+		console.log(px);
+		if(sT > px ){
+			if(!$("#breadcrumbs").is(":visible"))
+				$("#breadcrumbs").show();
 		}else{
-			$("#breadcrumbs").velocity("fadeOut");
+			$("#breadcrumbs").hide();
 		}
     });
     
