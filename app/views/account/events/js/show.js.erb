@@ -1,30 +1,30 @@
 var dialog = $("#eventModal");
-console.log("GETTING THE DIALOG");
 //Hide all the action divs
 $(dialog).children("div").hide();
 //Show the the 'show' action div
 $(dialog).children("div.show").show();
 $(dialog).find(".show").find(".reveal-action").removeClass("active");
-console.log("RESETTING THE SHOW VIEW");
 //Remove the reveal-actions
 $(dialog).find(".show").find(".reveal-action").removeClass("active");
 $("#itemShowBox").hide();
 $(dialog).find(".show").find(".item-list").empty();
 
+<% if e.isTemplate %>
+$(dialog).find(".show").find(".isTemplate").show();
+<% else %>
+$(dialog).find(".show").find(".isTemplate").hide();
+<% end %>
+
 //Set the title
-console.log("SETTING THE INFO");
 $(dialog).find(".show").find("h3").html("<%= e.name %>");
 //Set the html of the paragraph tags
-console.log("SETTING PARAGRAPHS");
 var data = ["<%= e.description %>", "<%= e.timeFormat e.start_time %>", "<%= e.user.fullName %>"];
 var p = $(dialog).find(".show").find("p");
 for(var i=0;i<p.length;i++){
 	$(p[i]).html(data[i]);
 }
 
-console.log("GETTING THE BOX");
 var itemBox = $(dialog).find(".show").find(".item-list");
-console.log(itemBox);
 var html = "";
 <% e.event_items.each do |item| %>
 html += "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p'>";
@@ -32,9 +32,6 @@ html += "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p'>";
 	html += "<div class='w-25p bdr-g bdc-ccc p-10 fl-l'><%= item.duration %></div>";		 		
 html += "</div>";
 <% end %>
-console.log("HTML IS READY");
-console.log(html);
-
 $(itemBox).append(html);
 toggleModal("#eventModal");
 

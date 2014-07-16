@@ -4,9 +4,10 @@ class EventTemplatesController < ApplicationController
   
   def create
     event_items = params[:items]
+    event_template = params[:event]
     if can? :create, :event
       e = Event.new
-      e = Event.create name: params[:event[:name] ], description: params[:event[:description]]
+      e = Event.create name: event_template["name"], description: event_template["description"]
       e.organization = current_user.organization
       e.user = current_user
       e.isTemplate = true
@@ -32,7 +33,7 @@ class EventTemplatesController < ApplicationController
   end
   
   def set_view_path
-    @view_path = "account/events/templates"
+    @view_path = "account/events/templates/"
   end
   
   def print_action

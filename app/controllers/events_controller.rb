@@ -5,16 +5,20 @@ class EventsController < ApplicationController
   def create    
     ep = event_params
     event_items = params[:items]
-    start = DateTime.strptime(params[:stime], "%m-%d-%Y %I:%M %p")
+    st = params[:sDate] + " " + params[:sTime] + " " + params[:sMeridian]
+    puts st    
+    start = DateTime.strptime(st, "%m-%d-%Y %I:%M %p").to_time
     e = Event.new
-    e = Event.create name: ep[:name], start_time: start, description: ep[:description]
+    e = Event.create name: ep[:name], start_time: start, description: ep[:description], isTemplate: false
     e.organization = current_user.organization
     e.user = current_user
     
-    event_items.each do |key, value|
-      i = EventItem.create value
-      i.event = e
-      i.save
+    if !event_items.nil?
+      event_items.each do |key, value|
+        i = EventItem.create value
+        i.event = e
+        i.save
+      end
     end
     
     if e.save
@@ -49,15 +53,21 @@ class EventsController < ApplicationController
   end
   
   def show
-    Rails.logger.debug "AHHHHHHHHHHHHHHHHHHH"
-    puts @view_path
-    
     respond_to do |format|
       format.js { render :template => @view_path + "js/show.js.erb", :locals => {:e => @event} }
     end
   end
   
   def index
+    
+  end
+  
+  def add
+    #Find the event
+    e = Event.find(params[:template_id])
+    respond_to do |format|
+      format.js{ render :template => @view_path + "js/add.js.erb", :locals => {:e => e, :msg => "Template #{e.name} has been added to your current event."} }
+    end
     
   end
   

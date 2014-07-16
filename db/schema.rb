@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140704141017) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "location"
+    t.boolean  "isTemplate"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

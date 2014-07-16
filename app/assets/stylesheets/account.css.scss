@@ -152,7 +152,7 @@
 
 //Information Modals
 .velocity-modal.tiny{
-  h3{@extend .c-lg;@extend .fs-lg;@extend .m-0;@extend .pv-10;}  
+  h3{@extend .c-lg;@extend .fs-lg;@extend .m-0;@extend .pb-5;}  
   label, p{
     @extend .m-0;
     @extend .lh-14;
@@ -163,7 +163,6 @@
     @extend .w-100p;     
   }
   p{
-    @extend .pl-5;
     @extend .pb-10;
     @extend .fs-sm;
   }

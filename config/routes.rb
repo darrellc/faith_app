@@ -8,9 +8,12 @@ FaithApp::Application.routes.draw do
   
   scope "/events" do
     resources :items, :controller => "event_items"
-    resources :templates, :controller => "event_templates"  
+    resources :templates, :controller => "event_templates"
+      
   end 
-    
+  
+  get '/add_template', to: "events#add"
+  
   root "static_pages#home"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
