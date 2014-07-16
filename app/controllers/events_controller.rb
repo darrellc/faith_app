@@ -64,9 +64,15 @@ class EventsController < ApplicationController
   
   def add
     #Find the event
-    e = Event.find(params[:template_id])
-    respond_to do |format|
-      format.js{ render :template => @view_path + "js/add.js.erb", :locals => {:e => e, :msg => "Template #{e.name} has been added to your current event."} }
+    if params[:template_id] != ""
+      e = Event.find(params[:template_id])
+      respond_to do |format|
+        format.js{ render :template => @view_path + "js/add.js.erb", :locals => {:e => e, :msg => "Template #{e.name} has been added to your current event.", :empty => nil} }
+      end
+    else
+      respond_to do |format|
+        format.js{ render :template => @view_path + "js/add.js.erb", :locals => {:empty => params[:template_id]} }
+      end
     end
     
   end

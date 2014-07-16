@@ -1,43 +1,36 @@
-createAlert({
-	type: "success",
-	msg: "<%= msg %>"		
-});
-
-var container = $("#itemBox .item-list");
-console.log("WHAT!");
-$(container).empty();
-
-var html = "";
-<% 
-html = ""
-count = 0
-e.event_items.each do |i| 
-	html += "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p'>
-	puts html
-	html += "<div class='w-75p bdr-g bdl-g bdc-ccc p-10 fl-l'>#{i.name}</div>"
-	puts html
-	html += "<div class='w-25p bdr-g bdc-ccc p-10 fl-l'>#{i.duration}</div>"
-	puts html
-	html += "<input type='hidden' name='items[item#{count}[name]]' value='#{i.name}' />"
-	puts html
-	html += "<input type='hidden' name='items[item#{count}[duration]]' value='#{i.duration}' />"
-	puts html
-	html += "</div>"
-	puts html
-	count++ 
-end
-%>
-	console.log("HEY!");
-	<% puts "YEAH YEAH " %>
-	html += "";
-		html += "<div ";
-		html += "";
-		html += "";
-		html += "<input type='hidden' name='items[item"+counter+"[duration]]' value='<%= i.duration %>' />"; 		
-	html += "</div>";
-<% end %>
-console.log("HTML" + html);
-$(container).append(html);
-//enable the select box
-$("#event_template_id").removeClass("disabled");
+try{
+	var container = $("#itemBox .item-list");
+	<% if empty.nil? %>
+	createAlert({
+		type: "success",
+		msg: "<%= msg %>"		
+	});
 	
+	
+	console.log("WHAT!");
+	
+	
+	var html = "";
+	var counter = 0;
+	<% e.event_items.each do |i| %>
+		console.log("HEY!");
+		<% puts "YEAH YEAH " %>
+		html += "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p'>";
+			html += "<div class='w-75p bdr-g bdl-g bdc-ccc p-10 fl-l'><%= i.name %></div>";
+			html += "<div class='w-25p bdr-g bdc-ccc p-10 fl-l'><%= i.duration %></div>";
+			html += "<input type='hidden' name='items[item"+counter+"[name]]' value='<%= i.name %>' />";
+			html += "<input type='hidden' name='items[item"+counter+"[duration]]' value='<%= i.duration %>' />"; 		
+		html += "</div>";
+		counter++;
+	<% end %>
+	console.log("HTML: " + html);
+	$(container).append(html);		
+	<% else %>
+		$(container).empty();
+	<% end %>
+	//enable the select box
+	$("#event_template_id").removeClass("disabled");
+}catch(err){
+	alert(err.message + err.stack);
+}
+		

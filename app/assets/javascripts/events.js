@@ -183,14 +183,12 @@ $(function(){
 		$("#addItemForm input[name=container]").val("#itemShowBox .item-list");
 	});
 	
-	$("#addEventForm #event_template_id").on("change", function(){
-		if($(this).val() !== ""){
-			$(this).addClass("disabled");
-			$.ajax({
-				type: "GET",
-				url: "/add_template?template_id=" + $(this).val()
-			});
-		}
+	$("#addEventForm #event_template_id").on("change", function(){		
+		$(this).addClass("disabled");
+		$.ajax({
+			type: "GET",
+			url: "/add_template?template_id=" + $(this).val()
+		});
 	});
 	
 });
