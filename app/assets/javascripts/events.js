@@ -94,9 +94,9 @@ $(function(){
     	if($(this).attr("data-action") == undefined || $(this).attr("data-action") == "") alert("each action button must have a data-action");
     	
     	$dialog = $($(this).attr("data-id"));
-    	$dialog.children("div").hide();
+    	$dialog.children(".modal-dialog").children("div").hide();
     	var action = $(this).attr("data-action");
-    	$dialog.children("."+action).show();
+    	$dialog.children(".modal-dialog").children("."+action).show();
     });
     
     $("#body").on("click", "tbody tr", function(e){
@@ -133,7 +133,7 @@ $(function(){
     });
     
  	$(document).mouseup(function (e){
- 		var containers = [".velocity-modal", "#side-bar-mobile"];
+ 		var containers = [".velocity-modal .modal-dialog", "#side-bar-mobile"];
  		if($(e.target).hasClass("trigger") || $(e.target).parent().hasClass("trigger"))
  			return; 		
  		for(var i=0;i<containers.length;i++){
@@ -144,7 +144,7 @@ $(function(){
 						case "#side-bar-mobile":
 							toggleSideBar();
 							break;
-						case ".velocity-modal":
+						case ".velocity-modal .modal-dialog":
 							//Get all velocity modals
 							var mods = $(".velocity-modal.open");
 							var close;

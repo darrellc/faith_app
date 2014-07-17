@@ -47,9 +47,8 @@
 .tab-content > div{
     .row{max-width: 100%;}
     h2{font-family: "daysregular";}
-    h2 button{top: 20px;}
     h3{color: rgb(196, 196, 196);@extend .fw-b;@extend .pos-r;font-family: "robotoregular";@extend .m-0;}
-    button{@extend .pos-a;@extend .t-0;@extend .r-0;@extend .bd;@extend .bdc-ccc;@extend .c-dg;padding: 7px 30px;@extend .bdrz-5;@extend .bg-w;@extend .ev;}
+    button{@extend .pos-r;;@extend .bd;@extend .bdc-ccc;@extend .c-dg;padding: 7px 30px;@extend .bdrz-5;@extend .bg-w;@extend .ev;@extend .fl-r;margin-bottom: 8px;}
     table{width: 100%;border-spacing: 0;border-collapse: separate;@extend .ov-h;@extend .bd-n;@extend .mt-5;        
           thead td{border-right: 1px solid #ccc;@extend .p-n;}
           thead td:last-child{border-right: none;}
@@ -151,27 +150,43 @@
 }
 
 //Information Modals
-.velocity-modal.tiny{
-  h3{@extend .c-lg;@extend .fs-lg;@extend .m-0;@extend .pb-5;}  
-  label, p{
-    @extend .m-0;
-    @extend .lh-14;
+.velocity-modal{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: none;
+  display: none;
+  .modal-dialog.tiny{width: 100%;max-width: 400px;}
+  .modal-dialog{
+    background: white;
+    margin: 100px auto;
+    display: none;
+    @extend .pos-r;
+    @extend .p-n;
+    h3{@extend .c-lg;@extend .fs-lg;@extend .m-0;@extend .pb-5;}
+    label, p{
+      @extend .m-0;
+      @extend .lh-14;
+    }
+    label{
+      @extend .fw-b;
+      @extend .pb-5;
+      @extend .w-100p;     
+    }
+    p{
+      @extend .pb-10;
+      @extend .fs-sm;
+    }
+    a.reveal-action{
+      @extend .c-dg;@extend .td-n;@extend .ev;@extend .bg-ow;
+      &:focus{background: #e3e3e3;}
+    }
+    a.reveal-action.active{background: #333;color: white;}  
   }
-  label{
-    @extend .fw-b;
-    @extend .pb-5;
-    @extend .w-100p;     
-  }
-  p{
-    @extend .pb-10;
-    @extend .fs-sm;
-  }
-  a.reveal-action{
-    @extend .c-dg;@extend .td-n;@extend .ev;@extend .bg-ow;
-    &:focus{background: #e3e3e3;}
-  }
-  a.reveal-action.active{background: #333;color: white;}
- 
 }
 
 #confirmDialog{

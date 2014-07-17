@@ -25,7 +25,9 @@ function toggleModal(id){
 	//The modal is visible	
 	if($(id).is(":visible")){
 		zind = parseInt($(id).css("zIndex"));
-		$(id).velocity("transition.expandOut", 500).removeClass("open").css({"zIndex": 110});
+		$(id).find(".modal-dialog").velocity("transition.expandOut",{duration: 500, display: "none", complete: function(){
+			$(id).removeClass("open").css({"zIndex": 110}).hide();	
+		} });		
 		if(open.length > 0)
 			$("#modal-overlay").css("zIndex", zind - 40);
 		else			
@@ -36,7 +38,9 @@ function toggleModal(id){
 			if(zind < $(open[i]).css("z-index"))
 				zind = parseInt($(open[i]).css("z-index")) + 20;		
 		}
-		$(id).css({marginLeft: -$(id).outerWidth()/2, zIndex: zind + 10}).velocity("transition.expandIn", 500).addClass("open");
+		$(id).show().addClass("open").css({"zIndex": zind + 10});
+		$(id).find(".modal-dialog").velocity("transition.expandIn",{duration: 500, display: "block"});
+		$(id).children(".modal-dialog").show();
 		$("#modal-overlay").show().css("zIndex", zind);
 	}
 }

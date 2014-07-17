@@ -1,31 +1,33 @@
 <!-- Modal used for adding a new item and editing an item -->
-<div id="itemModal" class="velocity-modal tiny">
-	<a class="close-velocity-modal close">&#215;</a>    	
-	<div class="add">
-		<h3 class="c-lg">Add Item</h3>
-	  	<div>
-	  		<%= form_for(:event_item, url: "/events/items", html: { id: "addItemForm" }, remote: true ) do |f| %>  			
-			    <div><%= f.text_field :name, autofocus: true, :placeholder => "Name" %></div>	
-			    <div><%= f.text_area :description, :placeholder => "Description" %></div>
-			    <div class="clearfix">
-			    	<div class="columns small-3 pv-10">Min.</div>
-		    		<div class="columns small-3 p-0"><input type="text" name="duration_min" value="0"></div>
-		    		<div class="columns small-3 pt-10 pb-10 pl-10">Sec.</div>
-		    		<div class="columns small-3 p-0"><input type="text" name="duration_sec" value="00"></div>
-	    		</div>
-			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action">Connect Song</a>
-			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action">Connect Members</a>	
-			    <input type="hidden" name="mode" value="add" />
-			    <input type="hidden" name="container" />		    	    
-			    <div><%= f.submit "Add Item", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
-	  		<% end %>
-	    </div>
+<div id="itemModal" class="velocity-modal">
+	<div class="modal-dialog tiny">
+		<a class="close-velocity-modal close">&#215;</a>    	
+		<div class="add">
+			<h3 class="c-lg">Add Item</h3>
+		  	<div>
+		  		<%= form_for(:event_item, url: "/events/items", html: { id: "addItemForm" }, remote: true ) do |f| %>  			
+				    <div><%= f.text_field :name, autofocus: true, :placeholder => "Name" %></div>	
+				    <div><%= f.text_area :description, :placeholder => "Description" %></div>
+				    <div class="clearfix">
+				    	<div class="columns small-3 pv-10">Min.</div>
+			    		<div class="columns small-3 p-0"><input type="text" name="duration_min" value="0"></div>
+			    		<div class="columns small-3 pt-10 pb-10 pl-10">Sec.</div>
+			    		<div class="columns small-3 p-0"><input type="text" name="duration_sec" value="00"></div>
+		    		</div>
+				    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action">Connect Song</a>
+				    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action">Connect Members</a>	
+				    <input type="hidden" name="mode" value="add" />
+				    <input type="hidden" name="container" />		    	    
+				    <div><%= f.submit "Add Item", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
+		  		<% end %>
+		    </div>
+		</div>
+		<div class="show">
+			
+		</div>
+		<div class="edit">
+			
+		</div>
+	  	
 	</div>
-	<div class="show">
-		
-	</div>
-	<div class="edit">
-		
-	</div>
-  	
 </div>

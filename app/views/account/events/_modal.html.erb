@@ -1,71 +1,72 @@
 <!-- Modal used for adding a new event viewing an event and editing an event -->
-<div id="eventModal" class="velocity-modal tiny">
-	<a class="close-velocity-modal close">&#215;</a>    	
-	<div class="add">
-		<h3 class="c-lg">Add Event</h3>
-	  	<div>
-	  		<%= form_for(:event, url: "/events", html: { id: "addEventForm" }, remote: true ) do |f| %>  			
-			    <div><%= f.text_field :name, autofocus: true, :placeholder => "Name" %></div>	
-			    <div><%= f.text_area :description, :placeholder => "Description" %></div>
-			    <div class="clearfix">
-			    	<div class="columns medium-6 pl-0">
-			    		<input type="text" data-field="date" readonly placeholder="Start Date" name="sDate"/>
-			    	</div>
-			    	<div class="columns medium-4 pl-0">
-			    		<input type="text" data-field="time" readonly placeholder="Start Time" name="sTime"/>
-			    	</div>
-			    	<div class="columns medium-2 pl-0 pr-0">
-			    		<select name="sMeridian"><option value="AM">AM</option><option value="PM">PM</option></select>
-			    	</div>
-			    </div>
-			    <% 
-			    	options = [["Template?", ""]]
-			    	@organization.events.where(isTemplate: true).each do |e|
-		    			options.push [e.name, e.id]
-		    		end
-			    
-			    %>
-			    <div><%= f.select :template_id, options %></div>
-			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id="#itemBox">Items<i class="fa fa-chevron-down fl-r"></i></a>
-			    <div id="itemBox" class="d-n">
-			    	<div class="item-list bdt-g bdc-ccc"></div>
-			    	<a href="#" class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc action-button td-n modal-button" data-id="#itemModal" data-action="add" data-type="item">Add Item</a>
-			    </div>	    
-			    <div><%= f.submit "Add Event", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
-	  		<% end %>
-	    </div>
-	</div>
-	<div class="show">
-		<div class="clearfix">
+<div id="eventModal" class="velocity-modal">
+	<div class="modal-dialog tiny">
+		<a class="close-velocity-modal close">&#215;</a>    	
+		<div class="add">
+			<h3 class="c-lg">Add Event</h3>
+		  	<div>
+		  		<%= form_for(:event, url: "/events", html: { id: "addEventForm" }, remote: true ) do |f| %>  			
+				    <div><%= f.text_field :name, autofocus: true, :placeholder => "Name" %></div>	
+				    <div><%= f.text_area :description, :placeholder => "Description" %></div>
+				    <div class="clearfix">
+				    	<div class="columns medium-6 pl-0">
+				    		<input type="text" data-field="date" readonly placeholder="Start Date" name="sDate"/>
+				    	</div>
+				    	<div class="columns medium-4 pl-0">
+				    		<input type="text" data-field="time" readonly placeholder="Start Time" name="sTime"/>
+				    	</div>
+				    	<div class="columns medium-2 pl-0 pr-0">
+				    		<select name="sMeridian"><option value="AM">AM</option><option value="PM">PM</option></select>
+				    	</div>
+				    </div>
+				    <% 
+				    	options = [["Template?", ""]]
+				    	@organization.events.where(isTemplate: true).each do |e|
+			    			options.push [e.name, e.id]
+			    		end
+				    
+				    %>
+				    <div><%= f.select :template_id, options %></div>
+				    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id="#itemBox">Items<i class="fa fa-chevron-down fl-r"></i></a>
+				    <div id="itemBox" class="d-n">
+				    	<div class="item-list bdt-g bdc-ccc"></div>
+				    	<a href="#" class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc action-button td-n modal-button" data-id="#itemModal" data-action="add" data-type="item">Add Item</a>
+				    </div>	    
+				    <div><%= f.submit "Add Event", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
+		  		<% end %>
+		    </div>
+		</div>
+		<div class="show">
 			<div class="clearfix">
-				<h3 class="fl-l"></h3><span class="bg-ev bdrz-5 isTemplate fs-12 fl-l c-ow fw-b p-5 m-5">Template</span>
-			</div>					
-			<p class="fs-16 fw-b p-0"></p>
+				<div class="clearfix">
+					<h3 class="fl-l"></h3><span class="bg-ev bdrz-5 isTemplate fs-12 fl-l c-ow fw-b p-5 m-5">Template</span>
+				</div>					
+				<p class="fs-16 fw-b p-0"></p>
+				
+			</div>
+			<hr />
+			<div class="row">
+				<div class="columns medium-6 p-0">
+					<label>Start Time</label>
+					<p></p>													
+				</div>
+				<div class="columns medium-6 p-0">
+					<label>Added By</label>
+					<p></p>	
+				</div>
+			</div>
+			<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id="#itemShowBox">Items<i class="fa fa-chevron-down fl-r"></i></a>
+			<div id="itemShowBox" class="d-n">
+				<div class="item-list bdt-g bdc-ccc"></div>
+				<a href="#" class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc action-button td-n modal-button" data-id="#itemModal" data-action="add" data-type="item">Add Item</a>	    	
+			</div>
+			<div class="clearfix">
+				<a href="#" class="action-button d-b fl-l td-u mv-10" data-id="#eventModal" data-action="edit" data-remote="true">Edit</a>
+			</div>		
+		</div>
+		<div class="edit">
 			
 		</div>
-		<hr />
-		<div class="row">
-			<div class="columns medium-6 p-0">
-				<label>Start Time</label>
-				<p></p>													
-			</div>
-			<div class="columns medium-6 p-0">
-				<label>Added By</label>
-				<p></p>	
-			</div>
-		</div>
-		<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id="#itemShowBox">Items<i class="fa fa-chevron-down fl-r"></i></a>
-		<div id="itemShowBox" class="d-n">
-			<div class="item-list bdt-g bdc-ccc"></div>
-			<a href="#" class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc action-button td-n modal-button" data-id="#itemModal" data-action="add" data-type="item">Add Item</a>	    	
-		</div>
-		<div class="clearfix">
-			<a href="#" class="action-button d-b fl-l td-u mv-10" data-id="#eventModal" data-action="edit" data-remote="true">Edit</a>
-		</div>		
+	  	
 	</div>
-	<div class="edit">
-		
-	</div>
-  	
 </div>
-
