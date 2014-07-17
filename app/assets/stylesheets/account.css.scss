@@ -185,7 +185,10 @@
       @extend .c-dg;@extend .td-n;@extend .ev;@extend .bg-ow;
       &:focus{background: #e3e3e3;}
     }
-    a.reveal-action.active{background: #333;color: white;}  
+    a.reveal-action.active{background: #333;color: white;}
+    .item-row{
+      a{padding: 6px 8px; font-size: 1.5em;}
+    }  
   }
 }
 

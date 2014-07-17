@@ -7,6 +7,15 @@ class EventItemsController < ApplicationController
     #Take the params
     itemP = event_item_params
     
+    if params[:container].include? "#itemShowBox"
+      puts "THE EVENT WAS ALREADY CREATED"
+      event = Event.find params[:event_id]
+      puts event.inspect
+      item = EventItem.create name: itemP[:name], description: itemP[:description], duration: params[:duration_min]+":"+params[:duration_sec]
+      item.event = event
+      item.save
+    end
+    
     respond_to do |format|
       format.html { redirect_to root_path }
       format.js { render(:template => @view_path + "js/create.js.erb",

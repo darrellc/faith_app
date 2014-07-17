@@ -1,5 +1,4 @@
 <% if success %>
-
 	createAlert({
 		type: "success",
 		msg: "<%= msg %>"		
@@ -13,8 +12,10 @@
 	var html = "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p'>";
 		html += "<div class='w-75p bdr-g bdl-g bdc-ccc p-10 fl-l'><%= i[:name] %></div>";
 		html += "<div class='w-25p bdr-g bdc-ccc p-10 fl-l'><%= i[:duration] %></div>";
+	<% if !i[:container].include? "#itemShowBox" %>
 		html += "<input type='hidden' name='items[item"+counter+"[name]]' value='<%= i[:name] %>' />";
-		html += "<input type='hidden' name='items[item"+counter+"[duration]]' value='<%= i[:duration] %>' />"; 		
+		html += "<input type='hidden' name='items[item"+counter+"[duration]]' value='<%= i[:duration] %>' />";
+	<% end %> 		
 	html +=    "</div>";
 	
 	$(container).append(html);

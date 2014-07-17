@@ -1,5 +1,6 @@
 <% puts mode %>
 var dialog = $("#userModal");
+var modal = $(dialog).children(".modal-dialog");
 <% if mode == "show_edit" %>
 	var inputs = $(dialog).find(".edit input, .edit select").not(":hidden");
 	var info = ["<%= u.first_name %>","<%= u.last_name %>", <%= u.role %>];
@@ -16,9 +17,9 @@ var dialog = $("#userModal");
 <% else %>
 	
 	//Hide all the action divs
-	$(dialog).children("div").hide()
+	$(modal).children("div").hide()
 	//Show the the 'show' action div
-	$(dialog).children("div.show").show();
+	$(modal).children("div.show").show();
 	
 	//Fill the information in the 'show' div
 	$(dialog).find(".show h3").html("<%= u.fullName %>");

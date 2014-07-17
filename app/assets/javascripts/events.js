@@ -181,6 +181,7 @@ $(function(){
 	});
 	$("#itemShowBox a.action-button").on("click", function(){
 		$("#addItemForm input[name=container]").val("#itemShowBox .item-list");
+		$("#addItemForm input[name=event_id]").val($(this).closest(".show").attr("data-id"));
 	});
 	
 	$("#addEventForm #event_template_id").on("change", function(){		
