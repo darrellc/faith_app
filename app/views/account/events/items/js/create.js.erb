@@ -9,7 +9,7 @@
 	
 	$("#addItemForm")[0].reset();
 		
-	var html = "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p event-item'>";
+	var html = "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p event-item' <%= data_id %>>";
 		html += "<div class='w-60p bdr-g bdl-g bdc-ccc p-10 fl-l'><%= i[:name] %></div>";
 		html += "<div class='w-30p bdr-g bdc-ccc p-10 fl-l'><%= i[:duration] %></div>";
 		html += "<div class='w-10p bdr-g bdc-ccc fl-l'><a href='#' class='c-dr fs-n ev fl-r delete-item-btn' data-type='item' data-name='<%= i[:name] %>'><i class='fa fa-times'></i></a></div>";

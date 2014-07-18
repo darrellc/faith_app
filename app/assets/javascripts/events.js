@@ -89,7 +89,7 @@ $(function(){
 		e.preventDefault();
 	});
     
-    $("body").on("click", ".action-button",function(){
+    $("body").on("click", ".action-button",function(e){
     	if($(this).attr("data-id") == undefined || $(this).attr("data-id") == "") alert("each action button must have a data-id");
     	if($(this).attr("data-action") == undefined || $(this).attr("data-action") == "") alert("each action button must have a data-action");
     	
@@ -97,6 +97,7 @@ $(function(){
     	$dialog.children(".modal-dialog").children("div").hide();
     	var action = $(this).attr("data-action");
     	$dialog.children(".modal-dialog").children("."+action).show();
+    	e.preventDefault();
     });
     
     $("#body").on("click", "tbody tr", function(e){
@@ -124,12 +125,14 @@ $(function(){
     	e.preventDefault();
     });    
     
-    $("body").on("click", ".modal-button", function(){
-		toggleModal($(this).attr("data-id"));			
+    $("body").on("click", ".modal-button", function(e){
+		toggleModal($(this).attr("data-id"));
+		e.preventDefault();			
     });
     
-    $("body").on("click", ".close-velocity-modal", function(){  
+    $("body").on("click", ".close-velocity-modal", function(e){  
     	toggleModal($(this).closest(".velocity-modal"));   	
+    	e.preventDefault();
     });
     
  	$(document).mouseup(function (e){
@@ -141,28 +144,7 @@ $(function(){
  			if(!$(c).is(e.target) && $(c).has(e.target).length === 0){
  				if($(c).is(":visible")){
  					switch(c){
-						case "#side-bar-mobile":
-							toggleSideBar();
-							break;
-						case ".velocity-modal .modal-dialog":
-							//Get all velocity modals
-							var mods = $(".velocity-modal.open");
-							var close;
-							for(var i=0;i<mods.length;i++){
-								if(close === undefined){
-									close = mods[i];
-								}
-								//get z-index
-								closez = $(close).css("z-index");
-								modz = $(mods[i]).css("z-index");
-								
-								//Compare z-index.  If the modz > closez then set close to mods[i]
-								if(modz > closez)
-									close = mods[i];
-							}
-							if($(e.target).hasClass("dtpicker-bg") || $("#dtBox").has(e.target).length !== 0) return;
-							toggleModal(close);
-							break;
+						case "#side-bar-mobile": toggleSideBar(); break;					
 					}	
  				}
  				
@@ -171,17 +153,22 @@ $(function(){
     	e.preventDefault();
 	});
 	
-	$("body").on("click", ".delete-item-btn", function(){
+	$("body").on("click", ".delete-item-btn", function(e){
 		if(!$(this).hasClass("disabled")){
-			var box = $(this).attr("data-box");
+			var id = $(this).attr("data-id");
 			//If no box found then we know that this is a temporary event item
-			if(box === undefined)
+			if(id === undefined){
 				$(this).closest(".event-item").velocity("fadeOut").remove();
-			else{
+				createAlert({
+					type: "success",
+					msg: "The item was successfully deleted",
+					timeout: 1000
+				});
+			}else{
 				var dialog = $("#confirmModal");
 		    	var button = $(dialog).find(".confirm-button");	    	
 			   	//Set the url to the href of the confirm button - this will trigger the REST delete call when the button is clicked.
-		    	$(button).attr({"href":"/events/items/"+$(this).closest(".event-item").attr("data-id")});
+		    	$(button).attr({"href":"/events/items/"+id});
 		    	//Fill in the information
 		    	$(dialog).find(".confirm-type").html($(this).attr("data-type"));
 		    	$(dialog).find(".confirm-name").html($(this).attr("data-name"));
@@ -189,26 +176,43 @@ $(function(){
 		    	toggleModal(dialog);
 			}
 		}
+		e.preventDefault();
 	});	
 	
-	//Specific Buttons
-	$("#itemBox a.action-button").on("click", function(){
-		$("#addItemForm input[name=container]").val("#itemBox .item-list");
-	});
-	$("#templateItemBox a.action-button").on("click", function(){
-		$("#addItemForm input[name=container]").val("#templateItemBox .item-list");
-	});
-	$("#itemShowBox a.action-button").on("click", function(){
-		$("#addItemForm input[name=container]").val("#itemShowBox .item-list");
-		$("#addItemForm input[name=event_id]").val($(this).closest(".show").attr("data-id"));
+	//Show action for event items
+	$("body").on("click", "div.event-item", function(e){
+		console.log("EVENT ITEM CLICKED");
+		var id = ($(this).attr("data-id") === undefined) ?  "" : $(this).attr("data-id"); 
+		//Call an AJAX call. Call the EventItem Index method
+		$.ajax({
+			type: "GET",
+			url: "/get_item?data-id="+id
+		});
+		e.preventDefault();
 	});
 	
-	$("#addEventForm #event_template_id").on("change", function(){		
+	//Specific Buttons
+	$("#itemBox a.action-button").on("click", function(e){
+		$("#addItemForm input[name=container]").val("#itemBox .item-list");
+		e.preventDefault();
+	});
+	$("#templateItemBox a.action-button").on("click", function(e){
+		$("#addItemForm input[name=container]").val("#templateItemBox .item-list");
+		e.preventDefault();
+	});
+	$("#itemShowBox a.action-button").on("click", function(e){
+		$("#addItemForm input[name=container]").val("#itemShowBox .item-list");
+		$("#addItemForm input[name=event_id]").val($(this).closest(".show").attr("data-id"));
+		e.preventDefault();
+	});
+	
+	$("#addEventForm #event_template_id").on("change", function(e){		
 		$(this).addClass("disabled");
 		$.ajax({
 			type: "GET",
 			url: "/add_template?template_id=" + $(this).val()
 		});
+		e.preventDefault();
 	});
 	
 });

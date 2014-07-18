@@ -6,12 +6,10 @@
 }
 
 @media all and (max-width: 768px){
+    .top-bar{margin-left: 3em;}
     .top-bar .navigation{display: none;}
-    #side-bar{display: none;}
-    #side-bar-button{display: block;}
     .tab-content{width: 100%;}
     .top-bar ul .logo{height: 50px;}
-    #side-bar-button{font-size: 1.2em;padding: 4px 15px;}
     #breadcrumbs{display: none;}
 }
 
@@ -20,10 +18,7 @@
   #slider li{
     p{font-size: 1em;margin:0;}
     a{font-size: 1.2em;}
-  }
-  
-  #side-bar-mobile{top: 54px;} 
-  #side-bar-button{padding: 3px 15px;}
+  }  
 }
 @media all and (max-width: 400px) {
   #slider li{

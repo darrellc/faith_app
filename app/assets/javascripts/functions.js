@@ -8,13 +8,12 @@
 function createAlert(alertP){
 	if(alertP.type === undefined) alert("createAlert - param: 'type' cannot be undefined.");
 	if(alertP.msg === undefined) alert("createAlert - param: 'msg' cannot be undefined.");	
-	var time = (alertP.timeout === undefined) ? 5000 : alertP.timeout;
-	var alert = $("<div />", {"class":"alert-box top "+alertP.type+" radius bxsh-l pos-a z-2000 mt-10 d-n", "html": alertP.msg}); 
+	var time = (alertP.timeout === undefined) ? 1000 : alertP.timeout;
+	var alert = $("<div />", {"class":"alert-box top "+alertP.type+" radius bxsh-l pos-a z-2000 mt-10 d-n", "html": alertP.msg});
+	$(".alert-box.top").remove(); 
 	$("body").prepend(alert);
-	$(alert).velocity("transition.slideDownIn", {displayduration: 300,complete: function(){
-		$(alert).velocity("transition.slideUpOut", {delay: time, duration: 300, complete: function(){
-			$(alert).remove();
-		} });	
+	$(alert).velocity("fadeIn", {duration: 100,complete: function(){
+		$(alert).velocity("fadeOut", {delay: time, duration: 100});	
 	} });
 }
 
@@ -43,23 +42,4 @@ function toggleModal(id){
 		$(id).children(".modal-dialog").show();
 		$("#modal-overlay").show().css("zIndex", zind);
 	}
-}
-
-function toggleSideBar(){//Mobile
-	//side bar mobile
-	var s = $("#side-bar-mobile");
-	//overlay
-	var o = $("#side-bar-overlay");
-	//Side bar is open
-	if($(s).is(":visible")){
-		$("#side-bar-mobile").velocity({left: -200},{display: "none"});
-		$("#side-bar-overlay").hide();
-		$("#side-bar-button").removeClass("active");
-	//Side bar is closed
-	}else{
-		$("#side-bar-mobile").velocity({left: 0},{display: "block"});
-		$("#side-bar-overlay").show();
-		$("#side-bar-button").addClass("active");
-	}
-	
 }

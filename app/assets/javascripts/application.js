@@ -15,6 +15,7 @@
 //= require foundation
 //= require jquery.velocity.min
 //= require jquery.velocity.ui
+//= require jquery.sidelinks
 //= require initializers
 //= require events
 //= require_tree .

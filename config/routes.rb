@@ -13,6 +13,7 @@ FaithApp::Application.routes.draw do
   end 
   
   get '/add_template', to: "events#add"
+  get '/get_item', to: "event_items#get"
   
   root "static_pages#home"
   # The priority is based upon order of creation: first created -> highest priority.

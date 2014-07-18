@@ -1,14 +1,14 @@
 <% if success %>
-	toggleModal("#confirmDialog");	
+	toggleModal("#confirmModal");	
 	$("#userTableData tr[data-id=<%= u.id %>]").velocity("fadeOut");
 	
 	createAlert({
 		type: "success",
 		msg: "The user was successfully deleted",
-		timeout: 3000
+		timeout: 1000
 	});
 <% else %>
-	toggleModal("#confirmDialog");
+	toggleModal("#confirmModal");
 	createAlert({
 		type: "alert",
 		msg: "The user was not deleted.",

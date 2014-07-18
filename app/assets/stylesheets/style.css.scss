@@ -105,6 +105,8 @@ a.c-lg:hover{color: $offWhite;}
 .close-velocity-modal.close:hover{text-decoration: none;color: darken(#ccc, 10%);}
 #confirmDialog .close-reveal-modal{@extend .pos-r;@extend .fs-n;@extend .fw-n;@extend .c-dg;@extend .bd;@extend .bdc-ccc;top: 0;right: 0;@extend .ev;}
 .velocity-modal{@extend .d-n;position: absolute;@extend .z-100;@extend .bg-w;@extend .p-n;left: 50%;top: 100px;}
+//Side links overrides
+.side-links-list li a{font-family: "robotoregular";}
 /***********************************/
 //Global Class
 /**********************************/
@@ -138,7 +140,8 @@ label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bot
 /**********************************/
 //_header.html.erb
 /**********************************/
-.top-bar{height: auto;background: white;@extend .bdb-bl; 
+header{@extend .bdb-bl;background: white;}
+.top-bar{height: auto;background: white; 
   .logo{height: 60px;}  
   .navigation li a {padding: 18px;color: #333;&:hover{background: $offWhite;text-decoration: none;}}
   .navigation li a.active{background: $darkBlue;color: #fff;}
@@ -153,7 +156,6 @@ label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bot
 .pricing{
   a:hover{@extend .td-n;}  
 }
-
 
 @import "account";
 

@@ -1,4 +1,4 @@
-<header class="pos-f t-0 z-1000 w-100p">
+<header class="pos-f t-0 z-1000 w-100p ov-h">
   <nav class="top-bar clearfix">        
         <a href="#" class="c-dg bg-w ev bdc-ccc p-n fl-l d-n fw-b td-n trigger" id="side-bar-button"><i class="fa fa-bars"></i></a>          
   	<ul class="title-area left">
@@ -6,10 +6,10 @@
   	</ul>
 	<ul class="fl-r navigation">
 		<% if !user_signed_in? %>
-            <li class="fl-l"><a href="#" id="registerLink" class="cur-p">Register</a></li>
-	  		<li class="fl-l"><a href="#" class="cur-p reveal-action" data-id="#loginForm">Login</a></li>
+            <li class="fl-l"><a href="#" id="registerLink" class="cur-p" data-side-link>Register</a></li>
+	  		<li class="fl-l"><a href="#" class="cur-p reveal-action" data-id="#loginForm" data-side-link>Login</a></li>
   		<% else %>  			
-  			<li class="fl-l"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+  			<li class="fl-l"><%= link_to('Logout', destroy_user_session_path, :method => :delete, "data-side-link" => "") %></li>
   		<% end %>	      	      
     </ul>
     <% if !user_signed_in? %>
