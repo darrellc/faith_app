@@ -74,17 +74,17 @@ $(function(){
        	e.preventDefault();
     });
     
-    $("#body").on("click", ".delete-btn", function(e){
+    $("body").on("click", ".delete-btn", function(e){
 		if(!$(this).hasClass("disabled")){
-			var $dialog = $("#confirmDialog");
-	    	var $button = $("#confirmDialog").find(".confirm-button");	    	
+			var dialog = $("#confirmModal");
+	    	var button = $(dialog).find(".confirm-button");	    	
 		   	//Set the url to the href of the confirm button - this will trigger the REST delete call when the button is clicked.
-	    	$button.attr({"href":$(this).attr("data-url")});
+	    	$(button).attr({"href":$(this).attr("data-url")});
 	    	//Fill in the information
-	    	$dialog.find(".confirm-type").html($(this).attr("data-type"));
-	    	$dialog.find(".confirm-name").html($(this).attr("data-name"));
+	    	$(dialog).find(".confirm-type").html($(this).attr("data-type"));
+	    	$(dialog).find(".confirm-name").html($(this).attr("data-name"));
 	    	//Open the confirm dialog
-	    	toggleModal($dialog);
+	    	toggleModal(dialog);
 		}
 		e.preventDefault();
 	});
@@ -169,8 +169,27 @@ $(function(){
  			}
  		}
     	e.preventDefault();
-	});	 
+	});
 	
+	$("body").on("click", ".delete-item-btn", function(){
+		if(!$(this).hasClass("disabled")){
+			var box = $(this).attr("data-box");
+			//If no box found then we know that this is a temporary event item
+			if(box === undefined)
+				$(this).closest(".event-item").velocity("fadeOut").remove();
+			else{
+				var dialog = $("#confirmModal");
+		    	var button = $(dialog).find(".confirm-button");	    	
+			   	//Set the url to the href of the confirm button - this will trigger the REST delete call when the button is clicked.
+		    	$(button).attr({"href":"/events/items/"+$(this).closest(".event-item").attr("data-id")});
+		    	//Fill in the information
+		    	$(dialog).find(".confirm-type").html($(this).attr("data-type"));
+		    	$(dialog).find(".confirm-name").html($(this).attr("data-name"));
+		    	//Open the confirm dialog
+		    	toggleModal(dialog);
+			}
+		}
+	});	
 	
 	//Specific Buttons
 	$("#itemBox a.action-button").on("click", function(){

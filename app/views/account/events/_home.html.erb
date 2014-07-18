@@ -23,7 +23,7 @@
         			<% if !can? :delete, e 
         				disabled = "disabled"
         			end %>
-    				<td><a href="#" class="<%= disabled %> c-dr fs-lg ph-15 ev fl-r delete delete-btn" data-url="/events/<%= e.id%>" data-type="User" data-name="<%= e.name %>"><i class="fa fa-times"></i></a></td> 
+    				<td><a href="#" class="<%= disabled %> c-dr fs-lg ph-15 ev fl-r delete delete-btn" data-url="/events/<%= e.id%>" data-type="Event" data-name="<%= e.name %>"><i class="fa fa-times"></i></a></td> 
         			      			
         		</tr>
         	<% end %>

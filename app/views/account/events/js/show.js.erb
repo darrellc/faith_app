@@ -27,17 +27,16 @@ for(var i=0;i<p.length;i++){
 var itemBox = $(dialog).find(".show").find(".item-list");
 var html = "";
 <% e.event_items.each do |item| %>
-html += "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p item-row' data-id='<%= item.id %>'>";
+html += "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p event-item' data-id='<%= item.id %>'>";
 	html += "<div class='w-60p bdr-g bdl-g bdc-ccc p-10 fl-l'><%= item.name %></div>";
 	html += "<div class='w-30p bdr-g bdc-ccc p-10 fl-l'><%= item.duration %></div>";
- 	html += "<div class='w-10p bdr-g bdc-ccc fl-l'><a href='#' class='c-dr fs-n ev fl-r delete delete-btn' data-url='/events/39' data-type='Event Item' data-name='<%= item.name %>'><i class='fa fa-times'></i></a></div>";	
+ 	html += "<div class='w-10p bdr-g bdc-ccc fl-l'><a href='#' class='c-dr fs-n ev fl-r delete delete-item-btn' data-box='#itemShowBox' data-type='Event Item' data-name='<%= item.name %>'><i class='fa fa-times'></i></a></div>";	
 html += "</div>";
 <% end %>
 $(itemBox).append(html);
 toggleModal("#eventModal");
-
 //Add the event id to the show div
-$(dialog).find(".show").attr("data-id", "<%= e.id %>")
+$(dialog).find(".show").attr("data-id", "<%= e.id %>");
 
 
 

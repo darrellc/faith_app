@@ -1,15 +1,19 @@
 <% if user_signed_in? %>
-	<div id="confirmDialog" class="velocity-modal tiny" data-reveal>
-	  <p class="title">Are you Sure?</p>
-	  <div class="p-m">
-	  	  <p class="sub-title">You want to <span class="c-dr">DELETE</span></h5>
-		  <div class="clearfix pb-15">
-		  	<span class="confirm-type fw-b fs-16 pr-10 fl-l"></span>
-		  	<span class="confirm-name fs-16 fl-l"></span>
-		  </div>
-		  <a href="#" class="button fl-l close-velocity-modal bg-ow radius m-0 td-n">No</a>
-		  <a href="#" class="button alert radius fl-r confirm-button m-0 td-n ev" data-remote="true" data-method="delete">Yes</a>	
-	  </div>   	
+	<div id="confirmModal" class="velocity-modal">
+		<div class="modal-dialog tiny">
+		  <p class="title fs-lgr d-b bdb-g bdc-ccc pb-15 ff-days">Are you Sure?</p>
+		  <div class="p-m">
+		  	  <p class="sub-title">You want to <span class="c-dr fw-b">DELETE</span></h5>
+			    <div class="clearfix pb-15">
+			  	    <span class="confirm-type fw-b fs-16 pr-10 fl-l"></span>
+			  	    <span class="confirm-name fs-16 fl-l"></span>
+			    </div>
+			  	<div class="clearfix">
+			  		<a href="#" class="button fl-l close-velocity-modal bg-ow radius m-0 td-n">No</a>
+		  			<a href="#" class="button alert radius fl-r confirm-button m-0 td-n ev" data-remote="true" data-method="delete">Yes</a>
+	  			</div>	
+		  </div>   	
+		</div>
 	</div>
 	
 	<div id="dtBox"></div>

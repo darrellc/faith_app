@@ -102,6 +102,7 @@
   input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus{border-color: $ev_color;}
   .action-button{color: $ev_color;&:hover{color: darken($ev_color, 10%);}
   }
+  .isTemplate{@extend .bg-ev;@extend .bdbrrz-5;@extend .c-ow;top: 0px;left: 0px;@extend .fs-sm;@extend .fw-b;@extend .pos-a;@extend .p-5;}
 }
 //Override date time picker
 .dtpicker-buttonCont .dtpicker-button{
@@ -167,7 +168,7 @@
     display: none;
     @extend .pos-r;
     @extend .p-n;
-    h3{@extend .c-lg;@extend .fs-lg;@extend .m-0;@extend .pb-5;}
+    h3{@extend .c-lg;@extend .fs-lg;@extend .m-0;@extend .pb-5;@extend .pt-10;}
     label, p{
       @extend .m-0;
       @extend .lh-14;
@@ -186,15 +187,20 @@
       &:focus{background: #e3e3e3;}
     }
     a.reveal-action.active{background: #333;color: white;}
-    .item-row{
+    .event-item{
       a{padding: 6px 8px; font-size: 1.5em;}
     }  
   }
 }
 
-#confirmDialog{
-  .title{@extend .fs-lgr;@extend .d-b;@extend .bdb-g;@extend .bdc-ccc;@extend .pb-15;}
-  .sub-title{@extend .fs-n;@extend .pv-10;}
+.modal-dialog{
+  p.title{
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.5em;
+    color: #808080;
+  }
+  p.sub-title{@extend .fs-n;@extend .pv-10;}
 }
 
 

@@ -15,9 +15,10 @@ try{
 	<% e.event_items.each do |i| %>
 		console.log("HEY!");
 		<% puts "YEAH YEAH " %>
-		html += "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p'>";
+		html += "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p event-item'>";
 			html += "<div class='w-75p bdr-g bdl-g bdc-ccc p-10 fl-l'><%= i.name %></div>";
 			html += "<div class='w-25p bdr-g bdc-ccc p-10 fl-l'><%= i.duration %></div>";
+			html += "<div class='w-10p bdr-g bdc-ccc fl-l'><a href='#' class='c-dr fs-n ev fl-r delete-item-btn' data-box="#itemShowBox" data-type='Event Item' data-name='<%= i.name %>'><i class='fa fa-times'></i></a></div>";
 			html += "<input type='hidden' name='items[item"+counter+"[name]]' value='<%= i.name %>' />";
 			html += "<input type='hidden' name='items[item"+counter+"[duration]]' value='<%= i.duration %>' />"; 		
 		html += "</div>";
