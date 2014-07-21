@@ -8,6 +8,8 @@ $(function(){
     $("#side-bar-mobile").css("height", $(window).height()-$("header").outerHeight());    
     
     $.sideLinks(); 
+    
+    $("a[data-transit]").transitButtons();
      
 });
 
