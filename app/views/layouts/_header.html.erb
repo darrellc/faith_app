@@ -1,4 +1,4 @@
-<header class="pos-f t-0 z-1000 w-100p ov-h">
+<header class="pos-f t-0 z-1000 w-100p">
   <nav class="top-bar clearfix">        
         <a href="#" class="c-dg bg-w ev bdc-ccc p-n fl-l d-n fw-b td-n trigger" id="side-bar-button"><i class="fa fa-bars"></i></a>          
   	<ul class="title-area left">
@@ -7,9 +7,9 @@
 	<ul class="fl-r navigation">
 		<% if !user_signed_in? %>
             <li class="fl-l"><a href="#" id="registerLink" class="cur-p" data-side-link>Register</a></li>
-	  		<li class="fl-l"><a href="#" class="cur-p reveal-action" data-id="#loginForm" data-side-link>Login</a></li>
+	  		<li class="fl-l"><a href="#" class="cur-p reveal-action bdb-bl" data-id="#loginForm" data-side-link>Login</a></li>
   		<% else %>  			
-  			<li class="fl-l"><%= link_to('Logout', destroy_user_session_path, :method => :delete, "data-side-link" => "") %></li>
+  			<li class="fl-l"><%= link_to('Logout', destroy_user_session_path, :method => :delete, "data-side-link" => "", "class" => "bdb-bl") %></li>
   		<% end %>	      	      
     </ul>
     <% if !user_signed_in? %>
@@ -22,17 +22,11 @@
     <% end %>
   </nav>
   <ul id="breadcrumbs" class="pos-a lis-n w-100p mv-10 d-n">
-  	<li class="fl-l ta-c"><a href="#events-box" class="c-dg ta-c fs-lg ff-days button bg-ow bdrz-10 bd bdc-ccc event-button td-n home-page-scroll-button pv-10 w-75p">events</a></li>
-  	<li class="fl-l ta-c"><a href="#people-box" class="c-dg ta-c fs-lg ff-days button outreach-button td-n bg-ow home-page-scroll-button pv-10 bdrz-10 bd bdc-ccc w-75p">people</a></li>
-  	<li class="fl-l ta-c"><a href="#work-box" class="c-dg ta-c fs-lg ff-days button work-button td-n bg-ow home-page-scroll-button pv-10 bdrz-10 bd bdc-ccc w-75p">work</a></li>
-  	<li class="fl-l ta-c"><a href="#expenses-box" class="c-dg ta-c fs-lg ff-days button expense-button td-n bg-ow home-page-scroll-button pv-10 bdrz-10 bd bdc-ccc w-75p">expenses</a></li>
-  	<li class="fl-l ta-c"><a href="#music-box" class="c-dg ta-c fs-lg ff-days button music-button td-n bg-ow home-page-scroll-button pv-10 bdrz-10 bd bdc-ccc w-75p">music</a></li>		
-	<li class="fl-l ta-c"><a href="#social-box" class="c-dg ta-c fs-lg ff-days button social-button td-n bg-ow home-page-scroll-button pv-10 bdrz-10 bd bdc-ccc w-75p">social</a></li>
+  	<li class="fl-l ta-c"><a href="#events-box" class="c-dg ta-c fs-lg ff-days button bg-ev bdrz-10 bd bdc-ccc td-n pv-10 w-75p hover" data-transit data-options="animation:scroll" data-class="ev">events</a></li>
+  	<li class="fl-l ta-c"><a href="#people-box" class="c-dg ta-c fs-lg ff-days button bg-or pv-10 bdrz-10 bd bdc-ccc w-75p hover" data-transit data-options="animation:scroll" data-class="or">people</a></li>
+  	<li class="fl-l ta-c"><a href="#work-box" class="c-dg ta-c fs-lg ff-days button td-n bg-wo pv-10 bdrz-10 bd bdc-ccc w-75p hover" data-transit data-options="animation:scroll" data-class="wo">work</a></li>
+  	<li class="fl-l ta-c"><a href="#expenses-box" class="c-dg ta-c fs-lg ff-days button td-n bg-ex pv-10 bdrz-10 bd bdc-ccc w-75p hover" data-transit data-options="animation:scroll" data-class="ex">expenses</a></li>
+  	<li class="fl-l ta-c"><a href="#music-box" class="c-dg ta-c fs-lg ff-days button td-n bg-mu pv-10 bdrz-10 bd bdc-ccc w-75p hover" data-transit data-options="animation:scroll" data-class="mu">music</a></li>		
+	<li class="fl-l ta-c"><a href="#social-box" class="c-dg ta-c fs-lg ff-days button td-n bg-so pv-10 bdrz-10 bd bdc-ccc w-75p hover" data-transit data-options="animation:scroll" data-class="so">social</a></li>
   </ul>
-  
-  <script type="text/javascript">
-    $(function(){
-        
-    });
-    </script>
 </header>

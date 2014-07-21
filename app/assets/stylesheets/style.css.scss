@@ -42,38 +42,7 @@ a.c-lg:hover{color: $offWhite;}
 .bg-faith-green.ev:hover{background: $darkGreen;}
 .bg-faith-green.ev:focus{background: darken($darkGreen, 10%);}
 //Different portal backgrounds
-//Users
-.bg-us{background: $us_color;}
-.bg-us.ev:hover{background: darken($us_color, 10%);}
-.bg-us.ev:focus{background: darken($us_color, 15%);}
-//Events
-.bg-ev{background: $ev_color;}
-.bg-ev.ev:hover{background: darken($ev_color, 10%);}
-.bg-ev.ev:focus{background: darken($ev_color, 15%);}
-//People
-.bg-or{background: $or_color;}
-.bg-or.ev:hover{background: darken($or_color, 10%);}
-.bg-or.ev:focus{background: darken($or_color, 15%);}
-//Designs
-.bg-de{background: $de_color;}
-.bg-de.ev:hover{background: darken($de_color, 10%);}
-.bg-de.ev:focus{background: darken($de_color, 15%);}
-//Social
-.bg-so{background: $so_color;}
-.bg-so.ev:hover{background: darken($so_color, 10%);}
-.bg-so.ev:focus{background: darken($so_color, 15%);}
-//Expenses
-.bg-ex{background: $ex_color;}
-.bg-ex.ev:hover{background: darken($ex_color, 10%);}
-.bg-ex.ev:focus{background: darken($ex_color, 15%);}
-//Work
-.bg-wo{background: $wo_color;}
-.bg-wo.ev:hover{background: darken($wo_color, 10%);}
-.bg-wo.ev:focus{background: darken($wo_color, 15%);}
-//Music
-.bg-mu{background: $mu_color;}
-.bg-mu.ev:hover{background: darken($mu_color, 10%);}
-.bg-mu.ev:focus{background: darken($mu_color, 15%);}
+
 //Action Colors
 .c-dr{color: $del_color;}
 .c-dr.ev:hover{color: darken($del_color, 10%);}
@@ -90,6 +59,7 @@ a.c-lg:hover{color: $offWhite;}
 .h-100p{height: 100%;}
 .off {margin-right: -100%;}
 .tiny{width: 98%;max-width: 500px;}
+.bdrz-50p{border-radius: 50%;-webkit-border-radius: 50%;}
 //Fonts
 .ff-mono{font-family: 'Roboto';}
 .ff-days{font-family: 'daysregular';}
@@ -106,7 +76,11 @@ a.c-lg:hover{color: $offWhite;}
 #confirmDialog .close-reveal-modal{@extend .pos-r;@extend .fs-n;@extend .fw-n;@extend .c-dg;@extend .bd;@extend .bdc-ccc;top: 0;right: 0;@extend .ev;}
 .velocity-modal{@extend .d-n;position: absolute;@extend .z-100;@extend .bg-w;@extend .p-n;left: 50%;top: 100px;}
 //Side links overrides
+.side-links-toggle{padding: 9px 20px 9px 0;}
 .side-links-list li a{font-family: "robotoregular";}
+.side-links-list li a.bdb-bl{@extend .bdb-bl;}
+.side-links-list li a i{display: none;}
+.side-links-list li a p{margin: 0;}
 /***********************************/
 //Global Class
 /**********************************/
@@ -125,6 +99,8 @@ label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bot
 /**********************************/
 //IDs
 /*********************************/
+#breadcrumbs{top: 64px;}
+#breadcrumbs a{margin: 0;}
 #body{overflow-y: auto;padding-top: 64px}
 #registerContainer{padding-top: 100px;}
 #loginForm{top: 64px;z-index: 500;right:0;-webkit-box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);height: 177px;
@@ -135,6 +111,8 @@ label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bot
 #footer{
   div.columns:first-child{@extend .bdl-n;}
   div.columns{@extend .bd;@extend .bdt-n;@extend .bdr-n;@extend .bdb-n;border-color: #808080;}
+  a.button{font-size: 1.2em;padding: 10px 13px;top: 9px;right: 9px;}
+  a:hover{background: lighten(#121218, 5%);color: lighten(#121218, 20%);}
 }
 #footer.fxd-bottom{position:fixed;width:100%;bottom:0;}
 /**********************************/
@@ -143,7 +121,7 @@ label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bot
 header{@extend .bdb-bl;background: white;}
 .top-bar{height: auto;background: white; 
   .logo{height: 60px;}  
-  .navigation li a {padding: 18px;color: #333;&:hover{background: $offWhite;text-decoration: none;}}
+  .navigation li a {padding: 18px;color: #333;border-bottom: none;&:hover{background: $offWhite;text-decoration: none;}}
   .navigation li a.active{background: $darkBlue;color: #fff;}
 }
 /**********************/
@@ -156,6 +134,7 @@ header{@extend .bdb-bl;background: white;}
 .pricing{
   a:hover{@extend .td-n;}  
 }
+@import "connections";
 
 @import "account";
 

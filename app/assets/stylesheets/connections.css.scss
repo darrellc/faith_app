@@ -1,0 +1,34 @@
+a.hover[data-class]{background: #fff;color: #333;}
+a.hover[data-class]:hover,a.hover.active[data-class]{background: $darkBlue;color: #fff;}
+//Users
+.bg-us,a.hover[data-class='us']:hover,a.hover.active[data-class='us']{background: $us_color;}
+.bg-us.ev:hover{background: darken($us_color, 10%);}
+.bg-us.ev:focus{background: darken($us_color, 15%);}
+//Events
+.bg-ev,a.hover[data-class='ev']:hover,a.hover.active[data-class='ev']{background: $ev_color;}
+.bg-ev.ev:hover{background: darken($ev_color, 10%);}
+.bg-ev.ev:focus{background: darken($ev_color, 15%);}
+//People
+.bg-or,a.hover[data-class='or']:hover,a.hover.active[data-class='or']{background: $or_color;}
+.bg-or.ev:hover{background: darken($or_color, 10%);}
+.bg-or.ev:focus{background: darken($or_color, 15%);}
+//Designs
+.bg-de,a.hover[data-class='de']:hover,a.hover.active[data-class='de']{background: $de_color;}
+.bg-de.ev:hover{background: darken($de_color, 10%);}
+.bg-de.ev:focus{background: darken($de_color, 15%);}
+//Social
+.bg-so,a.hover[data-class='so']:hover,a.hover.active[data-class='so']{background: $so_color;}
+.bg-so.ev:hover{background: darken($so_color, 10%);}
+.bg-so.ev:focus{background: darken($so_color, 15%);}
+//Expenses
+.bg-ex,a.hover[data-class='ex']:hover,a.hover.active[data-class='ex']{background: $ex_color;}
+.bg-ex.ev:hover{background: darken($ex_color, 10%);}
+.bg-ex.ev:focus{background: darken($ex_color, 15%);}
+//Work
+.bg-wo,a.hover[data-class='wo']:hover,a.hover.active[data-class='wo']{background: $wo_color;}
+.bg-wo.ev:hover{background: darken($wo_color, 10%);}
+.bg-wo.ev:focus{background: darken($wo_color, 15%);}
+//Music
+.bg-mu,a.hover[data-class='mu']:hover,a.hover.active[data-class='mu']{background: $mu_color;}
+.bg-mu.ev:hover{background: darken($mu_color, 10%);}
+.bg-mu.ev:focus{background: darken($mu_color, 15%);}

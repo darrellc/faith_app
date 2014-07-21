@@ -7,7 +7,6 @@
     @extend .bdr-g;
     border-right-width: 6px;    
 }
-
 //Different classes for the side bar to indicate what page the user is on
 #side-bar[data-class="da"]{border-color: $darkBlue;}
 #side-bar[data-class="us"]{border-color: $us_color;}
@@ -19,14 +18,8 @@
 #side-bar[data-class="wo"]{border-color: $wo_color;}
 #side-bar[data-class="ex"]{border-color: $ex_color;}
 
-#side-bar-mobile{
-    width: 200px;
-    top: 56px;
-    left: -200px;
-    a{padding: 10px 20px;}
-}
-#side-bar-button{padding: 16px 25px;border-right: 1px solid #ccc;}
-#side-bar-button.open{border-radius: 5px 5px 0 0;border-bottom: none;background: #f1f1f1;}
+#side-bar a p{margin:0;}
+
 #breadcrumbs li{width: 16.666667%;}
 .side, .connections, #breadcrumbs{
         

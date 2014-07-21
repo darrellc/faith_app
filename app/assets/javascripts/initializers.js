@@ -7,6 +7,7 @@ $(function(){
     $("#side-bar").css("height", $(window).height()-$("header").outerHeight()-$("#footer").outerHeight());
     $("#side-bar-mobile").css("height", $(window).height()-$("header").outerHeight());    
     
-    $.sideLinks();   
+    $.sideLinks(); 
+     
 });
 

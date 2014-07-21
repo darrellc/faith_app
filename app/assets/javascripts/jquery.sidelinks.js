@@ -38,7 +38,8 @@
 			if($(this).hasClass("active")){
 				toggleContainer("close");		
 			}else{
-				toggleContainer("open");				
+				toggleContainer("open");
+				$(components.container).css({"marginTop":$("header").outerHeight(true)});				
 			}
 			e.preventDefault();
 		});

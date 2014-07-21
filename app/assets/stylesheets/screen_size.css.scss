@@ -1,5 +1,13 @@
+@media all and (max-width: 1200px){
+  #side-bar a{font-size: .8em;} 
+  #side-bar a p{font-size: 1em;}
+}
+@media all and (max-width: 1024px){
+  #side-bar{display: none;}
+}
 @media all and (max-width: 1000px){
   #breadcrumbs li a{font-size: 1em;}
+  .tab-content > div{width: 100%;}
 }
 @media all and (max-width: 850px) {  
   #side-bar a{font-size: .8em;}  
@@ -11,6 +19,7 @@
     .tab-content{width: 100%;}
     .top-bar ul .logo{height: 50px;}
     #breadcrumbs{display: none;}
+    #body{padding-top: 53px;}
 }
 
 @media all and (max-width: 600px) {

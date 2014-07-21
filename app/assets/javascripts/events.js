@@ -2,29 +2,23 @@ $(function(){
     //When window is resized
     $(window).resize(function(){
         $("#side-bar").css("height", $(window).height()-$("header").outerHeight()-$("#footer").outerHeight());
-        $("#side-bar-mobile").css("height", $(window).height()-$("header").outerHeight());
         if($(window).width() < 768 ) $("#breadcrumbs").hide();
     });
     
-    //The 
-    $("body").on("click", "a.home-page-scroll-button", function(e){
-    	var id = $(this).attr("href");
-    	var offset = 0;
-    	if($("#breadcrumbs").is(":visible") || $(window).width() > 768){
-    		offset = -$("header").outerHeight(true)+5-$("#breadcrumbs").outerHeight(true);
-    	}else{
-    		offset = -$("header").outerHeight(true)+5;
-    	}
-    	$(id).velocity("scroll", {duration: 1000, easing: "easeOutExpo", offset: offset});
-    	if($("#side-bar-mobile").is(":visible"))
-    		toggleSideBar();
-    	e.preventDefault();
-    });
-    
     $(window).scroll(function(){
-		var sT = $(this).scrollTop();
+    	var sT = $(this).scrollTop();
 		var con = $("#home-page .connections");
 		var px = $(con).offset().top+$(con).outerHeight(true)-$("header").outerHeight(true)-$("#breadcrumbs").outerHeight(true);
+		var px = px-100;
+		if(sT !== 0){
+			if(!$("#footer a.button").is(":visible") ){
+				$("#footer a.button").velocity("fadeIn");	
+			}			
+		}else{
+		 	$("#footer a.button").velocity("fadeOut");
+		}
+		//Check if scrollTop is lower than any of the scroll buttons
+		checkScroll(sT);  
 		if($(window).width() > 768){
 			if(sT > px ){
 				if(!$("#breadcrumbs").is(":visible"))
@@ -57,23 +51,7 @@ $(function(){
     	toggleSideBar();    	
     	e.preventDefault();   	   	
 	});
-	//Change the panel
-    $(".side a").on("click", function(e){
-    	if(!$(this).hasClass("active")){
-    		var c = $(this).attr("href")+"-container";
-    		$(".side a").removeClass("active");
-    		$(".tab-content").children("div").hide();
-    		$(c).show();
-    		$("a[data-class='" + $(this).attr("data-class") + "']").addClass("active");
-    		$("#side-bar").attr("data-class",$(this).attr("data-class"));
-    		$(this).addClass("active");	
-    	}
-    	
-    	if($("#side-bar-mobile").is(":visible"))
-    		toggleSideBar();
-       	e.preventDefault();
-    });
-    
+	    
     $("body").on("click", ".delete-btn", function(e){
 		if(!$(this).hasClass("disabled")){
 			var dialog = $("#confirmModal");
