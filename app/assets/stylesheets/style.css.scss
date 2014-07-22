@@ -81,6 +81,11 @@ a.c-lg:hover{color: $offWhite;}
 .side-links-list li a.bdb-bl{@extend .bdb-bl;}
 .side-links-list li a i{display: none;}
 .side-links-list li a p{margin: 0;}
+//Transit Buttons overrides
+.transit-tracks{
+  z-index: 100;
+  li a{@extend .bdrz-5;@extend .ff-days;@extend .p-sm;@extend .tt-l;}
+}
 /***********************************/
 //Global Class
 /**********************************/
@@ -99,25 +104,25 @@ label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bot
 /**********************************/
 //IDs
 /*********************************/
-#breadcrumbs{top: 64px;}
-#breadcrumbs a{margin: 0;}
+#loginModal{
+  #loginForm{
+    input[type='checkbox']{float:left;}
+    label{float: left;padding: 0 5px;width: auto;}
+  }
+}
 #body{overflow-y: auto;padding-top: 64px}
 #registerContainer{padding-top: 100px;}
-#loginForm{top: 64px;z-index: 500;right:0;-webkit-box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);box-shadow: -3px 5px 10px 0 rgba(0,0,0,.5);height: 177px;
-  input:focus{-webkit-box-shadow: 0 0 3px 0px #ccc;box-shadow: 0 0 3px 0px #ccc;border-color: #ccc;}
-  label{color: white;}
-  .button{@extend .bg-w;color: $darkGray;@extend .bdrz-5;&:hover{background: darken(#fff, 10%);}}
-}
 #footer{
   div.columns:first-child{@extend .bdl-n;}
-  div.columns{@extend .bd;@extend .bdt-n;@extend .bdr-n;@extend .bdb-n;border-color: #808080;}
-  a.button{font-size: 1.2em;padding: 10px 13px;top: 9px;right: 9px;}
-  a:hover{background: lighten(#121218, 5%);color: lighten(#121218, 20%);}
+  div.columns{@extend .bd;@extend .bdt-n;@extend .bdr-n;@extend .bdb-n;border-color: #808080;}  
+  
 }
 #footer.fxd-bottom{position:fixed;width:100%;bottom:0;}
+#modal-overlay{@extend .d-n;background: black;@extend .op-60;@extend .pos-f;@extend .t-0;@extend .l-0;@extend .b-0;@extend .r-0;}
 /**********************************/
 //_header.html.erb
 /**********************************/
+a.transitTopButton{font-size: 1.2em;padding: 10px 13px;bottom: 10px;right: 10px;background: transparent;@extend .bxsh-h;@extend .bd-n;transition: background-color 300ms ease-out;&:hover{background: lighten(#121218, 5%);color: lighten(#121218, 20%);}}
 header{@extend .bdb-bl;background: white;}
 .top-bar{height: auto;background: white; 
   .logo{height: 60px;}  

@@ -9,7 +9,7 @@ $(function(){
     
     $.sideLinks(); 
     
-    $("a[data-transit]").transitButtons();
+    $("a[data-transit]").transitButtons({"tracksOffset": $("#home-page .connections").outerHeight(true) - 100});
      
 });
 

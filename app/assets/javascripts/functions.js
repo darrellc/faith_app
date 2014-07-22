@@ -43,11 +43,8 @@ function toggleModal(id){
 		$(id).show().addClass("open").css({"zIndex": zind + 10});
 		$(id).find(".modal-dialog").velocity("transition.expandIn",{duration: 500, display: "block"});
 		$(id).children(".modal-dialog").show();
-		$("#modal-overlay").show().css("zIndex", zind);
+		var div = $("#modal-overlay");
+		$(div).show().css("zIndex", zind);
+		$(".transit-tracks").hide();
 	}
 }
-
-
-
-
-

@@ -4,6 +4,7 @@
 	left: 0;
 	width: 100%;
 	margin: 10px 0; 
+	display:none;
 }
 .transit-tracks li{float: left;text-align: center;}
 .transit-tracks li a{
