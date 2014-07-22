@@ -1,4 +1,11 @@
 $(function(){
+	$("#loginForm").validate({
+		rules: {
+			"user[email]":"required",
+			"user[password]":"required",
+		}
+	});
+	
     $("#registerForm").validate({
         rules: {
             "user[first_name]":"required",

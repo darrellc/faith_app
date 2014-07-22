@@ -1,12 +1,15 @@
-(function( $ ){
+ (function( $ ){
 	$.fn.transitButtons = function( options ) {
 		var components = {targets: {} };
 		var settings = $.extend({}, $.fn.transitButtons.defaults, options);
 		for(var i=0;i<this.length;i++){
 			var id = $(this[i]).attr("href");
-			components.targets[id] = {html: this[i].outerHTML, offset: $(id).offset().top, height: $(id).outerHeight(true)};
+			if($(id).offset() !== undefined)
+				components.targets[id] = {html: this[i].outerHTML, offset: $(id).offset().top, height: $(id).outerHeight(true)};
+			else
+				components.targets[id] = {html: this[i].outerHTML, offset: 0, height: $(id).outerHeight(true)};
 		}
-		
+// 		
 		//Create the transitTracks to add to the header.
 		components.tracks = $.fn.transitButtons.createTracks(components.targets);
 		//Create the transitTop to add to the footer.
@@ -18,30 +21,39 @@
 		//Grabs all the data-transit links even the tracks
 		components.links = $(this).add($(components.tracks).find("a"));
 		//Iterate over every transit button
-		for(var link in components.links){
-			$(components.links[link]).on("click", function(e){
-				//Get the options from the link
-				var opt = (($(this).attr("data-options") === undefined )) ? settings.linkOptions : $(this).attr("data-options");
-				var linkOptions = {};
-				//Get each option in an array
-				opt = opt.split(",");		
-				for( var o in opt){
-					//First entry
-					var key = opt[o].split(":")[0];
-					//Second entry
-					var value = opt[o].split(":")[1];
-					linkOptions[key] = value;
-				}
-				//Remove active class from all links
-				$(components.links).removeClass(settings.activeLink);
-				//Now we have the id from the link in the href
-				//We will make every link with that same href active.
-				$("a[href='"+$(this).attr("href")+"']").addClass(settings.activeLink);
-				//Do the different DOM manipulations according to the data options
-				$.fn.transitButtons.doTransit(this, linkOptions, components, settings);						
-				e.preventDefault();
+		$(components.links).each(function(){
+			$(this).on({
+				"click":function(e){
+					//Get the options from the link
+					var opt = (($(this).attr("data-options") === undefined )) ? settings.linkOptions : $(this).attr("data-options");
+					var linkOptions = {};
+					//Get each option in an array
+					opt = opt.split(",");		
+					for( var o in opt){
+						//First entry
+						var key = opt[o].split(":")[0];
+						//Second entry
+						var value = opt[o].split(":")[1];
+						linkOptions[key] = value;
+					}
+					//Remove active class from all links
+					$(components.links).removeClass(settings.activeLink);
+					//Now we have the id from the link in the href
+					//We will make every link with that same href active.
+					$("a[href='"+$(this).attr("href")+"']").addClass(settings.activeLink);
+					//Do the different DOM manipulations according to the data options
+					$.fn.transitButtons.doTransit(this, linkOptions, components, settings);						
+					e.preventDefault();
+				},
 			});
-		}
+		});
+			//$(l).click(function(){
+			//	
+			//});
+			//$(components.links[link]).on("click", function(e){
+				
+			//});
+		//}
 		$(components.topButton).on("click", function(){
 			$(settings.topContainer).velocity("scroll", {duration: settings.scrollSpeed, easing: "easeOutExpo", offset: 0});
 		});
@@ -60,7 +72,7 @@
 		'tracksOffset' : 0,
 		'scrollPadding': 15
 	};
-	
+// 	
 	$.fn.transitButtons.createTracks = function( tar ){
 		var h = "<ul class='transit-tracks'>";
 		var count = Object.keys(tar).length;		
@@ -71,11 +83,11 @@
 		h += "</ul>";
 		return $(h);
 	};
-	
+// 	
 	$.fn.transitButtons.removeClasses = function( links, c ){
 		$(links).removeClass(c);
 	}; 
-	
+// 	
 	$.fn.transitButtons.doTransit = function(link, options, comp, s){
 		switch(options.animation){
 			case "scroll":
@@ -96,9 +108,10 @@
 				//Scroll using velocity.js				
 				$($(link).attr("href")).velocity("scroll", {duration: s.scrollSpeed, easing: "easeOutExpo", offset: scrollOffset});
 				break;
-			case "show":				
-				if(!$(link).hasClass(s.activeLink)){
-					var con = $(this).attr("href") + "-container";
+			case "show":
+				var con = $(link).attr("href") + "-container";
+				//if the container is not visible				
+				if(!$(con).is(":visible")){					
 					$(comp.links).removeClass(s.activeLink);
 					$(con).siblings().hide();
 					$(con).show();
@@ -111,12 +124,12 @@
 				break;	
 		}
 	};
-	
+// 	
 	$.fn.transitButtons.createTransitTop = function(){
 		var b = "<a href='#' class='transitTopButton' ><i class='fa fa-arrow-up'></i></a>";
 		return $(b);
 	};
-	
+// 	
 	$.fn.transitButtons.scrollOffset = function(comp, s){
 		//The header is static do not include in scroll offset
 		var offset = 0;
@@ -131,7 +144,7 @@
 		}
 		return offset;
 	};
-	
+ 	
 	$.fn.transitButtons.checkTransitScroll = function( tar, comp, s ){
 		$(window).on("scroll", function(){
 			//Get the distance from the top of the window in pixels.
