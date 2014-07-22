@@ -17,6 +17,7 @@
 //= require jquery.velocity.ui
 //= require jquery.sidelinks
 //= require jquery.transitbuttons
+//= require canvasloader.min
 //= require initializers
 //= require events
 //= require_tree .

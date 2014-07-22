@@ -16,16 +16,12 @@
           </tr>
         </thead>
         <tbody id="eventTableData">
-        	<% @organization.events.where(isTemplate: false).each do |e| %>
-        		<tr data-type="events" data-id=<%= e.id %>>
-        			<td><%= e.name %></td>
-        			<td><%= e.timeFormat e.start_time %></td>
-        			<% if !can? :delete, e 
-        				disabled = "disabled"
-        			end %>
-    				<td><a href="#" class="<%= disabled %> c-dr fs-lg ph-15 ev fl-r delete delete-btn" data-url="/events/<%= e.id%>" data-type="Event" data-name="<%= e.name %>"><i class="fa fa-times"></i></a></td> 
-        			      			
-        		</tr>
+        	<% @organization.events.where(isTemplate: false).each do |e| %>        	
+        		<% if !can? :delete, e %>
+        			<%= e.generateEventInfo :disabled => "disabled" %>
+        		<% else %>
+        			<%= e.generateEventInfo %>
+        		<% end %>        		
         	<% end %>
         </tbody>
       </table>
@@ -42,14 +38,19 @@
           </tr>
         </thead>
         <tbody id="eventTemplateTableData">
-        	<% @organization.events.where(isTemplate: true).each do |e| %>
-        		<tr data-type="events" data-id="<%= e.id %>">
+        	<% @organization.events.where(isTemplate: true).each do |e| %>        	
+        		<% if !can? :delete, e %>
+        			<%= e.generateEventInfo :disabled => "disabled", :template => true %>
+        		<% else %>
+        			<%= e.generateEventInfo :template => true %>
+        		<% end %>
+        		<!-- <tr data-type="events" data-id="<%= e.id %>">
     				<td><%= e.name %></td>
     				<% if !can? :delete, e 
         				disabled = "disabled"
         			end %>
-    				<td><a href="#" class="<%= disabled %> c-dr fs-lg ph-15 ev fl-r delete delete-btn" data-url="/events/<%= e.id%>" data-type="Event Template" data-name="<%= e.name %>"><i class="fa fa-times"></i></a></td>
-    			</tr>
+    				<td><a href="#" class="<%= disabled %> c-dr fs-lg ph-15 ev fl-r delete delete-btn" data-url="/events/<%= e.id%>" data-type="Event Template" data-name="<%= e.name %>"><i class="fa fa-trash-o"></i></a></td>
+    			</tr> -->
         	<% end %>
         </tbody>
       </table>

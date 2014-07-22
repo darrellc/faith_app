@@ -10,24 +10,12 @@
 	$("#addEventForm").find("#itemBox").hide();
 	$("#addEventForm").find(".reveal-action").removeClass("active");
 	toggleModal("#eventModal");	
-	
-	var newRow = "<tr data-id='<%= e.id %>' data-type='events'>";
-			newRow += "<td><%= e.name %></td>";
-			newRow += "<td><%= e.timeFormat e.start_time %></td>";
-			newRow += "<td>";
-				newRow += "<a href='#' class='c-dr fs-lg ph-15 ev fl-r delete delete-btn' data-url='/events/<%= e.id %>' data-type='Event' data-name='<%= e.name %>'>";
-					newRow += "<i class='fa fa-times'></i>";
-				newRow += "</a>";
-			newRow += "</td>";
-		newRow += "</tr>";
-	$("#eventTableData").append(newRow);	
+	$("#eventTableData").append("<%= e.generateEventInfo %>");	
 <% else %>
 
 	var msg = "<p><%= msg %>";
 		msg += "<ul><li><%= reasons %></li></ul>";
 		msg += "</p>";
-	
-	
 	createAlert({
 		type: "alert",
 		msg: msg

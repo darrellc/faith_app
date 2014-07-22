@@ -9,7 +9,17 @@ $(function(){
     
     $.sideLinks(); 
     
-    $("a[data-transit]").transitButtons();
+    //$("a[data-transit]").transitButtons();
+    
+    //Canvas Loader
+    var cl = new CanvasLoader('middleLoadingSpinner');
+	cl.setColor('#333333'); // default is '#000000'
+	cl.setDiameter(60); // default is 40
+	cl.setDensity(70); // default is 40
+	cl.setRange(0.8); // default is 1.3
+	cl.setSpeed(1); // default is 2
+	cl.setFPS(60); // default is 24
+	cl.show(); // Hidden by default
      
 });
 

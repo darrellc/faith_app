@@ -26,7 +26,25 @@
 		    </div>
 		</div>
 		<div class="show">
-			
+			<h3 class="c-lg"></h3>
+			<%= form_for(:event_item, url: "#", html: { id: "updateItemForm" }, remote: true ) do |f| %>  			
+			    <div><%= f.text_field :name, autofocus: true, :placeholder => "Name" %></div>	
+			    <div><%= f.text_area :description, :placeholder => "Description" %></div>
+			    <div class="clearfix">
+			    	<div class="columns small-3 pv-10">Min.</div>
+		    		<div class="columns small-3 p-0"><input type="text" name="duration_min" value="0"></div>
+		    		<div class="columns small-3 pt-10 pb-10 pl-10">Sec.</div>
+		    		<div class="columns small-3 p-0"><input type="text" name="duration_sec" value="00"></div>
+	    		</div>
+			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action">Connect Song</a>
+			    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action">Connect Members</a>	
+			    <input type="hidden" name="mode" value="add" />
+			    <input type="hidden" name="container" />
+			    <input type="hidden" name="event_id" />
+			    <input type="hidden" name="song_id" />
+			    <input type="hidden" name="member_group_id" />    	    
+			    <div><%= f.submit "Add Item", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
+	  		<% end %>
 		</div>
 		<div class="edit">
 			

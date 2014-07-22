@@ -1,5 +1,4 @@
 <% if success %>
-	console.log("Showing alert");
 	createAlert({
 		type: "success",
 		msg: "<%= msg %>"		
@@ -10,24 +9,12 @@
 	$("#addUserForm")[0].reset();
 	toggleModal("#userModal");	
 	
-	var newRow = "<tr data-id='<%= u.id %>' data-type='user'>";
-			newRow += "<td><%= u.fullName %>";				
-			newRow += "</td>";
-			newRow += "<td>";
-				newRow += "<a href='#' class='c-dr fs-lg ph-15 ev fl-r delete delete-btn' data-url='/user/<%= u.id %>' data-type='User' data-name='<%= u.fullName %>'>";
-					newRow += "<i class='fa fa-times'></i>";
-				newRow += "</a>";
-			newRow += "</td>";
-		newRow += "</tr>";
-		
-	$("#userTableData").append(newRow);	
+	var html = "<%= u.generateAddHtml current_user %>";
+	$("#userTableData").append(html);	
 <% else %>
-
 	var msg = "<p><%= msg %>";
 		msg += "<ul><li><%= reasons %></li></ul>";
-		msg += "</p>";
-	
-	
+		msg += "</p>";	
 	createAlert({
 		type: "alert",
 		msg: msg

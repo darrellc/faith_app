@@ -37,6 +37,17 @@ class User < ActiveRecord::Base
     else
       return "N/A"
     end
+  end  
+  #This will be used in the application to show a row of information for the given model.
+  #cu - Current logged in user
+  def generateAddHtml disabled=""
+    html =  "<tr data-id=#{self.id} data-type=user>"
+    html +=  "<td data-name='name'>#{self.fullName}</td>"    
+    html +=  "<td width=50>"
+    html +=     "<a href=# class='#{disabled} c-dr fs-lg ph-15 ev fl-r delete delete-btn' data-url=/user/#{self.id} data-type=User data-name=#{self.fullName}><i class='fa fa-trash-o'></i></a>"
+    html +=  "</td>"
+    html += "</tr>"
+    return html.html_safe        
   end
   
 end

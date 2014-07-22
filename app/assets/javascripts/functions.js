@@ -47,6 +47,17 @@ function toggleModal(id){
 	}
 }
 
+function toggleLoader(action){
+	switch(action){
+		case "show":
+			$(".loader-overlay").show();
+			break;
+		case "hide":
+			$(".loader-overlay").hide();
+			break;
+	}
+}
+
 
 
 
