@@ -8,16 +8,8 @@
 	var counter = $(container).children().length + 1;
 	
 	$("#addItemForm")[0].reset();
-		
-	var html = "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p event-item' <%= data_id %>>";
-		html += "<div class='w-60p bdr-g bdl-g bdc-ccc p-10 fl-l'><%= i[:name] %></div>";
-		html += "<div class='w-30p bdr-g bdc-ccc p-10 fl-l'><%= i[:duration] %></div>";
-		html += "<div class='w-10p bdr-g bdc-ccc fl-l'><a href='#' class='c-dr fs-n ev fl-r delete-item-btn' data-type='item' data-name='<%= i[:name] %>'><i class='fa fa-times'></i></a></div>";
-	<% if !i[:container].include? "#itemShowBox" %>
-		html += "<input type='hidden' name='items[item"+counter+"[name]]' value='<%= i[:name] %>' />";
-		html += "<input type='hidden' name='items[item"+counter+"[duration]]' value='<%= i[:duration] %>' />";
-	<% end %> 		
-	html +=    "</div>";
+	<% options = {:id => data_id}.merge i %>
+	var html = "<%= EventItem.new.generateEventItemInfo options %>";
 	
 	$(container).append(html);
 	//Close the item Modal

@@ -1,6 +1,7 @@
 <% if success %>
 	toggleModal("#confirmModal");	
 	$("#eventTableData tr[data-id=<%= e.id %>]").velocity("fadeOut");
+	$("#eventTemplateTableData tr[data-id=<%= e.id %>]").velocity("fadeOut");
 	
 	createAlert({
 		type: "success",

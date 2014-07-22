@@ -10,18 +10,9 @@
 	$("#addEventTemplateForm").find("#templateItemBox").hide();
 	$("#addEventTemplateForm").find(".reveal-action").removeClass("active");
 	$("#addEventForm").find("#event_template_id").append("<option value='<%= e.id %>'><%= e.name %></option>")
-	toggleModal("#eventTemplateModal");	
-	
-	var newRow = "<tr data-id='<%= e.id %>' data-type='events'>";
-			newRow += "<td><%= e.name %></td>";			
-			newRow += "<td>";
-				newRow += "<a href='#' class='c-dr fs-lg ph-15 ev fl-r delete delete-btn' data-url='/events/<%= e.id %>' data-type='Event Template' data-name='<%= e.name %>'>";
-					newRow += "<i class='fa fa-times'></i>";
-				newRow += "</a>";
-			newRow += "</td>";
-		newRow += "</tr>";
+	toggleModal("#eventTemplateModal");
 		
-	$("#eventTemplateTableData").append(newRow);	
+	$("#eventTemplateTableData").append("<%= e.generateEventInfo template: true %>");	
 <% else %>
 
 	var msg = "<p><%= msg %>";

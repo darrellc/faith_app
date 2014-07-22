@@ -4,6 +4,7 @@ var modal = $(dialog).children(".modal-dialog");
 <% if mode == "show_edit" %>
 	var inputs = $(dialog).find(".edit input, .edit select").not(":hidden");
 	var info = ["<%= u.first_name %>","<%= u.last_name %>", <%= u.role %>];
+	console.log(info);
 	for(var i=0;i<info.length;i++){
 		$(inputs[i]).val(info[i]);
 	}
@@ -11,7 +12,7 @@ var modal = $(dialog).children(".modal-dialog");
 	<% if !u.member.nil? %>
 		$(dialog).find("a[data-id='.findMember']").addClass("active");	
 	<% end %>
-	
+	//Set the user role
 	$("#editUserForm").attr("action", "/user/<%= u.id %>");
 
 <% else %>
@@ -30,9 +31,9 @@ var modal = $(dialog).children(".modal-dialog");
 	else
 		name = u.creator.fullName
 	end
-	%>
-	
+	%>	
 	var info = ["<%= u.email %>","<%= u.roleName %>","<%= u.timeFormat u.last_sign_in_at %>","<%= u.timeFormat u.updated_at %>","<%= name %>"];
+	console.log(info);
 	var infoBoxes = $(dialog).find(".show p");
 	for(var i=0;i<info.length;i++){
 		$(infoBoxes[i]).html(info[i]);

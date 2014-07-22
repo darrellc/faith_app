@@ -5,8 +5,6 @@
  *  msg - The text to be out putted
  *  timeout - The time till the alert fades out.
  */
-//Scroll Offsets
-var SCROLL_PIXEL_OFFSETS = {};
 
 function createAlert(alertP){
 	if(alertP.type === undefined) alert("createAlert - param: 'type' cannot be undefined.");
@@ -46,5 +44,15 @@ function toggleModal(id){
 		var div = $("#modal-overlay");
 		$(div).show().css("zIndex", zind);
 		$(".transit-tracks").hide();
+	}
+}
+function toggleLoader(action){
+	switch(action){
+		case "show":
+			$(".loader-overlay").show();
+			break;
+		case "hide":
+			$(".loader-overlay").hide();
+			break;
 	}
 }

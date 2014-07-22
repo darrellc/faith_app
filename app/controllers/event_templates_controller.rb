@@ -12,21 +12,23 @@ class EventTemplatesController < ApplicationController
       e.user = current_user
       e.isTemplate = true
       
-      event_items.each do |key, value|
-        i = EventItem.create value
-        i.event = e
-        i.save
+      if !event_items.nil?
+        event_items.each do |key, value|
+          i = EventItem.create value
+          i.event = e
+          i.save
+        end
       end
       
       if e.save
         respond_to do |format|
           format.html {redirect_to root_path}
-          format.js { render :template => @view_path + "js/create.js.erb", :locals => {:e => e, :success => true, :msg => "The event template was successfully added." } }
+          format.js { render :template => @template, :locals => {:e => e, :success => true, :msg => "The event template was successfully added." } }
         end
       else
         respond_to do |format|
           format.html {redirect_to root_path}
-          format.js { render :template => @view_path + "js/create.js.erb", :locals => {:success => false, :msg => "The event template could not be added.", :reasons => e.errors.full_messages.to_sentence } }
+          format.js { render :template => @template, :locals => {:success => false, :msg => "The event template could not be added.", :reasons => e.errors.full_messages.to_sentence } }
         end
       end
     end
@@ -38,6 +40,7 @@ class EventTemplatesController < ApplicationController
   
   def print_action
     puts "<<<<<<<<<<<<<<<<<<<<#{controller_name}-#{action_name}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    @template = "#{@view_path}js/#{action_name}.js.erb"
   end
   
 end 

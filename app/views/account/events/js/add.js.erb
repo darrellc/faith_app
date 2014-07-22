@@ -1,31 +1,26 @@
 try{
 	var container = $("#itemBox .item-list");
 	<% if empty.nil? %>
-	createAlert({
-		type: "success",
-		msg: "<%= msg %>"		
-	});
-	
-	
-	console.log("WHAT!");
-	
-	
-	var html = "";
-	var counter = 0;
-	<% e.event_items.each do |i| %>
-		console.log("HEY!");
-		<% puts "YEAH YEAH " %>
-		html += "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p event-item'>";
-			html += "<div class='w-75p bdr-g bdl-g bdc-ccc p-10 fl-l'><%= i.name %></div>";
-			html += "<div class='w-25p bdr-g bdc-ccc p-10 fl-l'><%= i.duration %></div>";
-			html += "<div class='w-10p bdr-g bdc-ccc fl-l'><a href='#' class='c-dr fs-n ev fl-r delete-item-btn' data-type='Event Item' data-name='<%= i.name %>'><i class='fa fa-times'></i></a></div>";
-			html += "<input type='hidden' name='items[item"+counter+"[name]]' value='<%= i.name %>' />";
-			html += "<input type='hidden' name='items[item"+counter+"[duration]]' value='<%= i.duration %>' />"; 		
-		html += "</div>";
-		counter++;
-	<% end %>
-	console.log("HTML: " + html);
-	$(container).append(html);		
+		createAlert({
+			type: "success",
+			msg: "<%= msg %>"		
+		});	
+		var html = "";
+		var counter = 0;
+		<% e.event_items.each do |i| %>
+			console.log("HEY!");
+			<% puts "YEAH YEAH " %>
+			html += "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p event-item'>";
+				html += "<div class='w-75p bdr-g bdl-g bdc-ccc p-10 fl-l'><%= i.name %></div>";
+				html += "<div class='w-25p bdr-g bdc-ccc p-10 fl-l'><%= i.duration %></div>";
+				html += "<div class='w-10p bdr-g bdc-ccc fl-l'><a href='#' class='c-dr fs-n ev fl-r delete-item-btn' data-type='Event Item' data-name='<%= i.name %>'><i class='fa fa-trash-o'></i></a></div>";
+				html += "<input type='hidden' name='items[item"+counter+"[name]]' value='<%= i.name %>' />";
+				html += "<input type='hidden' name='items[item"+counter+"[duration]]' value='<%= i.duration %>' />"; 		
+			html += "</div>";
+			counter++;
+		<% end %>
+		console.log("HTML: " + html);
+		$(container).append(html);		
 	<% else %>
 		$(container).empty();
 	<% end %>

@@ -27,7 +27,11 @@ $(function(){
     });
     
     $("#addEventForm").validate({
-    	rules: { "item[name]":"required"}
+    	rules: { 
+    		"item[name]":"required",
+    		"sDate":"required",
+    		"sTime":"required"
+		}
     });   
     
     $("#addItemForm").validate({rules: { "event_item[name]":"required"}});

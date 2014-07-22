@@ -18,20 +18,15 @@
           </tr>
         </thead>
         <tbody id="userTableData">
-        	<% @organization.users.each do |u| %>        		
-          		<tr data-id="<%= u.id %>" data-type="user">
-          			<td data-name="name"><%= u.fullName %></td>
-          			<td width="50">
-          				<% 	
-          					if !can? :delete, u          						
-      							disabled = "disabled"
-							elsif u.id == current_user.id
-								disabled = "disabled"
-          				  	end
-          				%>        				
-          				<a href="#" class="<%= disabled %> c-dr fs-lg ph-15 ev fl-r delete delete-btn" data-url="/user/<%= u.id%>" data-type="User" data-name="<%= u.fullName %>"><i class="fa fa-times"></i></a>
-      				</td>
-          		</tr>
+        	<% @organization.users.each do |u| %>
+        		<!-- Wow this is awesome! Thanks Jesus! -->
+        		<% if !can? :delete, u %>
+        			<%= u.generateAddHtml "disabled" %>
+    			<% elsif u.id == current_user.id %>    			
+		       		<%= u.generateAddHtml "disabled" %>
+	       		<% else %>
+	       			<%= u.generateAddHtml %>
+        		<% end %>          		
           	<% end %>
         </tbody>
       </table>

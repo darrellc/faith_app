@@ -119,6 +119,12 @@ label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bot
 }
 #footer.fxd-bottom{position:fixed;width:100%;bottom:0;}
 #modal-overlay{@extend .d-n;background: black;@extend .op-60;@extend .pos-f;@extend .t-0;@extend .l-0;@extend .b-0;@extend .r-0;}
+/***********************************/
+//Overlays
+/***********************************/
+.loader-overlay{position: fixed;@extend .op-50;@extend .t-0;@extend .b-0;@extend .l-0;@extend .r-0;background: #f1f1f1;z-index: 500;display: none;
+  #middleLoadingSpinner{margin: 25% auto;width: 60px;height: 60px;}
+}
 /**********************************/
 //_header.html.erb
 /**********************************/

@@ -4,13 +4,6 @@ $(function(){
         $("#side-bar").css("height", $(window).height()-$("header").outerHeight()-$("#footer").outerHeight());
         if($(window).width() < 768 ) $("#breadcrumbs").hide();
     });
-        
-    ////////////////////////////////////    
-    //Side menu 
-    $("#side-bar-button").on("click", function(e){
-    	toggleSideBar();    	
-    	e.preventDefault();   	   	
-	});
 	    
     $("body").on("click", ".delete-btn", function(e){
 		if(!$(this).hasClass("disabled")){
@@ -40,10 +33,15 @@ $(function(){
     
     $("#body").on("click", "tbody tr", function(e){
 		if($(this).attr("data-type") == undefined || $(this).attr("data-type") === "") alert("That row needs a data-type");
-		if(!$(e.target).hasClass("fa-times") && !$(e.target).hasClass("delete") ){
+		if(!$(e.target).hasClass("fa") && !$(e.target).hasClass("delete") ){
+			toggleLoader("show");
 			$.ajax({
 				type: "GET",
-				url: "/"+$(this).attr("data-type")+"/"+$(this).attr("data-id")
+				url: "/"+$(this).attr("data-type")+"/"+$(this).attr("data-id"),
+				dataType: "script",
+				success: function(){
+					toggleLoader("hide");
+				}					
 			});
 		}
 		e.preventDefault();
@@ -93,10 +91,10 @@ $(function(){
 	
 	$("body").on("click", ".delete-item-btn", function(e){
 		if(!$(this).hasClass("disabled")){
-			var id = $(this).attr("data-id");
+			var id = $(this).closest(".event-item").attr("data-id");
 			//If no box found then we know that this is a temporary event item
 			if(id === undefined){
-				$(this).closest(".event-item").velocity("fadeOut").remove();
+				$(this).closest().velocity("fadeOut").remove();
 				createAlert({
 					type: "success",
 					msg: "The item was successfully deleted",
@@ -120,12 +118,15 @@ $(function(){
 	//Show action for event items
 	$("body").on("click", "div.event-item", function(e){
 		console.log("EVENT ITEM CLICKED");
-		var id = ($(this).attr("data-id") === undefined) ?  "" : $(this).attr("data-id"); 
+		var id = ($(this).attr("data-id") === undefined) ?  "" : $(this).attr("data-id");
+		if(!$(e.target).hasClass("fa") && !$(e.target).hasClass("delete") ){ 
 		//Call an AJAX call. Call the EventItem Index method
-		$.ajax({
-			type: "GET",
-			url: "/get_item?data-id="+id
-		});
+			$.ajax({
+				type: "GET",
+				url: "/get_item?data-id="+id,
+				dataType: "script"
+			});
+		}
 		e.preventDefault();
 	});
 	
@@ -148,11 +149,11 @@ $(function(){
 		$(this).addClass("disabled");
 		$.ajax({
 			type: "GET",
-			url: "/add_template?template_id=" + $(this).val()
+			url: "/add_template?template_id=" + $(this).val(),
+			dataType: "script"
 		});
 		e.preventDefault();
 	});
-	
 });
 
 	
