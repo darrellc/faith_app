@@ -67,6 +67,7 @@ a.c-lg:hover{color: $offWhite;}
 /***********************************/
 //Foundation Overrides
 /***********************************/
+.button{transition: background-color 100ms ease-out;}
 .row{max-width: 100%;}
 .tooltip{@extend .bdrz-10;margin-left: -2px;@extend .p-10;}
 .close-velocity-modal{color: #333;@extend .bg-ow;@extend .bd;@extend .bdc-ccc;@extend .ev;}
@@ -77,16 +78,7 @@ a.c-lg:hover{color: $offWhite;}
 .velocity-modal{@extend .d-n;position: absolute;@extend .z-100;@extend .bg-w;@extend .p-n;left: 50%;top: 100px;}
 //Side links overrides
 .side-links-toggle{padding: 9px 20px 9px 0;}
-.side-links-list li a{font-family: "robotoregular";}
-.side-links-list li a.bdb-bl{@extend .bdb-bl;}
-.side-links-list li a i{display: none;}
-.side-links-list li a p{margin: 0;}
-//Transit Buttons overrides
-.transit-tracks{
-  z-index: 100;
-  li a{@extend .bdrz-5;@extend .ff-days;@extend .p-sm;@extend .tt-l;}
-}
-/***********************************/
+/*********************************/
 //Global Class
 /**********************************/
 //Errors
@@ -122,8 +114,19 @@ label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bot
 /***********************************/
 //Overlays
 /***********************************/
-.loader-overlay{position: fixed;@extend .op-50;@extend .t-0;@extend .b-0;@extend .l-0;@extend .r-0;background: #f1f1f1;z-index: 500;display: none;
+.overlay{@extend .pos-f;@extend .op-50;@extend .t-0;@extend .b-0;@extend .l-0;@extend .r-0;@extend .ovy-a;@extend .ovx-h;@extend .d-n;background: black;}
+#loader-overlay{@extend .bg-ow;z-index: 500;
   #middleLoadingSpinner{margin: 25% auto;width: 60px;height: 60px;}
+}
+/**********************************/
+//_mobile_side.html.erb
+/**********************************/
+.side-links{width: 250px;left: -250px;top: 53px;@extend .bg-ow;@extend .z-600;
+  ul{@extend .lis-n;@extend .m-0;
+    a{@extend .bdb-g;@extend .bdc-ccc;@extend .fs-n;@extend .p-sm;@extend .d-b;@extend .w-100p;@extend .bdrz-n;@extend .ta-l;@extend .c-dg;@extend .m-0;&:hover{background: #d7d7d7;color: black;@extend .td-n;}
+      p{margin: 0;}      
+    }     
+  }  
 }
 /**********************************/
 //_header.html.erb
@@ -135,6 +138,12 @@ header{@extend .bdb-bl;background: white;}
   .navigation li a {padding: 18px;color: #333;border-bottom: none;&:hover{background: $offWhite;text-decoration: none;}}
   .navigation li a.active{background: $darkBlue;color: #fff;}
 }
+.side-links-toggle{@extend .pos-a;@extend .d-n;@extend .c-dg;&:hover{color: black;}}
+#breadcrumbs{@extend .w-100p;display: none;
+  li{width: 16.666666666667%;
+    a{@extend .m-0;@extend .w-75p;}
+  }
+}
 /**********************/
 //_connections.html.erb
 /*********************/
@@ -145,6 +154,7 @@ header{@extend .bdb-bl;background: white;}
 .pricing{
   a:hover{@extend .td-n;}  
 }
+
 @import "connections";
 
 @import "account";

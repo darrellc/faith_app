@@ -14,7 +14,7 @@ var modal = $(dialog).children(".modal-dialog");
 	<% end %>
 	//Set the user role
 	$("#editUserForm").attr("action", "/user/<%= u.id %>");
-
+	toggleLoader("close");
 <% else %>
 	
 	//Hide all the action divs
@@ -43,5 +43,5 @@ var modal = $(dialog).children(".modal-dialog");
 		$(dialog).find(".is-member").show();
 	<% end %>
 	//Display the dialog
-	toggleModal(dialog);	
+	toggleModal(dialog, "open");	
 <% end %>

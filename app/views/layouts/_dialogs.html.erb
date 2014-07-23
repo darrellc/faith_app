@@ -1,74 +1,5 @@
-<<div class='side-links'>
-	<ul class='side-links-list'>
-	<% if !user_signed_in? %>
-        <li class="fl-l"><a href="#" data-id="#registerModal" id="registerLink" class="cur-p modal-button" data-side-link>Register</a></li>
-  		<li class="fl-l"><a href="#" class="cur-p bdb-bl modal-button" data-id="#loginModal" data-side-link>Login</a></li>
-  		<li><a href="#events-box" class="ta-c fs-hu ff-days button bdrz-10 td-n hover" data-side-link data-transit data-options="animation:scroll" data-class="ev">events</a></li>
-		<li><a href="#people-box" class="ta-c fs-hu ff-days button td-n hover" data-side-link data-transit data-options="animation:scroll" data-class="or">people</a></li>
-		<li><a href="#work-box" class="ta-c fs-hu ff-days button td-n hover" data-side-link data-transit data-options="animation:scroll" data-class="wo">work</a></li>
-		<li><a href="#expenses-box" class="ta-c fs-hu ff-days button td-n hover" data-side-link data-transit data-options="animation:scroll" data-class="ex">expenses</a></li>
-		<li><a href="#music-box" class="ta-c fs-hu ff-days button td-n hover" data-side-link data-transit data-options="animation:scroll" data-class="mu">music</a></li>
-		<li><a href="#social-box" class="ta-c fs-hu ff-days button td-n hover" data-side-link data-transit data-options="animation:scroll" data-class="so">social</a></li>
-	<% else %>  			
-		<li class="fl-l"><%= link_to('Logout', destroy_user_session_path, :method => :delete, "data-side-link" => "", "class" => "bdb-bl") %></li>
-		<li>
-	    	<a href="#dashboard" class="d-b pv-15 c-dg ta-c ev active hover" data-class="da" data-side-link data-transit data-options="animation:show">
-	    		<i class="fa fa-home fs-hu"></i>
-	    		<p>Dashboard</p>
-			</a>
-		</li>
-	    <li>
-	    	<a href="#users" class="d-b pv-15 c-dg ta-c ev hover" data-class="us" data-side-link data-transit data-options="animation:show">
-	    		<i class="fa fa-sign-in fs-hu"></i>
-	    		<p>Users</p>
-			</a>
-		</li>
-	    <li>
-	    	<a href="#events" class="d-b pv-15 c-dg ta-c ev hover" data-class="ev" data-side-link data-transit data-options="animation:show">
-	    		<i class="fa fa-calendar fs-hu"></i>
-	    		<p>Events</p>
-			</a>
-		</li>
-	    <li>
-	    	<a href="#music" class="d-b pv-15 c-dg ta-c ev hover" data-class="mu" data-side-link data-transit data-options="animation:show">
-	    		<i class="fa fa-music fs-hu"></i>
-	    		<p>Music</p>
-			</a>
-		</li>
-	    <li>
-	    	<a href="#outreach" class="d-b pv-15 c-dg ta-c ev hover" data-class="or" data-side-link data-transit data-options="animation:show">
-	    		<i class="fa fa-users fs-hu"></i>
-	    		<p>Outreach</p>
-			</a>
-		</li>
-	    <li>
-	    	<a href="#designs" class="d-b pv-15 c-dg ta-c ev hover" data-class="de" data-side-link data-transit data-options="animation:show">
-	    		<i class="fa fa-columns fs-hu"></i>
-	    		<p>Designs</p>
-			</a>
-		</li>
-	    <li>
-	    	<a href="#social" class="d-b pv-15 c-dg ta-c ev hover" data-class="so" data-side-link data-transit data-options="animation:show">
-	    		<i class="fa fa-share-alt fs-hu"></i>
-	    		<p>Social</p>
-			</a>
-		</li>    
-	    <li>
-	    	<a href="#work" class="d-b pv-15 c-dg ta-c ev hover" data-class="wo" data-side-link data-transit data-options="animation:show">
-	    		<i class="fa fa-wrench fs-hu"></i>
-	    		<p>Work</p>
-			</a>
-		</li>    
-	    <li>
-	    	<a href="#expense" class="d-b pv-15 c-dg ta-c ev hover" data-class="ex" data-side-link data-transit data-options="animation:show">
-	    		<i class="fa fa-money fs-hu"></i>
-	    		<p>Expenses</p>
-			</a>
-		</li>
-	<% end %>
-		
-	</ul>
-</div>
+
+<%= render "/layouts/mobile_side" %>
 
 <% if user_signed_in? %>
 	<div id="confirmModal" class="velocity-modal">
@@ -145,11 +76,12 @@
 	  </div>
 	  
 <% end %>
-<div id="modal-overlay"></div>
-<div class='loader-overlay'>
+
+<div id="modal-overlay" class="overlay"></div>
+<div id='loader-overlay' class="overlay">
 	<div id="middleLoadingSpinner"></div>
 </div>
-<div class='side-links-overlay'></div>
+<div id='side-links-overlay' class="overlay"></div>
 
 
 

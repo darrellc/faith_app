@@ -5,7 +5,7 @@
 		msg: "<%= msg %>"		
 	});
 	$("#userTableData").find("tr[data-id=<%= u.id %>]").find("td[data-name=name]").html("<%= u.fullName %>");
-	toggleModal("#userModal");	
+	toggleModal("#userModal", "close");	
 <% else %>
 	//Show the error message.
 	createAlert({

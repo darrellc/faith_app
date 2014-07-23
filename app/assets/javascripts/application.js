@@ -14,9 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require jquery.velocity.min
-//= require velocity.ui.min
-//= require jquery.sidelinks
-//= require jquery.transitbuttons
+//= require velocity.ui
 //= require canvasloader.min
 //= require initializers
 //= require events

@@ -1,0 +1,62 @@
+<<div class='side-links pos-f l-0 d-n'>
+	<ul class='side-links-list'>
+	<% if !user_signed_in? %>
+        <li><a href="#" class="cur-p modal-button" data-id="#registerModal">Register</a></li>
+  		<li><a href="#" class="cur-p bdb-bl modal-button" data-id="#loginModal">Login</a></li>
+  		<li><a href="#events-box" class="ff-days button hover" data-class="ev">Events</a></li>
+		<li><a href="#people-box" class="ff-days button hover" data-class="or">People</a></li>
+		<li><a href="#work-box" class="ff-days button hover" data-class="wo">Work</a></li>
+		<li><a href="#expenses-box" class="ff-days button hover" data-class="ex">Expenses</a></li>
+		<li><a href="#music-box" class="ff-days button hover" data-class="mu">Music</a></li>
+		<li><a href="#social-box" class="ff-days button hover" data-class="so">Social</a></li>
+	<% else %>  			
+		<li><%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "bdb-bl" ) %></li>
+		<li>
+	    	<a href="#dashboard-container" class="d-b pv-15 c-dg ta-c active hover button" data-class="da">
+	    		<p>Dashboard</p>
+			</a>
+		</li>
+	    <li>
+	    	<a href="#users-container" class="d-b pv-15 c-dg ta-c button hover" data-class="us">
+	    		<p>Users</p>
+			</a>
+		</li>
+	    <li>
+	    	<a href="#events-container" class="d-b pv-15 c-dg ta-c hover button" data-class="ev" >
+	    		<p>Events</p>
+			</a>
+		</li>
+	    <li>
+	    	<a href="#music-container" class="d-b pv-15 c-dg ta-c hover button" data-class="mu" >
+	    		<p>Music</p>
+			</a>
+		</li>
+	    <li>
+	    	<a href="#outreach-container" class="d-b pv-15 c-dg ta-c hover button" data-class="or" >
+	    		<p>Outreach</p>
+			</a>
+		</li>
+	    <li>
+	    	<a href="#designs-container" class="d-b pv-15 c-dg ta-c hover button" data-class="de" >
+	    		<p>Designs</p>
+			</a>
+		</li>
+	    <li>
+	    	<a href="#social-container" class="d-b pv-15 c-dg ta-c hover button" data-class="so" >
+	    		<p>Social</p>
+			</a>
+		</li>    
+	    <li>
+	    	<a href="#work-container" class="d-b pv-15 c-dg ta-c hover button" data-class="wo" >
+	    		<p>Work</p>
+			</a>
+		</li>    
+	    <li>
+	    	<a href="#expense-container" class="d-b pv-15 c-dg ta-c hover button" data-class="ex" >
+	    		<p>Expenses</p>
+			</a>
+		</li>
+	<% end %>
+		
+	</ul>
+</div>

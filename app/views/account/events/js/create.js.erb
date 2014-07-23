@@ -9,7 +9,7 @@
 	$("#addEventForm").find(".item-list").empty();
 	$("#addEventForm").find("#itemBox").hide();
 	$("#addEventForm").find(".reveal-action").removeClass("active");
-	toggleModal("#eventModal");	
+	toggleModal("#eventModal", "close");	
 	$("#eventTableData").append("<%= e.generateEventInfo %>");	
 <% else %>
 

@@ -7,7 +7,7 @@
 	//Reset the form and close the modal
 	console.log("Resetting stuff");	
 	$("#addUserForm")[0].reset();
-	toggleModal("#userModal");	
+	toggleModal("#userModal", "close");	
 	
 	var html = "<%= u.generateAddHtml current_user %>";
 	$("#userTableData").append(html);	

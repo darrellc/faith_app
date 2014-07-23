@@ -26,7 +26,7 @@ for(var i=0;i<p.length;i++){
 var itemBox = $(dialog).find(".show").find(".item-list");
 var html = "<%= e.generateEventItems %>";
 $(itemBox).append(html);
-toggleModal("#eventModal");
+toggleModal("#eventModal", "open");
 //Add the event id to the show div
 $(dialog).find(".show").attr("data-id", "<%= e.id %>");
 

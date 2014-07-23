@@ -96,6 +96,7 @@
   .action-button{color: $ev_color;&:hover{color: darken($ev_color, 10%);}
   }
   .isTemplate{@extend .bg-ev;@extend .bdbrrz-5;@extend .c-ow;top: 0px;left: 0px;@extend .fs-sm;@extend .fw-b;@extend .pos-a;@extend .p-5;}
+  .item-list .event-item:first-child{border-top: 1px solid #ccc;}
 }
 //Override date time picker
 .dtpicker-buttonCont .dtpicker-button{

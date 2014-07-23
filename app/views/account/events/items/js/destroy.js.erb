@@ -1,6 +1,6 @@
 var element = ".event-item[data-id=<%= id %>]";
-toggleModal("#confirmModal");		 
-$(element).velocity("fadeOut");
+toggleModal("#confirmModal", "close");		 
+$(element).velocity("fadeOut", {complete: function(){$(element).remove()}});
 
 createAlert({
 	type: "success",

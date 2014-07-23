@@ -922,13 +922,13 @@
 					}					
 				});
 				
-				$(document).keyup(function()
-				{
-					if(! $('.dtpicker-compValue').is(':focus'))
-					{
-						dtPickerObj._hidePicker();
-					}
-				});
+				//$(document).keyup(function()
+				//{
+					//if(! $('.dtpicker-compValue').is(':focus'))
+					//{
+					//	dtPickerObj._hidePicker();
+					//}
+				//});
 			
 				//-----------------------------------------------------------------------
 			

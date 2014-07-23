@@ -1,15 +1,13 @@
-<% if success %>
-	toggleModal("#confirmModal");	
+toggleModal("#confirmModal", "close");
+<% if success %>		
 	$("#eventTableData tr[data-id=<%= e.id %>]").velocity("fadeOut");
-	$("#eventTemplateTableData tr[data-id=<%= e.id %>]").velocity("fadeOut");
-	
+	$("#eventTemplateTableData tr[data-id=<%= e.id %>]").velocity("fadeOut");	
 	createAlert({
 		type: "success",
 		msg: "The event was successfully deleted",
 		timeout: 1000
 	});
-<% else %>
-	toggleModal("#confirmModal");
+<% else %>	
 	createAlert({
 		type: "alert",
 		msg: "The event was not deleted.",

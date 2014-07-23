@@ -1,16 +1,18 @@
 class EventItemsController < ApplicationController
   before_filter :set_view_path, :print_action
-  load_and_authorize_resource
-  
+    
   #events/items #POST
   def create
     #Take the params
     itemP = event_item_params
     data_id = nil
+    #The event is already in the database and is being viewed
+    #The current_user is trying to add more items to the event.
     if params[:container].include? "#itemShowBox"
       event = Event.find params[:event_id]
       puts event.inspect
       item = EventItem.create name: itemP[:name], description: itemP[:description], duration: params[:duration_min]+":"+params[:duration_sec]
+      authorize! :create, item
       item.event = event
       item.save
       data_id = "data-id='#{item.id}'"      
@@ -34,7 +36,8 @@ class EventItemsController < ApplicationController
   def destroy
     #Delete event item    
     begin
-      @event_item.destroy
+      eventItem = EventItem.find params[:id] 
+      eventItem.destroy
       respond_to do |format|
         format.js{ render :template => @template, :locals => {:id => params[:id] } }
       end  

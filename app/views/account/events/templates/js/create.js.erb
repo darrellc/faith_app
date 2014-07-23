@@ -10,7 +10,7 @@
 	$("#addEventTemplateForm").find("#templateItemBox").hide();
 	$("#addEventTemplateForm").find(".reveal-action").removeClass("active");
 	$("#addEventForm").find("#event_template_id").append("<option value='<%= e.id %>'><%= e.name %></option>")
-	toggleModal("#eventTemplateModal");
+	toggleModal("#eventTemplateModal", "close");
 		
 	$("#eventTemplateTableData").append("<%= e.generateEventInfo template: true %>");	
 <% else %>

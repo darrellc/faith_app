@@ -18,41 +18,66 @@ function createAlert(alertP){
 	} });
 }
 
-function toggleModal(id){
+function toggleModal(id, action){
 	//Needs to work with multiple open modals
 	var open = $(".velocity-modal.open").not(id);		
 	var zind = 100;
 	//The modal is visible	
-	if($(id).is(":visible")){
-		zind = parseInt($(id).css("zIndex"));
-		$(id).find(".modal-dialog").hide();//velocity("fadeOut",{duration: 500, display: "none", complete: function(){
-			$(id).removeClass("open").css({"zIndex": 110}).hide();	
-		//} });		
-		if(open.length > 0)
-			$("#modal-overlay").css("zIndex", zind - 40);
-		else			
-			$("#modal-overlay").hide().css({"zIndex": 100});
-	//The modal is not visible
-	}else{	
-		for(var i=0;i<open.length;i++){
-			if(zind < $(open[i]).css("z-index"))
-				zind = parseInt($(open[i]).css("z-index")) + 20;		
-		}
-		$(id).show().addClass("open").css({"zIndex": zind + 10});
-		$(id).find(".modal-dialog").show();//velocity("fadeIn",{duration: 500, display: "block"});
-		$(id).children(".modal-dialog").show();
-		var div = $("#modal-overlay");
-		$(div).show().css("zIndex", zind);
-		$(".transit-tracks").hide();
+	switch(action){
+		case "open":
+			for(var i=0;i<open.length;i++){
+				if(zind < $(open[i]).css("z-index"))
+					zind = parseInt($(open[i]).css("z-index")) + 20;		
+			}
+			$(id).show().addClass("open").css({"zIndex": zind + 10});
+			$(id).find(".modal-dialog").velocity("transition.expandIn",{duration: 500, display: "block"});
+			$(id).children(".modal-dialog").show();
+			var div = $("#modal-overlay");
+			$(div).show().css("zIndex", zind);
+			$("#breadcrumbs").hide();
+			break;			
+		case "close":
+			zind = parseInt($(id).css("zIndex"));
+			$(id).find(".modal-dialog").velocity("transition.expandOut",{duration: 500, display: "none", complete: function(){
+				$(id).removeClass("open").css({"zIndex": 110}).hide();	
+			} });		
+			if(open.length > 0)
+				$("#modal-overlay").css("zIndex", zind - 40);
+			else			
+				$("#modal-overlay").hide().css({"zIndex": 100});
+			break;			
 	}
 }
 function toggleLoader(action){
 	switch(action){
-		case "show":
-			$(".loader-overlay").show();
+		case "open":
+			$("#loader-overlay").show();
 			break;
-		case "hide":
-			$(".loader-overlay").hide();
+		case "close":
+			$("#loader-overlay").hide();
 			break;
 	}
+}
+/** 
+ * When the function is called then the side bar is moved from the left side of the screen into view or slid out
+ * of view.  
+ * @param {Object} action - Whether to open or close the side bar
+ */
+function toggleSideBar(action){
+	var sideBar = $(".side-links");
+	var sideToggle = $(".side-links-toggle");
+	var sideOverlay = $("#side-links-overlay");
+	switch(action){
+		case "open":
+			$(sideToggle).addClass("active").children().velocity({"marginLeft":-10});
+			$(sideBar).velocity({left: 0}, {display: "block", duration: 300});
+			$(sideOverlay).show();
+			break;
+		case "close":
+			$(sideToggle).removeClass("active").children().velocity({"marginLeft":0});
+			$(sideBar).velocity({left: -250}, {display: "none", duration: 300});
+			$(sideOverlay).hide();
+			break;
+	}
+	
 }

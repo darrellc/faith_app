@@ -10,9 +10,8 @@
 	$("#addItemForm")[0].reset();
 	<% options = {:id => data_id}.merge i %>
 	var html = "<%= EventItem.new.generateEventItemInfo options %>";
-	
 	$(container).append(html);
 	//Close the item Modal
-	toggleModal("#itemModal");	
+	toggleModal("#itemModal", "close");	
 	
 <% end %>

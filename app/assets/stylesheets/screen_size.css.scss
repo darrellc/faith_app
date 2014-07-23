@@ -14,12 +14,13 @@
 }
 
 @media all and (max-width: 768px){
-    .top-bar{margin-left: 3em;}
+    #breadcrumbs{display: none;}
+    #body{padding-top: 53px;}    
     .top-bar .navigation{display: none;}
     .tab-content{width: 100%;}
     .top-bar ul .logo{height: 50px;}
-    #breadcrumbs{display: none;}
-    #body{padding-top: 53px;}
+    ul.title-area.left{margin-left: 3em;}
+    .side-links-toggle{display: block;}
 }
 
 @media all and (max-width: 600px) {
@@ -36,3 +37,4 @@
   }
   
 }
+@media all and (max-width: 768px){ }
