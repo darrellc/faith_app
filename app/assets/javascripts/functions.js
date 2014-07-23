@@ -25,9 +25,9 @@ function toggleModal(id){
 	//The modal is visible	
 	if($(id).is(":visible")){
 		zind = parseInt($(id).css("zIndex"));
-		$(id).find(".modal-dialog").velocity("transition.expandOut",{duration: 500, display: "none", complete: function(){
+		$(id).find(".modal-dialog").hide();//velocity("fadeOut",{duration: 500, display: "none", complete: function(){
 			$(id).removeClass("open").css({"zIndex": 110}).hide();	
-		} });		
+		//} });		
 		if(open.length > 0)
 			$("#modal-overlay").css("zIndex", zind - 40);
 		else			
@@ -39,7 +39,7 @@ function toggleModal(id){
 				zind = parseInt($(open[i]).css("z-index")) + 20;		
 		}
 		$(id).show().addClass("open").css({"zIndex": zind + 10});
-		$(id).find(".modal-dialog").velocity("transition.expandIn",{duration: 500, display: "block"});
+		$(id).find(".modal-dialog").show();//velocity("fadeIn",{duration: 500, display: "block"});
 		$(id).children(".modal-dialog").show();
 		var div = $("#modal-overlay");
 		$(div).show().css("zIndex", zind);

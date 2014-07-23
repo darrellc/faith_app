@@ -1,19 +1,9 @@
-<% if success %>
-	toggleModal("#confirmModal");	
-	var element = ".event-item[data-id=<%= id %>]"; 
-	console.log(element);
-	$(element).velocity("fadeOut");
-	
-	createAlert({
-		type: "success",
-		msg: "The event item was deleted",
-		timeout: 1000
-	});
-<% else %>
-	toggleModal("#confirmModal");
-	createAlert({
-		type: "alert",
-		msg: "The event item was not deleted.",
-		timeout: 3000
-	});
-<% end %>
+var element = ".event-item[data-id=<%= id %>]";
+toggleModal("#confirmModal");		 
+$(element).velocity("fadeOut");
+
+createAlert({
+	type: "success",
+	msg: "The event item was deleted",
+	timeout: 1000
+});

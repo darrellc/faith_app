@@ -9,13 +9,13 @@
 		//Grab all elements with that html attribute data-side-link
 		components.links = $("a[data-side-link]");
 		//Create the sideLinksToggle button
-		components.toggle = $("<a href='#' class='side-links-toggle'><i class='fa fa-bars fa-2x'></i></a>");
+		components.toggle = $("");
 		//Create the sideLinksOverlay
-		components.overlay = $("<div class='side-links-overlay'></div>");
+		components.overlay = $("");
 		//Create the sideLinksContainer
 		var html = "";
 		html += "<div class='side-links'>";
-			html += "<ul class='side-links-list'>";
+			html += "";
 			for(var i=0;i<components.links.length;i++){		
 				html +=	"<li>"+components.links[i].outerHTML+"</li>";
 			}

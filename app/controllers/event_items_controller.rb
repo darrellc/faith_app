@@ -36,11 +36,11 @@ class EventItemsController < ApplicationController
     begin
       @event_item.destroy
       respond_to do |format|
-        format.js{ render :template => @template, :locals => {:success => true, :id => params[:id] } }
+        format.js{ render :template => @template, :locals => {:id => params[:id] } }
       end  
     rescue 
       respond_to do |format|
-        format.js{ render :template => @template, :locals => {:success => false, :id => params[:id] } }
+        format.js{ render :template => @template, :locals => {:id => params[:id] } }
       end
     end
     
