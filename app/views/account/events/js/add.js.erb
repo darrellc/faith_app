@@ -5,10 +5,11 @@ try{
 			type: "success",
 			msg: "<%= msg %>"		
 		});	
+		if($("#addEventForm #event_name").val() === "")
+			$("#addEventForm #event_name").val("<%= e.name %>");
 		var html = "";
 		var counter = 0;
-		html = "<%= e.generateEventItems %>";
-		console.log("HTML: " + html);
+		html = "<%= e.generateEventItems true %>";
 		$(container).append(html);		
 	<% else %>
 		$(container).empty();

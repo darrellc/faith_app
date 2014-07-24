@@ -94,6 +94,18 @@ $(function(){
     //////////////////////////////////////
     //PORTAL EVENTS//////////////////////
     ////////////////////////////////////
+    //When the side bar buttons are hovered over
+    $("#side-bar a").on({
+    	"mouseenter":function(){
+    		var pw = $(this).find("p").outerWidth(true);
+    		$(this).css("marginLeft", -pw).find("p").show();
+    		$(this).velocity({"marginLeft": 0}, {duration: 200, easing: "easeInOutQuart"});	
+    	},
+    	"mouseleave":function(){
+    		var pw = $(this).find("p").outerWidth(true);    		
+    		$(this).velocity({"marginLeft": -pw}, {duration: 200, easing: "easeInOutQuart"});
+    	}
+    });
     //When an action button is clicked    
     $("body").on("click", ".action-button",function(e){
     	if($(this).attr("data-id") === undefined || $(this).attr("data-id") == "") alert("each action button must have a data-id");
@@ -107,8 +119,7 @@ $(function(){
     });    
 	//When a delete button is clicked    
     $("body").on("click", ".delete-btn", function(e){
-    	console.log("DELETE BUTTON CLICKED");
-		if(!$(this).hasClass("disabled")){
+    	if(!$(this).hasClass("disabled")){
 			var dialog = $("#confirmModal");
 	    	var button = $(dialog).find(".confirm-button");	    	
 		   	//Set the url to the href of the confirm button - this will trigger the REST delete call when the button is clicked.
@@ -171,12 +182,15 @@ $(function(){
 	
 	//Show action for event items
 	$("body").on("click", "div.event-item", function(e){
-		console.log("EVENT ITEM CLICKED");
 		if(!$(e.target).hasClass("fa") && !$(e.target).hasClass("delete") ){ 
 		//Call an AJAX call. Call the EventItem Index method
+			//Get the song_id
+			var sid = "";
+			if($(this).find("input").length > 0)
+				var sid = $($(this).find("input")[3]).val();
 			$.ajax({
 				type: "GET",
-				url: "/get_item?data-id="+id,
+				url: "/get_item?data-id="+$(this).attr("data-id")+"&song="+sid,
 				dataType: "script"
 			});
 		}

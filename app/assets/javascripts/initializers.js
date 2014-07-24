@@ -25,6 +25,6 @@ $(function(){
 	cl.setSpeed(1); // default is 2
 	cl.setFPS(60); // default is 24
 	cl.show(); // Hidden by default
-     
+	
 });
 

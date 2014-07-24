@@ -1,0 +1,31 @@
+<!-- Modal used for adding a new song and editing a song -->
+<div id="musicModal" class="velocity-modal">
+	<div class="modal-dialog tiny">
+		<a class="close-velocity-modal close">&#215;</a>    	
+		<div class="add">
+			<h3 class="c-lg">Add Song</h3>
+		  	<div>
+		  		<%= form_for(:song, url: "/events/templates", html: { id: "addSongForm" }, remote: true ) do |f| %>  			
+				    <div><%= f.text_field :name, autofocus: true, :placeholder => "Name" %></div>	
+				    <div><%= f.text_area :description, :placeholder => "Description" %></div>
+				    <a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 reveal-action" data-id="#templateItemBox">Items<i class="fa fa-chevron-down fl-r"></i></a>
+				    <div id="templateItemBox" class="d-n">
+				    	<div class="item-list"></div>
+				    	<a class="ta-c ev bg-ow cur-p bdrz-5 p-10 mv-10 bd bdc-ccc action-button td-n modal-button" data-id="#itemModal" data-action="add">Add Item</a>
+				    </div>
+				    <input type="hidden" name="type">	    
+				    <div><%= f.submit "Add Template", :class => "w-100p button bdrz-5 ev m-0 bg-ev" %></div>   		
+		  		<% end %>
+		    </div>
+		</div>
+		<div class="edit">
+			
+		</div>
+		<div class="search">
+			<h3 class="c-lg">Song Search</h3>
+			<p class="fs-sm mv-5 fw-b">Search for a song in your library or search our database of songs provided by the CCLI.</p>
+			<input type="text" name="search_words" placeholder="Search for a song...">
+			<a class="ta-c ev bg-mu cur-p bdrz-5 p-10 mv-10 bd bdc-ccc td-n" data-id="#musicModal" data-action="add">Connect Song</a>
+		</div>  	
+	</div>
+</div>

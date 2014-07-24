@@ -33,7 +33,6 @@ var modal = $(dialog).children(".modal-dialog");
 	end
 	%>	
 	var info = ["<%= u.email %>","<%= u.roleName %>","<%= u.timeFormat u.last_sign_in_at %>","<%= u.timeFormat u.updated_at %>","<%= name %>"];
-	console.log(info);
 	var infoBoxes = $(dialog).find(".show p");
 	for(var i=0;i<info.length;i++){
 		$(infoBoxes[i]).html(info[i]);

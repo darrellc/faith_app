@@ -15,16 +15,6 @@ class Event < ActiveRecord::Base
     end
   end
   
-  # var newRow = "<tr data-id='<%= e.id %>' data-type='events'>";
-      # newRow += "<td><%= e.name %></td>";
-      # newRow += "<td><%= e.timeFormat e.start_time %></td>";
-      # newRow += "<td>";
-        # newRow += "<a href='#' class='c-dr fs-lg ph-15 ev fl-r delete delete-btn' data-url='/events/<%= e.id %>' data-type='Event' data-name='<%= e.name %>'>";
-          # newRow += "<i class='fa fa-times'></i>";
-        # newRow += "</a>";
-      # newRow += "</td>";
-    # newRow += "</tr>";
-  
   def generateEventInfo opts={}
     o = {:disabled => "", :template => false}.merge(opts)
     puts "TEMPLATE = "+o[:template].to_s
@@ -42,25 +32,21 @@ class Event < ActiveRecord::Base
     return html.html_safe
   end
   
-  def generateEventItems items=nil
-    #If the model passed in is an Event Item then we want to create a hash with the values
-    puts items
-    eventItems = nil
-    if items.nil?      
-      eventItems = self.event_items
-    else
-      eventItems = items
-    end    
-    html = "" 
-    eventItems.each do |ei|
-      html += "<div class='clearfix bg-ow bdb-g bdc-ccc ev cur-p event-item' data-id='#{ei.id}'>"
-      html +=   "<div class='w-60p bdr-g bdl-g bdc-ccc p-10 fl-l'>#{ei.name}</div>"
-      html +=   "<div class='w-30p bdr-g bdc-ccc p-10 fl-l'>#{ei.duration}</div>"
-      html +=   "<div class='w-10p bdr-g bdc-ccc fl-l'><a href='#' class='c-dr fs-n ev fl-r delete delete-item-btn' data-type='Event Item' data-name='#{ei.name}'><i class='fa fa-trash-o'></i></a></div>"
-      html += "</div>"
-    end     
-    
-    return html.html_safe    
-  end
   
+   # item - {:id, :name, :duration, :song_id, :member_group_id, :description}
+  def generateEventItems unique=false
+    #If the model passed in is an Event Item then we want to create a hash with the values
+    html = ""
+    self.event_items.each do |ei|
+      html += ei.generateEventItemInfo({
+                                         :id => ei.id, 
+                                         :name => ei.name, 
+                                         :duration => ei.duration, 
+                                         :description => ei.description, 
+                                         :song_id => ei.song, 
+                                         :member_group_id => ei.member_group
+                                       }, unique)
+    end           
+    return html.html_safe    
+  end  
 end

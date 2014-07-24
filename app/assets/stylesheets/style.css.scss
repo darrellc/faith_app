@@ -41,6 +41,9 @@ a.c-lg:hover{color: $offWhite;}
 .bg-faith-green{background: lighten($darkGreen, 10%);}
 .bg-faith-green.ev:hover{background: $darkGreen;}
 .bg-faith-green.ev:focus{background: darken($darkGreen, 10%);}
+.bg-dr{background: lighten($del_color, 10%);color: white;}
+.bg-dr:hover{background: $del_color;color: white;}
+.bg-dr:focus{background: darken($del_color, 10%);color: white;}
 //Different portal backgrounds
 
 //Action Colors
@@ -102,7 +105,7 @@ label.error{background:#f04124;@extend .fs-12;padding:2px;color:white;margin-bot
     label[for='user_remember_me']{float: left;padding: 0 5px;width: auto;}
   }
 }
-#body{overflow-y: auto;padding-top: 64px}
+#body{padding-top: 64px}
 #registerContainer{padding-top: 100px;}
 #footer{
   div.columns:first-child{@extend .bdl-n;}

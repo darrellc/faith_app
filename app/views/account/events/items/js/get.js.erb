@@ -1,5 +1,30 @@
+console.log("GET.js.erb");
 <% if i.nil? %>
 	//No item id was found in the data base.  Use the information on the document
+	//Get the row with the unique id
+	var eventItem = $(".event-item[data-id='<%= id %>']");
+	//Grab all inputs from the row
+	var inputs = $(eventItem).find("input");
+	var values = [$(inputs[0]).val()/*Item name*/,$(inputs[2]).val()/*Item description*/,$(inputs[1]).val().split(":")[0]/*Item duration min*/,$(inputs[1]).val().split(":")[1]/*Item duration sec*/ ];
 <% else %>
 	//An item was found populate the information with the database data.
+	var values = ["<%= i.name %>","<%= i.description %>","<%= i.duration.split(":")[0] %>","<%= i.duration.split(":")[1] %>"];	
 <% end %>
+//Populate the item values
+inputs = $("#editItemForm").find("input[type='text'], textarea");
+for(var i=0;i<inputs.length;i++){
+	$(inputs[i]).val(values[i]);
+}
+//If there is a song show it
+<% if !song.nil? %>
+console.log("THERE WAS A SONG");
+var hasSong = $("#itemModal").find(".edit .hasSong");
+$(hasSong).attr({"data-id":"<%= song.id %>", "data-action":"show"});
+$(hasSong).text("<%= song.name %>");
+<% end %>
+//toggle the edit modal for the item
+toggleModal("#itemModal", "open");
+//Hide all visible divs
+$("#itemModal").children(".modal-dialog").children("div").hide();
+//Show the edit div only
+$("#itemModal").children(".modal-dialog").children("div.edit").show();

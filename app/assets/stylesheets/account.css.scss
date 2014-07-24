@@ -1,24 +1,13 @@
 @import "variables";
 
-#side-bar{
-    overflow-y: auto;
-    overflow-x: hidden;  
-    padding: 0;
-    @extend .bdr-g;
-    border-right-width: 6px;    
+#side-bar{padding: 0;
+  li{height: 55px;
+    a{margin: 0;min-width: 50px;padding: 15px;@extend .bd-n;
+      p{margin: 0;@extend .pr-15;@extend .d-n;}
+    }  
+  }
+  
 }
-//Different classes for the side bar to indicate what page the user is on
-#side-bar[data-class="da"]{border-color: $darkBlue;}
-#side-bar[data-class="us"]{border-color: $us_color;}
-#side-bar[data-class="ev"]{border-color: $ev_color;}
-#side-bar[data-class="mu"]{border-color: $mu_color;}
-#side-bar[data-class="or"]{border-color: $or_color;}
-#side-bar[data-class="de"]{border-color: $de_color;}
-#side-bar[data-class="so"]{border-color: $so_color;}
-#side-bar[data-class="wo"]{border-color: $wo_color;}
-#side-bar[data-class="ex"]{border-color: $ex_color;}
-
-#side-bar a p{margin:0;}
 
 #breadcrumbs li{width: 16.666667%;}
 .side, .connections, #breadcrumbs{
@@ -79,8 +68,7 @@
 }
 #userModal{
   .action-button{
-    color: $us_color;
-    &:hover{color: darken($us_color, 10%);}  
+    color: #fff;      
   }
 }
 
@@ -93,8 +81,8 @@
 }
 #eventModal, #itemModal, #eventTemplateModal{
   input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus{border-color: $ev_color;}
-  .action-button{color: $ev_color;&:hover{color: darken($ev_color, 10%);}
-  }
+  .action-button{color: $ev_color;&:hover{color: darken($ev_color, 10%);text-decoration: none;}}
+  .action-button[data-action='search']{@extend .d-gr;}
   .isTemplate{@extend .bg-ev;@extend .bdbrrz-5;@extend .c-ow;top: 0px;left: 0px;@extend .fs-sm;@extend .fw-b;@extend .pos-a;@extend .p-5;}
   .item-list .event-item:first-child{border-top: 1px solid #ccc;}
 }
@@ -112,6 +100,10 @@
     thead{background: $mu_color;
           td{color: white;border-right-color: lighten($mu_color, 10%);}
     }
+}
+#musicModal{
+  input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus{border-color: $mu_color;}
+  .action-button{color: $mu_color;&:hover{color: darken($mu_color, 10%);text-decoration: none;} }
 }
 
 //Outreach container
@@ -155,7 +147,7 @@
   overflow-x: hidden;
   background: none;
   display: none;
-  .modal-dialog.tiny{width: 100%;max-width: 400px;}
+  .modal-dialog.tiny{width: 100%;max-width: 400px;@extend .bxsh-l;}
   .modal-dialog{
     background: white;
     margin: 100px auto;

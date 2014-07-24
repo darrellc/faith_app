@@ -21,7 +21,14 @@ class EventItemsController < ApplicationController
       format.html { redirect_to root_path }
       format.js { render(:template => @template,
                          :locals => { 
-                                     :i => { :name => itemP[:name], :description => itemP[:description], :duration => params[:duration_min]+":"+params[:duration_sec], :container => params[:container] },
+                                     :i => { 
+                                       :name => itemP[:name], 
+                                       :description => itemP[:description], 
+                                       :duration => params[:duration_min]+":"+params[:duration_sec], 
+                                       :container => params[:container], 
+                                       :song_id => params[:song_id],
+                                       :member_group_id => params[:member_group_id] 
+                                     },
                                      :data_id => data_id, 
                                      :mode => params[:mode], 
                                      :success => true, 
@@ -51,17 +58,22 @@ class EventItemsController < ApplicationController
   #Get the information either from the database or from the 
   def get    
     begin
-      item = EventItem.find params["data-id"]
-      
+      item = EventItem.find params["data-id"]      
+      puts item      
       respond_to do |format|
         format.html {redirect_to root_path}
-        format.js {render :template => @template, :locals => {:i => item} }
+        format.js {render :template => @template, :locals => {:i => item, :song => item.song} }
       end
     #Record was not found...must find it on the document - it is an Eventitem that has not yet been added.
     rescue
+      song = nil
+      if params[:song] != ""
+        #find the song with the song id passed in from the user
+        song = Song.find(params[:song])
+      end
       respond_to do |format|        
         format.html {redirect_to root_path}
-        format.js {render :template => @template, :locals => {:id => params["data-id"]} }
+        format.js {render :template => @template, :locals => {:id => params["data-id"], :i => nil, :song => song } }
       end
     end
         

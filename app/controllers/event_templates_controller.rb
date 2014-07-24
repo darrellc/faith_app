@@ -12,6 +12,8 @@ class EventTemplatesController < ApplicationController
       e.user = current_user
       e.isTemplate = true
       
+      puts event_items
+      
       if !event_items.nil?
         event_items.each do |key, value|
           i = EventItem.create value

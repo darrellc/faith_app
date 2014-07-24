@@ -1,18 +1,11 @@
-@media all and (max-width: 1200px){
-  #side-bar a{font-size: .8em;} 
-  #side-bar a p{font-size: 1em;}
-}
 @media all and (max-width: 1024px){
   #side-bar{display: none;}
+  .tab-content{width: 100%;}
 }
 @media all and (max-width: 1000px){
   #breadcrumbs li a{font-size: 1em;}
   .tab-content > div{width: 100%;}
 }
-@media all and (max-width: 850px) {  
-  #side-bar a{font-size: .8em;}  
-}
-
 @media all and (max-width: 768px){
     #breadcrumbs{display: none;}
     #body{padding-top: 53px;}    

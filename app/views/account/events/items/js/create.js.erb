@@ -8,8 +8,8 @@
 	var counter = $(container).children().length + 1;
 	
 	$("#addItemForm")[0].reset();
-	<% options = {:id => data_id}.merge i %>
-	var html = "<%= EventItem.new.generateEventItemInfo options %>";
+	<% i = {:id => data_id}.merge i %>
+	var html = "<%= EventItem.new.generateEventItemInfo i, true  %>";
 	$(container).append(html);
 	//Close the item Modal
 	toggleModal("#itemModal", "close");	
