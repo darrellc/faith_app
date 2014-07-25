@@ -146,44 +146,43 @@ class CreateCycScheme < ActiveRecord::Migration
     
     #Create Song model
     create_table :songs do |t|
-      t.belongs_to :song_type
-      t.belongs_to :song_timing
-      t.belongs_to :song_style
-      t.belongs_to :song_speed
-      t.belongs_to :song_key, foreign_key: "starting_key"
-      t.belongs_to :song_key_type, foreign_key: "starting_key_type"
-      t.belongs_to :song_key, foreign_key: "ending_key"
-      t.belongs_to :song_key, foreign_key: "starting_key_type"
-      
-      
       t.string :name
-      t.string :length
+      t.string :CCLI_num
+      t.text :description     
 
       t.timestamps
     end
     
-    #Create SongType model
-    create_table :song_types do |t|
+    #Create SongAdaptation model
+    create_table :song_adaptations do |t|
+      t.belongs_to :song_key, foreign_key: "starting_key"
+      t.belongs_to :song_key_type, foreign_key: "starting_key_type"
+      t.belongs_to :song_key, foreign_key: "ending_key"
+      t.belongs_to :song_key_type, foreign_key: "ending_key_type"
+      t.belongs_to :song_timing
+      
+      t.string :duration
+      t.string :name
+      t.string :description
+      
+      t.has_and_belongs_to_many :song_order_types
+      t.timestamps
+    end    
+    
+    #Create SongOrderTypes model
+    create_table :song_order_types do |t|
       t.string :value
       t.timestamps
+    end
+    
+    #Create association table of SongAdaptation and SongOrderTypes
+    create_table :song_order_types_song_adaptations do |t|
+      t.belongs_to :song_order_type
+      t.belongs_to :song_adaptation
     end
     
     #Create SongTiming model
-    create_table :song_timings do |t|
-            
-      t.string :value
-      t.timestamps
-    end
-    
-    #Create SongStyle model
-    create_table :song_styles do |t|
-      
-      t.string :value
-      t.timestamps
-    end
-    
-    #Create SongSpeed model
-    create_table :song_speeds do |t|
+    create_table :song_timings do |t|            
       t.string :value
       t.timestamps
     end
@@ -196,29 +195,26 @@ class CreateCycScheme < ActiveRecord::Migration
     end
     
     #Create SongKeyType model
-    create_table :song_key_type do |t|
+    create_table :song_key_types do |t|
       t.string :value
       t.timestamps
     end
     
-    #Create SongThemes model
-    create_table :song_themes do |t|
+    #Create SongTagGroups model
+    create_table :song_tag_groups do |t|
       
-      t.string :value
+      t.string :name
       t.timestamps
-    end
-    
-    #Create the association table between SongThemes and Songs
-    create_table :song_themes_songs, id: false do |t|
-      t.belongs_to :song_theme
-      t.belongs_to :song
     end
     
     #Create SongTags model
     create_table :song_tags do |t|
-      t.string :value
+      t.belongs_to :song_tag_group
+      
+      t.string :name      
       t.timestamps
     end
+    
     
     #Create the association table between SongTags and Songs
     create_table :song_tags_songs, id: false do |t|
